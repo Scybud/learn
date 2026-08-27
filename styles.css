@@ -6,13 +6,7 @@ body {
   overflow-x: hidden;
 }
 :root {
-  --bg: #1e1e1e;
-  --text-color: #f5f5dc;
   --font-size: clamp(1rem, 1.2rem, 4rem);
-  --border-color: #696969;
-  --details-bg: #2e2e2e;
-  --summary-bg: #3b3b3b;
-  --summary-hover: var(var(--details-bg));
   --link-color: #7fffe1;
   --link-border: #7fffe13e;
 }
@@ -20,7 +14,7 @@ body {
  margin-top: 20px;
  position: fixed;
  text-decoration: none;
- color: var(--text-color);
+ color: var(--text-primary);
  font-size: 2rem;
  right: 20px;
  bottom: 10px;
@@ -28,24 +22,24 @@ body {
 }
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--bg-primary);
   font-size: var(--font-size);
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 header {
   position: relative;
 }
 header h2 {
+  font-size: var(--text-md);
   border-bottom: 2px solid var(--border-color);
-  padding: 15px 0 0 10px;
+  padding: 15px 0 0 0;
 }
 h1 {
   text-align: center;
 }
 details {
-  background: var(--details-bg);
-  margin-bottom: 10px;
+  margin-bottom: var(--space-xs);
   transition: all 0.9s ease;
 }
 
@@ -56,20 +50,20 @@ details ul {
 }
 
 summary {
-  padding: 5px 15px;
-  background: var(--summary-bg);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--navBtn-bg);
   font-size: 1.2rem;
   cursor: pointer;
 }
 summary:hover {
-  background: var(--summary-hover);
+  background: var(--hover-bg);
 }
 section,
 #Introduction {
-  background: var(--details-bg);
-  padding: 15px 8px;
-  margin: 14px;
-  border-radius: 12px;
+  background: var(--navBtn-bg);
+  padding: var(--space-sm);
+  margin: var(--space-md);
+  border-radius: var(--radius-sm);
 }
 /*
 hide section and show on link click
@@ -81,15 +75,16 @@ article.show {
   display: block;
 }
   */
+
 .example-note {
   font-size: 0.85rem;
-  color: #666;
-  margin-top: 0.4rem;
+  color: var(--muted);
+  margin-top: var(--space-xs);
 }
 
 h2 {
   text-align: center;
-  margin: 20px auto;
+  margin: var(--space-md) auto;
 }
 h3 {
   border-bottom: 1px solid;
@@ -98,19 +93,18 @@ h3 {
 h4::before {
   content: "→";
   font-weight: 900;
-  margin: 12px 4px;
-  border-radius: 50%;
+  margin: var(--space-md);
 }
 nav#navbar {
   position: fixed;
-  border-right: 3px solid var(--border-color);
-  margin-right: 10px;
+  border-right: 3px solid var(--border-primary);
+  margin-right: var(--space-sm);
   top: 0;
   left: 0;
   height: 100dvh;
   width: 250px;
   z-index: 2000;
-  background: var(--bg);
+  background: var(--bg-primary);
   transition: all 0.2s ease;
   overflow-y: auto;
 }
@@ -118,22 +112,22 @@ nav#navbar {
   display: block;
   text-decoration: none;
   font-size: 1.2rem;
-  color: var(--link-color);
-  padding: 0 10px;
+  color: #9f9f9f;
+  padding: 0 var(--space-sm);
   border-bottom: 2px solid var(--link-border);
 }
 #navbar a:hover {
   opacity: 0.5;
 }
 #navbar a:focus-within {
-  color: yellow;
+  color: var(--link);
 }
-#navbar details ul li a.nav-link.activeLink {
-  color: yellow;
+#navbar a.nav-link.activeLink {
+  color: var(--link);
 }
 #main-doc {
   margin-left: 250px;
-  padding: 20px 5px;
+  padding: var(--space-md) 5px;
   transition: all 0.5s ease;
 }
 pre span {
@@ -144,7 +138,7 @@ code {
   background: #d3d3d3cb;
   font-size: 1.2rem;
     color: rgb(87, 3, 3);
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   font-weight: 100;
   margin: 2px;
 }
@@ -153,41 +147,42 @@ code {
 
 }
 .menuIcon {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   cursor: pointer;
-  top: 10px;
-  left: 15px;
+  top: var(--space-sm);
+  left: var(--space-md);
   position: fixed;
   gap: 3px;
   z-index: 9990;
-  background-color: #696969;
+  background-color: var(--surface-primary);
   width: 35px;
   height: 35px;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   animation: slide 0.9s ease;
 }
 .menuIcon span {
   width: 24px;
   height: 4px;
   background: #ffffff;
-  border-radius: 2px 5px;
+  border-radius: var(--radius-sm);
   margin: 0 auto;
 }
 .menuIcon:hover {
   opacity: 0.7;
 }
-#main-doc.adjust {
-  margin-left: 2px;
-}
-nav#navbar.hide {
-  left: -100%;
-}
 @media (max-width: 800px) {
+  nav#navbar.hide {
+    left: -100%;
+  }
+  .menuIcon {
+    display: flex;
+  }
   nav#navbar {
     position: fixed;
-    width: 70%;
+    width: 90%;
+    max-width: 350px;
     height: 100dvh;
     padding-bottom: 5px;
     z-index: 2;
@@ -196,7 +191,10 @@ nav#navbar.hide {
     margin: auto 4px;
     padding: 0;
   }
-
+  
+  #main-doc.adjust {
+    margin-left: 2px;
+  }
   section {
     margin: 0;
   }
