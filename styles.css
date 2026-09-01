@@ -30,11 +30,7 @@ body {
 header {
   position: relative;
 }
-header h2 {
-  font-size: var(--text-md);
-  border-bottom: 2px solid var(--border-color);
-  padding: 15px 0 0 0;
-}
+
 h1 {
   text-align: center;
 }
@@ -58,9 +54,20 @@ summary {
 summary:hover {
   background: var(--hover-bg);
 }
-section,
+
 #Introduction {
   background: var(--navBtn-bg);
+  padding: var(--space-sm);
+  margin: var(--space-md);
+  border-radius: var(--radius-sm);
+}
+
+.main-section {
+  margin: 0 auto;
+}
+
+.main-section > section {
+  background: var(--card-bg);
   padding: var(--space-sm);
   margin: var(--space-md);
   border-radius: var(--radius-sm);
@@ -107,6 +114,11 @@ nav#navbar {
   background: var(--bg-primary);
   transition: all 0.2s ease;
   overflow-y: auto;
+}
+#navbar h2 {
+  font-size: var(--text-md);
+  border-bottom: 2px solid var(--border-color);
+  padding: 15px 0 0 0;
 }
 #navbar a {
   display: block;
@@ -195,9 +207,7 @@ code {
   #main-doc.adjust {
     margin-left: 2px;
   }
-  section {
-    margin: 0;
-  }
+ 
 }
 
 pre {

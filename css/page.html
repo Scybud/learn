@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation</title>
+
+    <!-- SCYBUD UI CORE -->
+    <link
+      rel="stylesheet"
+      href="https://scybud.github.io/scybud-ui/css/variables.css"
+    />
+
+    <!-- Your documentation styles -->
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body id="top">
+    <!-- Navigation / Sidebar -->
+    <nav id="navbar" class="hide">
+      <header>
+        <div class="menuIcon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <h2>Navigate</h2>
+      </header>
+
+      <details>
+        <summary>Before You Start</summary>
+        <ul>
+          <li><a class="nav-link" href="#before-you-start">Before You Start</a></li>
+          <li><a class="nav-link" href="#what-is-css">What is CSS?</a></li>
+          <li><a class="nav-link" href="#css-and-html">CSS and HTML</a></li>
+          <li><a class="nav-link" href="#how-this-course-works">How This Course Works</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Your First Design</summary>
+        <ul>
+          <li><a class="nav-link" href="#the-design-brief">The Design Brief</a></li>
+          <li><a class="nav-link" href="#understanding-the-html">Understanding the HTML</a></li>
+          <li><a class="nav-link" href="#your-first-css">Your First CSS</a></li>
+          <li><a class="nav-link" href="#the-cascade">The Cascade</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Building the Page</summary>
+        <ul>
+          <li><a class="nav-link" href="#page-layout">Page Layout</a></li>
+          <li><a class="nav-link" href="#the-sidebar">The Sidebar</a></li>
+          <li><a class="nav-link" href="#main-content">Main Content</a></li>
+          <li><a class="nav-link" href="#containers">Containers</a></li>
+          <li><a class="nav-link" href="#spacing">Spacing</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Typography</summary>
+        <ul>
+          <li><a class="nav-link" href="#fonts-and-text">Fonts and Text</a></li>
+          <li><a class="nav-link" href="#headings">Headings</a></li>
+          <li><a class="nav-link" href="#line-height">Line Height</a></li>
+          <li><a class="nav-link" href="#text-hierarchy">Text Hierarchy</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Layout Systems</summary>
+        <ul>
+          <li><a class="nav-link" href="#display">Display</a></li>
+          <li><a class="nav-link" href="#flexbox">Flexbox</a></li>
+          <li><a class="nav-link" href="#grid">Grid</a></li>
+          <li><a class="nav-link" href="#positioning">Positioning</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Designing Components</summary>
+        <ul>
+          <li><a class="nav-link" href="#cards">Cards</a></li>
+          <li><a class="nav-link" href="#buttons">Buttons</a></li>
+          <li><a class="nav-link" href="#inputs">Inputs</a></li>
+          <li><a class="nav-link" href="#navigation">Navigation</a></li>
+          <li><a class="nav-link" href="#states">States</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Responsive Design</summary>
+        <ul>
+          <li><a class="nav-link" href="#responsive-thinking">Responsive Thinking</a></li>
+          <li><a class="nav-link" href="#media-queries">Media Queries</a></li>
+          <li><a class="nav-link" href="#mobile-layouts">Mobile Layouts</a></li>
+          <li><a class="nav-link" href="#responsive-components">Responsive Components</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Making It Feel Good</summary>
+        <ul>
+          <li><a class="nav-link" href="#colors">Colors</a></li>
+          <li><a class="nav-link" href="#borders">Borders</a></li>
+          <li><a class="nav-link" href="#shadows">Shadows</a></li>
+          <li><a class="nav-link" href="#transitions">Transitions</a></li>
+          <li><a class="nav-link" href="#hover-and-focus">Hover and Focus</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>CSS Architecture</summary>
+        <ul>
+          <li><a class="nav-link" href="#selectors">Selectors</a></li>
+          <li><a class="nav-link" href="#specificity">Specificity</a></li>
+          <li><a class="nav-link" href="#variables">CSS Variables</a></li>
+          <li><a class="nav-link" href="#reusable-styles">Reusable Styles</a></li>
+          <li><a class="nav-link" href="#organizing-css">Organizing CSS</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Real Project</summary>
+        <ul>
+          <li><a class="nav-link" href="#build-the-full-interface">Build the Full Interface</a></li>
+          <li><a class="nav-link" href="#refine-the-design">Refine the Design</a></li>
+          <li><a class="nav-link" href="#review-the-result">Review the Result</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Challenge</summary>
+        <ul>
+          <li><a class="nav-link" href="#challenge-brief">Design Brief</a></li>
+          <li><a class="nav-link" href="#challenge-html">Starter HTML</a></li>
+          <li><a class="nav-link" href="#inspiration">Inspiration</a></li>
+          <li><a class="nav-link" href="#submit-your-work">Submit Your Work</a></li>
+        </ul>
+      </details>
+    </nav>
+
+    <a href="/about.html" class="about" title="About">ⓘ</a>
+
+    <!-- Main content -->
+    <main id="main-doc" class="adjust">
+
+  <!-- CSS DOCUMENTATION LANDING -->
+  <article class="main-section" id="Introduction">
+
+    <section>
+      <h1>CSS Documentation</h1>
+
+      <p class="intro">
+        [Short introduction to what CSS is and what this documentation is about.]
+      </p>
+
+      <div class="project-brief">
+        <h2>Your First Task</h2>
+
+        <p>
+          [Introduce the story/project here.]
+        </p>
+
+        <p>
+          [Describe what the learner has been asked to build.]
+        </p>
+
+        <!-- Screenshot / design reference -->
+        <div class="placeholder">
+          [DESIGN IMAGE / SCREENSHOT]
+        </div>
+
+        <h3>Instructions</h3>
+
+        <ul>
+          <li>[Requirement 1]</li>
+          <li>[Requirement 2]</li>
+          <li>[Requirement 3]</li>
+        </ul>
+      </div>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 01. BEFORE YOU START -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="before-you-start">
+
+    <section id="what-is-css">
+      <h2>What is CSS?</h2>
+
+      <p>[Explain CSS here.]</p>
+
+      <p>[Additional context.]</p>
+
+      <h3>Example</h3>
+
+      <pre><code>
+/* CSS example */
+      </code></pre>
+
+      <p class="example-note">
+        [Explain what the example demonstrates.]
+      </p>
+    </section>
+
+
+    <section id="css-and-html">
+      <h2>CSS & HTML</h2>
+
+      <p>[Explain the relationship between CSS and HTML.]</p>
+
+      <p>
+        [Optional link to the HTML documentation.]
+      </p>
+
+      <h3>Example</h3>
+
+      <pre><code>
+/* Example */
+      </code></pre>
+    </section>
+
+
+    <section id="how-this-course-works">
+      <h2>How This Course Works</h2>
+
+      <p>[Explain the learn-by-building approach.]</p>
+
+      <h3>The process</h3>
+
+      <ol>
+        <li>[Step]</li>
+        <li>[Step]</li>
+        <li>[Step]</li>
+        <li>[Step]</li>
+      </ol>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 02. YOUR FIRST DESIGN -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="your-first-design">
+
+    <section id="design-brief">
+      <h2>The Design Brief</h2>
+
+      <p>[Tell the story.]</p>
+
+      <div class="placeholder">
+        [FINAL DESIGN SCREENSHOT]
+      </div>
+
+      <h3>Requirements</h3>
+
+      <ul>
+        <li>[Requirement]</li>
+        <li>[Requirement]</li>
+        <li>[Requirement]</li>
+      </ul>
+    </section>
+
+
+    <section id="understanding-the-html">
+      <h2>Understanding the HTML</h2>
+
+      <p>[Explain the provided HTML structure.]</p>
+
+      <pre><code>
+<!-- HTML goes here -->
+      </code></pre>
+
+      <p class="example-note">
+        [Explanation]
+      </p>
+    </section>
+
+
+    <section id="your-first-css">
+      <h2>Your First CSS</h2>
+
+      <p>[Introduce the first CSS concept.]</p>
+
+      <pre><code>
+.example {
+  /* CSS */
+}
+      </code></pre>
+
+      <h3>Why?</h3>
+
+      <p>[Explain why this solution is being used.]</p>
+    </section>
+
+
+    <section id="the-cascade">
+      <h2>The Cascade</h2>
+
+      <p>[Content.]</p>
+
+      <pre><code>
+/* Example */
+      </code></pre>
+
+      <h4>Review Questions</h4>
+
+      <ol>
+        <li>[Question]</li>
+        <li>[Question]</li>
+      </ol>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 03. BUILDING THE PAGE -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="building-the-page">
+
+    <section id="page-layout">
+      <h2>Page Layout</h2>
+
+      <p>[Content.]</p>
+
+      <pre><code>
+/* CSS */
+      </code></pre>
+
+      <p class="example-note">
+        [Explanation.]
+      </p>
+    </section>
+
+
+    <section id="the-sidebar">
+      <h2>The Sidebar</h2>
+
+      <p>[Problem the learner needs to solve.]</p>
+
+      <pre><code>
+/* Sidebar CSS */
+      </code></pre>
+
+      <h3>Why This Works</h3>
+
+      <p>[Explanation.]</p>
+    </section>
+
+
+    <section id="main-content">
+      <h2>Main Content</h2>
+
+      <p>[Content.]</p>
+
+      <pre><code>
+/* CSS */
+      </code></pre>
+    </section>
+
+
+    <section id="containers">
+      <h2>Containers</h2>
+
+      <p>[Content.]</p>
+    </section>
+
+
+    <section id="spacing">
+      <h2>Spacing</h2>
+
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 04. TYPOGRAPHY -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="typography">
+
+    <section id="fonts">
+      <h2>Fonts & Text</h2>
+      <p>[Content.]</p>
+      <pre><code>
+/* CSS */
+      </code></pre>
+    </section>
+
+    <section id="headings">
+      <h2>Headings</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="line-height">
+      <h2>Line Height</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="text-hierarchy">
+      <h2>Text Hierarchy</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 05. LAYOUT SYSTEMS -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="layout-systems">
+
+    <section id="display">
+      <h2>Display</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="flexbox">
+      <h2>Flexbox</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="grid">
+      <h2>Grid</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="positioning">
+      <h2>Positioning</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 06. DESIGNING COMPONENTS -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="designing-components">
+
+    <section id="cards">
+      <h2>Cards</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="buttons">
+      <h2>Buttons</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="inputs">
+      <h2>Inputs</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="navigation">
+      <h2>Navigation</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="states">
+      <h2>States</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 07. RESPONSIVE DESIGN -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="responsive-design">
+
+    <section id="responsive-thinking">
+      <h2>Responsive Thinking</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="media-queries">
+      <h2>Media Queries</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="mobile-layouts">
+      <h2>Mobile Layouts</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="responsive-components">
+      <h2>Responsive Components</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 08. MAKING IT FEEL GOOD -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="making-it-feel-good">
+
+    <section id="colors">
+      <h2>Colors</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="borders">
+      <h2>Borders</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="shadows">
+      <h2>Shadows</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="transitions">
+      <h2>Transitions</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="hover-focus">
+      <h2>Hover & Focus</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 09. CSS ARCHITECTURE -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="css-architecture">
+
+    <section id="selectors">
+      <h2>Selectors</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="specificity">
+      <h2>Specificity</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="variables">
+      <h2>CSS Variables</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="reusable-styles">
+      <h2>Reusable Styles</h2>
+      <p>[Content.]</p>
+    </section>
+
+    <section id="organizing-css">
+      <h2>Organizing CSS</h2>
+      <p>[Content.]</p>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 10. REAL PROJECT -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="real-project">
+
+    <section id="build-the-full-interface">
+      <h2>Build the Full Interface</h2>
+
+      <p>[Project introduction.]</p>
+
+      <div class="placeholder">
+        [PROJECT PREVIEW]
+      </div>
+
+      <h3>Starter Files</h3>
+
+      <p>[Link to HTML / repository / starter files.]</p>
+
+      <h3>Instructions</h3>
+
+      <ol>
+        <li>[Instruction]</li>
+        <li>[Instruction]</li>
+        <li>[Instruction]</li>
+      </ol>
+    </section>
+
+  </article>
+
+
+  <!-- ================================================= -->
+  <!-- 11. FINAL CHALLENGE -->
+  <!-- ================================================= -->
+
+  <article class="main-section" id="challenge">
+
+    <section id="challenge-brief">
+      <h2>Design Challenge</h2>
+
+      <p>[Introduce the challenge.]</p>
+
+      <div class="placeholder">
+        [CHALLENGE SCREENSHOT / REFERENCE]
+      </div>
+
+      <h3>Design Instructions</h3>
+
+      <ul>
+        <li>[Requirement]</li>
+        <li>[Requirement]</li>
+        <li>[Requirement]</li>
+      </ul>
+    </section>
+
+
+    <section id="starter-html">
+      <h2>Starter HTML</h2>
+
+      <pre><code>
+<!-- Starter HTML -->
+      </code></pre>
+    </section>
+
+
+    <section id="inspiration">
+      <h2>Get Inspired</h2>
+
+      <p>[Explain the gallery/inspiration philosophy.]</p>
+
+      <div class="placeholder">
+        [DESIGN GALLERY]
+      </div>
+    </section>
+
+
+    <section id="submit-your-work">
+      <h2>Submit Your Work</h2>
+
+      <p>[Submission instructions.]</p>
+
+      <h3>Include</h3>
+
+      <ul>
+        <li>Name</li>
+        <li>Email</li>
+        <li>Repository URL</li>
+        <li>Live demo URL</li>
+        <li>What you changed</li>
+      </ul>
+
+      <p>
+        [Explain that selected designs may potentially be considered
+        for use in Scybud products.]
+      </p>
+    </section>
+
+  </article>
+
+</main>
+
+    <footer>&copy; Scybud</footer>
+
+    <script type="module" src="/js/sidebar.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>
