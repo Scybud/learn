@@ -10,6 +10,8 @@
       rel="stylesheet"
       href="https://scybud.github.io/scybud-ui/css/variables.css"
     />
+    <link rel="stylesheet" href="https://scybud.github.io/scybud-ui/css/animations.css" />
+
 
     <!-- Your documentation styles -->
     <link rel="stylesheet" href="/styles.css" />
@@ -24,7 +26,6 @@
           <span></span>
           <span></span>
         </div>
-        <h2>Navigate</h2>
       </header>
 
       <details>
@@ -148,43 +149,114 @@
       <h1>CSS Documentation</h1>
 
   <!-- CSS DOCUMENTATION LANDING -->
-  <article class="main-section" id="Introduction">
+<article class="main-section" id="Introduction">
+  <section>
 
-    <section>
+    <p class="intro">
+      CSS (Cascading Style Sheets) is what makes your favourite websites
+      look the way they do. It controls the visual appearance of a webpage,
+      from its layout, colours, and typography to its spacing, animations,
+      and responsive behaviour.
+    </p>
 
-      <p class="intro">
-        CSS(Cascading Style Sheets) is what makes your favourite website beautiful. It visuially defines the layout and styling of a webpage. It is like the makeup artist for a web page. 
-        Mordern CSS has become so powerfull, that it can be used to create more complex and advanced stylings and animations.
-        In this document, you will not only learn what CSS is, but also how you can use it to express your creativity.
+    <p>
+      Modern CSS has become incredibly powerful. It can be used to create
+      complex layouts, interactive effects, animations, and interfaces that
+      work across different screen sizes.
+    </p>
+
+    <p>
+      In this documentation, you will not just learn what CSS properties do.
+      You will learn how to use CSS to solve real design problems and turn
+      a plain HTML structure into a complete interface.
+    </p>
+
+    <p>
+      You will also be encouraged to experiment, make your own design
+      decisions, and use CSS as a tool to express your creativity.
+    </p>
+
+    <div class="project-brief">
+      <h2>Your First Task</h2>
+
+      <p>
+        Imagine that you have just joined Scybud as a frontend developer.
+        You have been given a task: turn an existing HTML structure into
+        a beautiful, user-friendly dashboard for
+        <a
+          class="productName loghue"
+          href="https://loghue.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Log<span>Hue</span>
+        </a>.
       </p>
 
-      <div class="project-brief">
-        <h2>Your First Task</h2>
+      <p>
+        The HTML has already been prepared for you. Your job is to use CSS
+        to transform that structure into the finished interface.
+      </p>
 
-        <p>
-          You have just joined Scybud as a designer and you have been assigned the task of creating the <abbr title="User Interface">UI</abbr> for <a class="productName loghue" href="http://loghue.com" target="_blank" rel="noopener noreferrer">Log<span>Hue</span></a> , a productivity tool.
+      <p>
+        Throughout this documentation, we will work through the design
+        step by step. You will see the decisions behind the interface,
+        learn the CSS concepts needed to make those decisions, and apply
+        them to the project.
+      </p>
+
+      <p>
+        By the end, you will have taken a plain HTML document and turned
+        it into a real interface used by an actual product.
+      </p>
+
+      <!-- Screenshot / design reference -->
+      <div class="img-container">
+        <img
+          src="images/loghue-dashbaord-design-draft.png"
+          alt="LogHue dashboard design draft"
+          class="screenshot"
+        >
+
+        <p class="example-note">
+          <a
+          class="productName loghue"
+          href="https://loghue.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Log<span>Hue</span>
+        </a> dashboard draft designed in CanvArt.
         </p>
 
-        <p>
-          [Describe what the learner has been asked to build.]
-        </p>
-
-        <!-- Screenshot / design reference -->
-        <div class="placeholder">
-          [DESIGN IMAGE / SCREENSHOT]
-        </div>
-
-        <h3>Instructions</h3>
-
-        <ul>
-          <li>[Requirement 1]</li>
-          <li>[Requirement 2]</li>
-          <li>[Requirement 3]</li>
-        </ul>
+        <p class="img-credit">Credit: Abdulroqib Oladipo</p>
       </div>
-    </section>
 
-  </article>
+      <h3>Instructions</h3>
+
+      <details class="main-details" open>
+        <summary>Design instructions</summary>
+
+        <ul class="design-instructions">
+          <li>The page must be dark mode.</li>
+          <li>It should have exactly 2 columns on large screens.</li>
+          <li>It should be responsive.</li>
+          <li>It should have a left sidebar.</li>
+          <li>The sidebar navigation links should be stacked vertically.</li>
+          <li>The user profile should be at the bottom of the sidebar.</li>
+          <li>The welcome heading should be centered.</li>
+          <li>The notification bell should be in the top-right corner of the page.</li>
+          <li>The 3 statistic cards should be centered below the heading.</li>
+          <li>The search bar should be wide, rounded, and below the statistics.</li>
+          <li>The 2 action buttons should be centered below the search bar.</li>
+          <li>The layout should use generous spacing and a minimal design.</li>
+          <li>Buttons, cards, and the search bar should have rounded corners.</li>
+        </ul>
+      </details>
+    </div>
+
+  </section>
+</article>
 
 
   <!-- ================================================= -->
@@ -194,55 +266,147 @@
   <article class="main-section" id="before-you-start">
 
     <section id="what-is-css">
-      <h2>What is CSS?</h2>
+  <h2>What is CSS?</h2>
 
-      <p>[Explain CSS here.]</p>
+  <p>
+    CSS stands for Cascading Style Sheets. It is the language used to
+    describe how HTML elements should look and be arranged on a webpage.
+  </p>
 
-      <p>[Additional context.]</p>
+  <p>
+    While HTML gives a webpage its structure, CSS controls its
+    presentation. With CSS, you can change colours, sizes, spacing,
+    positioning, layouts, typography, and much more.
+  </p>
 
-      <h3>Example</h3>
+  <p>
+    Think of HTML as the structure of a building and CSS as everything
+    that makes the building look and feel the way it does.
+  </p>
 
-      <pre><code>
-/* CSS example */
-      </code></pre>
+  <h3>What can CSS do?</h3>
 
-      <p class="example-note">
-        [Explain what the example demonstrates.]
-      </p>
-    </section>
+  <ul>
+    <li>Change the colour and appearance of elements.</li>
+    <li>Control spacing and sizing.</li>
+    <li>Create layouts using Flexbox and Grid.</li>
+    <li>Make interfaces responsive.</li>
+    <li>Create animations and transitions.</li>
+    <li>Change how elements behave in different states.</li>
+  </ul>
 
-
-    <section id="css-and-html">
-      <h2>CSS & HTML</h2>
-
-      <p>[Explain the relationship between CSS and HTML.]</p>
-
-      <p>
-        [Optional link to the HTML documentation.]
-      </p>
-
-      <h3>Example</h3>
-
-      <pre><code>
-/* Example */
-      </code></pre>
-    </section>
+  <p>
+    In this documentation, you will learn these concepts by using them
+    to build real interfaces rather than learning them only as isolated
+    CSS properties.
+  </p>
+</section>
 
 
-    <section id="how-this-course-works">
-      <h2>How This Course Works</h2>
+<section id="css-and-html">
+  <h2>CSS & HTML</h2>
 
-      <p>[Explain the learn-by-building approach.]</p>
+  <p>
+    CSS and HTML work together. HTML defines the structure and content of
+    a webpage, while CSS determines how that structure is presented to
+    the user.
+  </p>
 
-      <h3>The process</h3>
+  <p>
+    For example, HTML can tell the browser that a piece of text is a
+    heading:
+  </p>
 
-      <ol>
-        <li>[Step]</li>
-        <li>[Step]</li>
-        <li>[Step]</li>
-        <li>[Step]</li>
-      </ol>
-    </section>
+  <pre><code>&lt;h1&gt;Welcome to Scybud&lt;/h1&gt;</code></pre>
+
+  <p>
+    CSS can then determine how that heading should look:
+  </p>
+
+  <pre><code>h1 {
+  font-size: 2rem;
+  text-align: center;
+}</code></pre>
+
+  <p>
+    The HTML tells the browser <strong>what the element is</strong>.
+    The CSS tells the browser <strong>how it should look</strong>.
+  </p>
+
+  <p>
+    This documentation assumes that you already understand the basics
+    of HTML. If you don't, we recommend completing the
+    <a href="/html/">Scybud HTML Documentation</a>
+    before continuing.
+  </p>
+</section>
+
+
+   <section id="how-this-course-works">
+  <h2>How This Course Works</h2>
+
+  <p>
+    This is not a collection of CSS properties for you to memorise.
+    You are going to learn CSS by following the process of building
+    a real interface.
+  </p>
+
+  <p>
+    Throughout the documentation, you will be given problems that a
+    frontend developer might encounter while designing a webpage.
+    We will solve those problems one at a time using CSS.
+  </p>
+
+  <h3>Learn by building</h3>
+
+  <p>
+    Instead of learning a property first and trying to find a reason
+    to use it later, you will encounter a problem first and then learn
+    the CSS concepts that can solve it.
+  </p>
+
+  <p>
+    For example, if our sidebar needs to remain visible while the
+    user scrolls, we will first look at that problem. Then we will
+    learn about the CSS positioning techniques that can solve it.
+  </p>
+
+  <h3>Follow the process</h3>
+
+  <p>
+    Each project will be broken into smaller parts. You will gradually
+    build the interface from its basic layout to its smaller details.
+  </p>
+
+  <ol>
+    <li>Understand the design and the requirements.</li>
+    <li>Identify the problem we need to solve.</li>
+    <li>Learn the CSS concept needed to solve it.</li>
+    <li>Apply the concept to the project.</li>
+    <li>Experiment and see what happens when you change it.</li>
+    <li>Move on to the next problem.</li>
+  </ol>
+
+  <h3>Make it your own</h3>
+
+  <p>
+    As you progress, you will be given opportunities to make your own
+    design decisions. There may be a reference design, but you should
+    not feel limited to copying it exactly.
+  </p>
+
+  <p>
+    Look at different designs, get inspiration, experiment with ideas,
+    and develop your own taste. The goal is not simply to reproduce
+    someone else's interface. The goal is to learn how to create your
+    own.
+  </p>
+
+  <p>
+    By the end of the documentation, you will be given a project to
+    complete on your own using the skills you have learned.
+  </p>
+</section>
 
   </article>
 
@@ -254,37 +418,163 @@
   <article class="main-section" id="your-first-design">
 
     <section id="design-brief">
-      <h2>The Design Brief</h2>
+  <h2>The Design Brief</h2>
 
-      <p>[Tell the story.]</p>
+  <p>
+    You have been given a real design task: style the <a
+          class="productName loghue"
+          href="https://loghue.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Log<span>Hue</span>
+        </a> dashboard using
+    the HTML that has already been prepared for you.
+  </p>
 
-      <div class="placeholder">
-        [FINAL DESIGN SCREENSHOT]
-      </div>
+  <p>
+    Your job is to turn the existing structure into a complete, polished
+    dashboard interface. You are not being asked to change what the page
+    contains. You are being asked to decide how it should look and how the
+    different parts of the interface should work together visually.
+  </p>
 
-      <h3>Requirements</h3>
+  <div class="img-container">
+<img src="images/loghue-dashbaord-screenshot.png" alt="LogHue dashboard design" class="screenshot">
+  <p class="example-note">
+          <a
+          class="productName loghue"
+          href="https://loghue.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Log<span>Hue</span>
+        </a> dashboard design.
+        </p>
 
-      <ul>
-        <li>[Requirement]</li>
-        <li>[Requirement]</li>
-        <li>[Requirement]</li>
-      </ul>
-    </section>
+        <p class="img-credit">Credit: Abdulroqib</p>
+ </div>
+
+  <h3>Requirements</h3>
+
+  <ul>
+    <li>The page must use a dark theme.</li>
+    <li>The sidebar should remain visible while the main content is being viewed.</li>
+    <li>The main content should have clear spacing and visual hierarchy.</li>
+    <li>The design should work on both desktop and smaller screens.</li>
+    <li>The different sections should feel like parts of the same interface.</li>
+  </ul>
+
+  <p>
+  The final design may not look exactly like the original sketch. That is
+  intentional. A draft is used to communicate an idea, not necessarily to
+  define every detail of the final product.
+</p>
+
+<p>
+  As a designer, you need to know when a design should be adapted, improved,
+  or changed as you build it. The sketch is your starting point, but you
+  should always consider the principles of good design and make decisions
+  that improve the final result.
+</p>
+
+<p>
+  However, if you are explicitly asked to recreate a design exactly as it is,
+  then your job is to reproduce it accurately. Even then, never forget the
+  principles of design behind what you are creating.
+</p>
+</section>
 
 
     <section id="understanding-the-html">
-      <h2>Understanding the HTML</h2>
+  <h2>Understanding the HTML</h2>
 
-      <p>[Explain the provided HTML structure.]</p>
+  <p>
+    Before you start writing CSS, take a moment to understand the HTML you
+    have been given. You are not starting with an empty file. The structure
+    of the <a
+          class="productName loghue"
+          href="https://loghue.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Log<span>Hue</span>
+        </a> dashboard has already been built for you, and your job is
+    to turn that structure into the design from the brief.
+  </p>
 
-      <pre><code>
-<!-- HTML goes here -->
-      </code></pre>
+  <p>
+    You do not need to understand every line of this document yet. Focus on
+    identifying the major parts of the page and understanding how they are
+    related to one another.
+  </p>
 
-      <p class="example-note">
-        [Explanation]
-      </p>
-    </section>
+  <h3>The main structure</h3>
+
+  <pre><code>
+&lt;main class="main"&gt;
+
+  &lt;aside class="sidebar"&gt;
+    &lt;!-- Sidebar --&gt;
+  &lt;/aside&gt;
+
+  &lt;article class="mainContent"&gt;
+    &lt;!-- Dashboard content --&gt;
+  &lt;/article&gt;
+
+&lt;/main&gt;
+  </code></pre>
+
+  <p class="example-note">
+    The <code>&lt;main&gt;</code> contains the main layout of the dashboard.
+    The <code>&lt;aside&gt;</code> represents the sidebar, while the
+    <code>&lt;article&gt;</code> contains the main dashboard content.
+  </p>
+
+  <h3>Inside the dashboard</h3>
+
+  <p>
+    The main content is divided into smaller parts. There is a header
+    containing the menu and notification button, followed by the dashboard
+    section containing the greeting, statistics, search bar, and action
+    buttons.
+  </p>
+
+  <pre><code>
+&lt;article class="mainContent"&gt;
+
+  &lt;div class="contentHeader"&gt;
+    &lt;!-- Header --&gt;
+  &lt;/div&gt;
+
+  &lt;section class="dashboard-section"&gt;
+    &lt;h1&gt;Welcome back, Abdulroqib&lt;/h1&gt;
+
+    &lt;div class="dashboardStats"&gt;&lt;/div&gt;
+
+    &lt;div class="searchBarContainer"&gt;
+      &lt;!-- Search and buttons --&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+&lt;/article&gt;
+  </code></pre>
+
+  <p>
+    Notice how the HTML already describes what each part of the interface is.
+    CSS will determine how those parts are positioned, sized, spaced, and
+    presented to the user.
+  </p>
+
+  <h3>Before you continue</h3>
+
+  <p>
+    Look through the complete HTML yourself. Try to identify the sidebar,
+    header, notification button, greeting, statistics, search area, and
+    action buttons. You will be styling these elements throughout the
+    project.
+  </p>
+</section>
 
 
     <section id="your-first-css">

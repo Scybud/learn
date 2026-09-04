@@ -1,4 +1,6 @@
 import { navLinks } from "./sidebar.js";
+import { magnifyImg } from "https://ui.scybud.com/js/ui.js";
+
 const sections = document.querySelectorAll("section");
 
 navLinks.forEach((link) => {
@@ -25,3 +27,11 @@ if(link.hash === window.location.hash) {
 }
 });
 });
+
+
+const screenshots = document.querySelectorAll(".screenshot");
+if(screenshots) {
+  screenshots.forEach((s) => {
+    magnifyImg(s);
+  })
+}

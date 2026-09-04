@@ -6,6 +6,7 @@ body {
   overflow-x: hidden;
 }
 :root {
+  --loghue-blue: #1565C0;
   --font-size: clamp(1rem, 1.2rem, 4rem);
   --link-color: #7fffe1;
   --link-border: #7fffe13e;
@@ -18,7 +19,7 @@ body {
  font-size: 2rem;
  right: 20px;
  bottom: 10px;
- padding: 10px;
+ z-index: 1;
 }
 body {
   margin: 0;
@@ -47,16 +48,19 @@ details ul {
 
 summary {
   padding: var(--space-xs) var(--space-sm);
-  background: var(--navBtn-bg);
   font-size: 1.2rem;
+  margin: 0 var(--space-sm);
   cursor: pointer;
+  border-radius: var(--radius-sm);
+    background: var(--navBtn-bg);
+  transition: background 0.4s ease;
 }
 summary:hover {
   background: var(--hover-bg);
 }
 
 #Introduction {
-  background: var(--navBtn-bg);
+  background: var(--surface-primary);
   padding: var(--space-sm);
   margin: var(--space-md);
   border-radius: var(--radius-sm);
@@ -67,7 +71,7 @@ summary:hover {
 }
 
 .main-section > section {
-  background: var(--card-bg);
+  background: var(--main-content-bg);
   padding: var(--space-sm);
   margin: var(--space-md);
   border-radius: var(--radius-sm);
@@ -109,9 +113,9 @@ nav#navbar {
   top: 0;
   left: 0;
   height: 100dvh;
-  width: 250px;
-  z-index: 2000;
-  background: var(--bg-primary);
+  width: 260px;
+  padding-top: var(--space-xl);
+  background: var(--card-bg);
   transition: all 0.2s ease;
   overflow-y: auto;
 }
@@ -194,9 +198,10 @@ code {
   nav#navbar {
     position: fixed;
     width: 90%;
-    max-width: 350px;
+    max-width: 260px;
     height: 100dvh;
-    padding-bottom: 5px;
+      padding-top: calc(var(--space-xl) * 1.5);
+    padding-bottom: var(--space-xl);
     z-index: 2;
   }
   #main-doc {
@@ -245,9 +250,53 @@ a {
   color: var(--link);
 }
 .productName {
+  text-decoration: none;
   font-weight: 600;
   color: var(--text-secondary);
 }
 .loghue span {
-  color: var(--loghue-blue), rgb(0, 83, 151);
+  color: var(--loghue-blue);
+}
+
+
+.img-container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+.screenshot {
+  cursor: pointer;
+  background-position: center;
+  width: 100%;
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+}
+.img-credit {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+    font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: var(--space-xs);
+}
+.design-instructions {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+}
+.design-instructions li {
+  list-style-type: disc;
+}
+.main-details {
+  padding-left: var(--space-md);
+}
+.main-details summary{
+  width: fit-content;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  transition: background 0.4s ease;
+}
+.main-details summary:hover {
+  background: var(--hover-bg);
 }
