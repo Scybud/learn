@@ -10,7 +10,35 @@ body {
   --font-size: clamp(1rem, 1.2rem, 4rem);
   --link-color: #7fffe1;
   --link-border: #7fffe13e;
+  --gradient: linear-gradient(90deg, #0085ff, #b0b0b0b);
 }
+ 
+  .logo, #navbar a.logo {
+    opacity: 1;
+    cursor: pointer;
+    border-bottom: none;
+    left: var(--space-sm);
+    top: var(--space-sm);
+    position: absolute;
+    z-index: 1;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 700;
+    font-size: calc(var(--size) * 0.13);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    color: #ffffff;
+  }
+.logo:hover, #navbar a.logo:hover {
+opacity: 1;
+}
+  .logo span {
+    background: linear-gradient(90deg, #2ea3f2 0%, #9fb2c4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+
 .about {
  margin-top: 20px;
  position: fixed;
@@ -114,7 +142,7 @@ nav#navbar {
   left: 0;
   height: 100dvh;
   width: 260px;
-  padding-top: var(--space-xl);
+  padding-top: calc(var(--space-xl) + var(--space-sm));
   background: var(--card-bg);
   transition: all 0.2s ease;
   overflow-y: auto;
@@ -213,6 +241,10 @@ code {
     margin-left: 2px;
   }
  
+    .logo, #navbar a.logo {
+    right: var(--space-sm);
+    left: auto;
+  }
 }
 
 pre {
