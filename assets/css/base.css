@@ -1,0 +1,26 @@
+html,
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+:root {
+  --font-size: clamp(1rem, 1.2rem, 4rem);
+}
+
+body {
+  margin: 0;
+  background: var(--bg-primary);
+  font-size: var(--font-size);
+  color: var(--text-primary);
+}
+
+h1 {
+  text-align: center;
+}
+
+a {
+  color: var(--link);
+}
