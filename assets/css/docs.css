@@ -248,3 +248,14 @@ footer {
   padding: 10px 0;
   margin-top: auto;
 }
+
+/*
+hide section and show on link click
+#hidden article section {
+  display: none;
+}
+#hidden section.shown,
+article.show {
+  display: block;
+}
+  */
