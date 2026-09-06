@@ -1,354 +1,4926 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Under Construction - Scybud Learn</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Documentation</title>
 
-    <!--FAVICONS-->
-<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicons/favicon-16x16.png">
+    <meta
+      name="description"
+      content="Complete CSS documentation teaching layout, typography, Flexbox, Grid, responsive design, and CSS architecture by building a real dashboard interface."
+    />
+    <meta
+      name="keywords"
+      content="CSS documentation, CSS tutorial, Flexbox, CSS Grid, responsive design, web development docs"
+    />
+    <meta name="author" content="Abdulroqib" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://learn.scybud.com/css/" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Scybud" />
+    <meta property="og:title" content="CSS Documentation" />
+    <meta
+      property="og:description"
+      content="Complete CSS documentation teaching layout, typography, Flexbox, Grid, and responsive design by building a real dashboard interface."
+    />
+    <meta property="og:url" content="https://learn.scybud.com/css/" />
+    <meta
+      property="og:image"
+      content="https://learn.scybud.com/css/images/og-image-css-doc.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSS Documentation" />
+    <meta
+      name="twitter:description"
+      content="Complete CSS documentation teaching layout, typography, Flexbox, Grid, and responsive design by building a real dashboard interface."
+    />
+    <meta
+      name="twitter:image"
+      content="https://learn.scybud.com/css/images/og-image-css-doc.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "CSS Documentation",
+        "description": "A complete guide covering CSS layout, typography, and responsive design through building a real interface.",
+        "author": {
+          "@type": "Person",
+          "name": "Abdulroqib"
+        },
+        "datePublished": "2026-09-06",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://learn.scybud.com/css/"
+        }
+      }
+    </script>
+
+    <meta name="theme-color" content="#000000" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicons/favicon-16x16.png"
+    />
+
+    <!-- SCYBUD UI CORE -->
+    <link rel="stylesheet" href="https://ui.scybud.com/css/variables.css" />
+    <link
+      rel="stylesheet"
+      href="https://scybud.github.io/scybud-ui/css/animations.css"
+    />
+
+    <!-- Your documentation styles -->
+    <link rel="stylesheet" href="/assets/css/base.css" />
+    <link rel="stylesheet" href="/assets/css/docs.css" />
+    <link rel="stylesheet" href="/assets/css/css-doc.css" />
+
+    <!-- Scoped styles for the Copy HTML button and screenshot checkpoints used in this course -->
     <style>
-        /* Base Reset & Variables */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+        margin: 0.75em 0;
+        padding: 0.55em 1.1em;
+        background: #1a1a1a;
+        color: #f5f5f5;
+        border: 1px solid #333;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
 
-        :root {
-            --primary-color: #bababa; /* Brighter blue for dark mode visibility */
-            --primary-hover: #fffefe;
-            --dark-bg: #000000;       /* Deep slate background */
-            --card-bg: #171717;       /* Slightly lighter slate for contrast */
-            --text-main: #f8fafc;     /* Clean off-white */
-            --text-muted: #94a3b8;    /* Muted grey for descriptions */
-            --border-color: #4f4f4f;  /* Subtle dark border */
-            --scybud-accent: #2449c5; /* Scybud Modern Green */
-        }
+      .copy-btn:hover {
+        background: #262626;
+        border-color: #444;
+      }
 
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
+      .copy-btn:active {
+        background: #2f2f2f;
+      }
 
-        /* Main Container */
-        .container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
+      .screenshot-checkpoint {
+        margin: 1.5em 0;
+        padding: 1em;
+        border: 1px dashed #333;
+        border-radius: 10px;
+        background: #0a0a0a;
+      }
 
-        /* Construction Alert Hero */
-        .hero-section {
-            background: var(--card-bg);
-            padding: 3rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 3rem;
-            border-top: 5px solid var(--primary-color);
-            border-left: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
+      .checkpoint-image-wrap {
+        display: block;
+      }
 
-        .construction-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
+      .checkpoint-img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+      }
 
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            letter-spacing: -0.025em;
-        }
+      .checkpoint-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        min-height: 180px;
+        border: 1px dashed #444;
+        border-radius: 8px;
+        background: #111;
+        color: #999;
+        text-align: center;
+        padding: 1.5em;
+      }
 
-        p.subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+      .checkpoint-placeholder-icon {
+        font-size: 2rem;
+      }
 
-        /* CTA Button */
-        .btn-dashboard {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: #000000;
-            text-decoration: none;
-            padding: 0.8rem 2rem;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-        }
+      .checkpoint-placeholder-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
 
-        .btn-dashboard:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-        }
-
-        .btn-dashboard:active {
-            transform: translateY(0);
-        }
-
-        /* Scybud Ecosystem Section */
-.scybud-section {
-    margin-top: 1rem;
-}
-
-.scybud-header {
-    margin-bottom: 2.5rem;
-    text-align: center;
-}
-
-.scybud-header h2 {
-    font-size: 1.8rem;
-    color: #f8fafc;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-    letter-spacing: -0.025em;
-}
-
-.scybud-header h2 a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.scybud-header h2 a:hover {
-    color: #10b981;
-}
-
-.scybud-header h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: #10b981;
-    border-radius: 2px;
-}
-
-/* Balanced responsive grid layout */
-.scybud-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-/* Product Cards styled as anchors */
-.product-card {
-    background: var(--card-bg);
-    padding: 2rem 1.5rem;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    text-decoration: none; /* Removes underline from links */
-    color: inherit;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.product-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-    border-color: #475569;
-}
-
-/* Brand Logo Typography Badge Style */
-.brand-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
-}
-
-/* Unique Gradients for the Full Roster */
-.logo-trytasty { background: linear-gradient(135deg, #f97316, #ea580c); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); }
-.logo-loghue { background: linear-gradient(135deg, #818cf8, #4f46e5); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
-.logo-rushsite { background: linear-gradient(135deg, #06b6d4, #0891b2); box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); }
-.logo-zefeed { background: linear-gradient(135deg, #3b82f6, #1d4ed8); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
-.logo-canvart { background: linear-gradient(135deg, #f472b6, #db2777); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3); }
-.logo-htmldoc { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
-.logo-propdek { background: linear-gradient(135deg, #fbbf24, #d97706); box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3); }
-.logo-dakat { background: linear-gradient(135deg, #a78bfa, #7c3aed); box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3); }
-.logo-scybudui { background: linear-gradient(135deg, #34d399, #059669); box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3); }
-.logo-scysearch { background: linear-gradient(135deg, #f43f5e, #be123c); box-shadow: 0 4px 12px rgba(190, 18, 60, 0.3); }
-
-.product-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-    color: #f8fafc;
-}
-
-.product-card h4 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #10b981; /* Accent styling for product type tags */
-    margin-bottom: 0.8rem;
-    font-weight: 600;
-}
-
-.product-card p {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-}
-
-/* Link indication arrow at the bottom right of the card */
-.card-link-text {
-    font-size: 0.85rem;
-    color: #3b82f6;
-    font-weight: 600;
-    margin-top: auto; /* Pushes link text to the bottom */
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.product-card:hover .card-link-text {
-    color: #60a5fa;
-}
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .hero-section { padding: 2rem 1rem; }
-        }
+      .checkpoint-caption {
+        margin-top: 0.75em;
+        font-size: 0.9rem;
+        color: #aaa;
+      }
     </style>
-</head>
-<body>
+  </head>
 
-    <div class="container">
-        
-        <!-- Under Construction Notice -->
-        <section class="hero-section">
-            <span class="construction-icon">🚧</span>
-            <h1>Under Construction</h1>
-            <p class="subtitle">We are currently crafting this section to give you the best learning experience. In the meantime, your workspace is fully operational!</p>
-            <a href="/" class="btn-dashboard">Go to home page</a>
+  <body id="top">
+    <!-- Navigation / Sidebar -->
+    <nav id="navbar" class="hide">
+      <header>
+        <div class="menuIcon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </header>
+
+      <a href="/" class="logo">
+        <div>Scy<span>Learn</span></div>
+      </a>
+
+      <details>
+        <summary>Before You Start</summary>
+        <ul>
+          <li>
+            <a class="nav-link" href="#before-you-start">Before You Start</a>
+          </li>
+          <li><a class="nav-link" href="#what-is-css">What is CSS?</a></li>
+          <li><a class="nav-link" href="#css-and-html">CSS and HTML</a></li>
+          <li>
+            <a class="nav-link" href="#how-this-course-works"
+              >How This Course Works</a
+            >
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Your First Design</summary>
+        <ul>
+          <li>
+            <a class="nav-link" href="#the-design-brief">The Design Brief</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#understanding-the-html"
+              >Understanding the HTML</a
+            >
+          </li>
+          <li><a class="nav-link" href="#your-first-css">Your First CSS</a></li>
+          <li><a class="nav-link" href="#the-cascade">The Cascade</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Building the Page</summary>
+        <ul>
+          <li><a class="nav-link" href="#page-layout">Page Layout</a></li>
+          <li><a class="nav-link" href="#the-sidebar">The Sidebar</a></li>
+          <li><a class="nav-link" href="#main-content">Main Content</a></li>
+          <li><a class="nav-link" href="#containers">Containers</a></li>
+          <li><a class="nav-link" href="#spacing">Spacing</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Typography</summary>
+        <ul>
+          <li><a class="nav-link" href="#fonts-and-text">Fonts and Text</a></li>
+          <li><a class="nav-link" href="#headings">Headings</a></li>
+          <li><a class="nav-link" href="#line-height">Line Height</a></li>
+          <li><a class="nav-link" href="#text-hierarchy">Text Hierarchy</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Layout Systems</summary>
+        <ul>
+          <li><a class="nav-link" href="#display">Display</a></li>
+          <li><a class="nav-link" href="#flexbox">Flexbox</a></li>
+          <li><a class="nav-link" href="#grid">Grid</a></li>
+          <li><a class="nav-link" href="#positioning">Positioning</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Designing Components</summary>
+        <ul>
+          <li><a class="nav-link" href="#cards">Cards</a></li>
+          <li><a class="nav-link" href="#buttons">Buttons</a></li>
+          <li><a class="nav-link" href="#inputs">Inputs</a></li>
+          <li><a class="nav-link" href="#navigation">Navigation</a></li>
+          <li><a class="nav-link" href="#states">States</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Responsive Design</summary>
+        <ul>
+          <li>
+            <a class="nav-link" href="#responsive-thinking"
+              >Responsive Thinking</a
+            >
+          </li>
+          <li><a class="nav-link" href="#media-queries">Media Queries</a></li>
+          <li><a class="nav-link" href="#mobile-layouts">Mobile Layouts</a></li>
+          <li>
+            <a class="nav-link" href="#responsive-components"
+              >Responsive Components</a
+            >
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Making It Feel Good</summary>
+        <ul>
+          <li><a class="nav-link" href="#colors">Colors</a></li>
+          <li><a class="nav-link" href="#borders">Borders</a></li>
+          <li><a class="nav-link" href="#shadows">Shadows</a></li>
+          <li><a class="nav-link" href="#transitions">Transitions</a></li>
+          <li>
+            <a class="nav-link" href="#hover-and-focus">Hover and Focus</a>
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>CSS Architecture</summary>
+        <ul>
+          <li><a class="nav-link" href="#selectors">Selectors</a></li>
+          <li><a class="nav-link" href="#specificity">Specificity</a></li>
+          <li><a class="nav-link" href="#variables">CSS Variables</a></li>
+          <li>
+            <a class="nav-link" href="#reusable-styles">Reusable Styles</a>
+          </li>
+          <li><a class="nav-link" href="#organizing-css">Organizing CSS</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Real Project</summary>
+        <ul>
+          <li>
+            <a class="nav-link" href="#choose-your-project"
+              >Choose Your Project</a
+            >
+          </li>
+          <li>
+            <a class="nav-link" href="#project-briefs">Project Briefs</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#make-it-your-own">Make It Your Own</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#project-checklist">Final Checklist</a>
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Conclusion</summary>
+        <ul>
+          <li><a class="nav-link" href="#conclusion">Conclusion</a></li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Challenge</summary>
+        <ul>
+          <li><a class="nav-link" href="#challenge-brief">Design Brief</a></li>
+          <li><a class="nav-link" href="#challenge-html">Starter HTML</a></li>
+          <li><a class="nav-link" href="#inspiration">Inspiration</a></li>
+          <li>
+            <a class="nav-link" href="#submit-your-work">Submit Your Work</a>
+          </li>
+        </ul>
+      </details>
+    </nav>
+
+    <a href="/about.html" class="about" title="About">ⓘ</a>
+
+    <!-- Main content -->
+    <main id="main-doc" class="adjust">
+      <h1>CSS Documentation</h1>
+
+      <!-- CSS DOCUMENTATION LANDING -->
+      <article class="main-section" id="Introduction">
+        <section>
+          <p class="intro">
+            CSS (Cascading Style Sheets) is what makes your favourite websites
+            look the way they do. It controls the visual appearance of a
+            webpage, from its layout, colours, and typography to its spacing,
+            animations, and responsive behaviour.
+          </p>
+
+          <p>
+            Modern CSS has become incredibly powerful. It can be used to create
+            complex layouts, interactive effects, animations, and interfaces
+            that work across different screen sizes.
+          </p>
+
+          <p>
+            In this documentation, you will not just learn what CSS properties
+            do. You will learn how to use CSS to solve real design problems and
+            turn a plain HTML structure into a complete interface.
+          </p>
+
+          <p>
+            You will also be encouraged to experiment, make your own design
+            decisions, and use CSS as a tool to express your creativity.
+          </p>
+
+          <div class="project-brief">
+            <h2>Your First Task</h2>
+
+            <p>
+              Imagine that you have just joined Scybud as a frontend developer.
+              You have been given a task: turn an existing HTML structure into a
+              beautiful, user-friendly dashboard for
+              <a
+                class="productName loghue"
+                href="https://loghue.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Log<span>Hue</span> </a
+              >.
+            </p>
+
+            <p>
+              The HTML has already been prepared for you. Your job is to use CSS
+              to transform that structure into the finished interface.
+            </p>
+
+            <p>
+              Throughout this documentation, we will work through the design
+              step by step. You will see the decisions behind the interface,
+              learn the CSS concepts needed to make those decisions, and apply
+              them to the project.
+            </p>
+
+            <p>
+              By the end, you will have taken a plain HTML document and turned
+              it into a real interface used by an actual product.
+            </p>
+
+            <!-- Screenshot / design reference -->
+            <div class="img-container">
+              <img
+                src="images/loghue-dashbaord-design-draft.png"
+                alt="LogHue dashboard design draft"
+                class="screenshot"
+              />
+
+              <p class="example-note">
+                <a
+                  class="productName loghue"
+                  href="https://loghue.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Log<span>Hue</span>
+                </a>
+                dashboard draft designed in Canva.
+              </p>
+
+              <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+            </div>
+
+            <h3>Instructions</h3>
+
+            <details class="main-details" open>
+              <summary>Design instructions</summary>
+
+              <ul class="design-instructions">
+                <li>The page must be dark mode.</li>
+                <li>It should have exactly 2 columns on large screens.</li>
+                <li>It should be responsive.</li>
+                <li>It should have a left sidebar.</li>
+                <li>
+                  The sidebar navigation links should be stacked vertically.
+                </li>
+                <li>
+                  The user profile should be at the bottom of the sidebar.
+                </li>
+                <li>The welcome heading should be centered.</li>
+                <li>
+                  The notification bell should be in the top-right corner of the
+                  page.
+                </li>
+                <li>
+                  The 3 statistic cards should be centered below the heading.
+                </li>
+                <li>
+                  The search bar should be wide, rounded, and below the
+                  statistics.
+                </li>
+                <li>
+                  The 2 action buttons should be centered below the search bar.
+                </li>
+                <li>
+                  The layout should use generous spacing and a minimal design.
+                </li>
+                <li>
+                  Buttons, cards, and the search bar should have rounded
+                  corners.
+                </li>
+              </ul>
+            </details>
+          </div>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 01. BEFORE YOU START -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="before-you-start">
+        <section id="what-is-css">
+          <h2>What is CSS?</h2>
+
+          <p>
+            CSS stands for Cascading Style Sheets. It is the language used to
+            describe how HTML elements should look and be arranged on a webpage.
+          </p>
+
+          <p>
+            While HTML gives a webpage its structure, CSS controls its
+            presentation. With CSS, you can change colours, sizes, spacing,
+            positioning, layouts, typography, and much more.
+          </p>
+
+          <p>
+            Think of HTML as the structure of a building and CSS as everything
+            that makes the building look and feel the way it does.
+          </p>
+
+          <h3>What can CSS do?</h3>
+
+          <ul>
+            <li>Change the colour and appearance of elements.</li>
+            <li>Control spacing and sizing.</li>
+            <li>Create layouts using Flexbox and Grid.</li>
+            <li>Make interfaces responsive.</li>
+            <li>Create animations and transitions.</li>
+            <li>Change how elements behave in different states.</li>
+          </ul>
+
+          <p>
+            In this documentation, you will learn these concepts by using them
+            to build real interfaces rather than learning them only as isolated
+            CSS properties.
+          </p>
         </section>
 
-       <!-- Scybud Products Showcase Section -->
-<section class="scybud-section">
-    <div class="scybud-header">
-        <h2><a href="https://abdulroqib123.github.io/Scybud-Labs/" target="_blank">The Scybud Ecosystem</a></h2>
-    </div>
-    
-    <div class="scybud-grid">
-        
-        <!-- 1. TryTasty -->
-        <a href="https://trytasty.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-trytasty">T</div>
-            <h3>TryTasty</h3>
-            <h4>Recipe Discovery Platform</h4>
-            <p>Helps users discover simple recipes using everyday ingredients, with a focus on accessibility, quick preparation, and easy to follow instructions.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+        <section id="css-and-html">
+          <h2>CSS & HTML</h2>
 
-        <!-- 2. LogHue -->
-        <a href="https://loghue.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-loghue">L</div>
-            <h3>LogHue</h3>
-            <h4>Productivity & Life Management</h4>
-            <p>A platform designed for organizing tasks, notes, and personal & team workflows seamlessly.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <p>
+            CSS and HTML work together. HTML defines the structure and content
+            of a webpage, while CSS determines how that structure is presented
+            to the user.
+          </p>
 
-        <!-- 3. RushSite -->
-        <a href="https://rushsite.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-rushsite">R</div>
-            <h3>RushSite</h3>
-            <h4>Portfolio & Resume Builder</h4>
-            <p>Enables users to create and publish professional portfolios and resumes easily without requiring web development frameworks or technical skills.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <p>
+            For example, HTML can tell the browser that a piece of text is a
+            heading:
+          </p>
 
-        <!-- 4. ZeFeed -->
-        <a href="https://zefeed.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-zefeed">Z</div>
-            <h3>ZeFeed</h3>
-            <h4>Tech News Summary Platform</h4>
-            <p>Provides simplified technology news summaries and insights to help users stay effortlessly informed about broad industry developments.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <pre><code>&lt;h1&gt;Welcome to Scybud&lt;/h1&gt;</code></pre>
 
-        <!-- 5. CanvArt -->
-        <a href="https://canvart.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-canvart">C</div>
-            <h3>CanvArt</h3>
-            <h4>Creative Showcase Platform</h4>
-            <p>A relaxed space for creators to publish, explore, and showcase digital artwork, designs, custom logos, and creative projects.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <p>CSS can then determine how that heading should look:</p>
 
-        <!-- 6. PropDek -->
-        <a href="https://propdek.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-propdek">P</div>
-            <h3>PropDek</h3>
-            <h4>Property Management Platform</h4>
-            <p>Lets agents manage clients, assets, and tenants in one place, with a marketplace for listing properties for sale or rent.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <pre><code>h1 {
+  font-size: 2rem;
+  text-align: center;
+}</code></pre>
 
-        <!-- 7. DakAt -->
-        <a href="https://dakat.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-dakat">D</div>
-            <h3>DakAt</h3>
-            <h4>Universal Dark Mode Extension</h4>
-            <p>A browser extension that brings dark mode to any site, for anyone who finds light mode straining and wants relief the site itself never offered.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <p>
+            The HTML tells the browser <strong>what the element is</strong>. The
+            CSS tells the browser <strong>how it should look</strong>.
+          </p>
 
-        <!-- 8. Scybud UI -->
-        <a href="https://ui.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-scybudui">U</div>
-            <h3>Scybud UI</h3>
-            <h4>Open Source Component Library</h4>
-            <p>A public, dark mode first component library used to keep a consistent design system across Scybud products, free for any developer to import.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+          <p>
+            This documentation assumes that you already understand the basics of
+            HTML. If you don't, we recommend completing the
+            <a href="/html/">Scybud HTML Documentation</a>
+            before continuing.
+          </p>
+        </section>
 
-        <!-- 9. ScySearch -->
-        <a href="https://search.scybud.com" target="_blank" class="product-card">
-            <div class="brand-logo logo-scysearch">S</div>
-            <h3>ScySearch</h3>
-            <h4>Developer Focused Search Engine</h4>
-            <p>A search engine built for developers, pulling from a mix of existing sources instead of just one content type.</p>
-            <span class="card-link-text">Visit Platform ↗</span>
-        </a>
+        <section id="how-this-course-works">
+          <h2>How This Course Works</h2>
 
-    </div>
-</section>
+          <p>
+            This is not a collection of CSS properties for you to memorise. You
+            are going to learn CSS by following the process of building a real
+            interface.
+          </p>
 
-    </div>
+          <p>
+            Throughout the documentation, you will be given problems that a
+            frontend developer might encounter while designing a webpage. We
+            will solve those problems one at a time using CSS.
+          </p>
 
-</body>
+          <h3>Learn by building</h3>
+
+          <p>
+            Instead of learning a property first and trying to find a reason to
+            use it later, you will encounter a problem first and then learn the
+            CSS concepts that can solve it.
+          </p>
+
+          <p>
+            For example, if our sidebar needs to remain visible while the user
+            scrolls, we will first look at that problem. Then we will learn
+            about the CSS positioning techniques that can solve it.
+          </p>
+
+          <h3>Follow the process</h3>
+
+          <p>
+            Each project will be broken into smaller parts. You will gradually
+            build the interface from its basic layout to its smaller details.
+          </p>
+
+          <ol>
+            <li>Understand the design and the requirements.</li>
+            <li>Identify the problem we need to solve.</li>
+            <li>Learn the CSS concept needed to solve it.</li>
+            <li>Apply the concept to the project.</li>
+            <li>Experiment and see what happens when you change it.</li>
+            <li>Move on to the next problem.</li>
+          </ol>
+
+          <h3>Make it your own</h3>
+
+          <p>
+            As you progress, you will be given opportunities to make your own
+            design decisions. There may be a reference design, but you should
+            not feel limited to copying it exactly.
+          </p>
+
+          <p>
+            Look at different designs, get inspiration, experiment with ideas,
+            and develop your own taste. The goal is not simply to reproduce
+            someone else's interface. The goal is to learn how to create your
+            own.
+          </p>
+
+          <p>
+            By the end of the documentation, you will be given a project to
+            complete on your own using the skills you have learned.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 02. YOUR FIRST DESIGN -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="your-first-design">
+        <section id="design-brief">
+          <h2>The Design Brief</h2>
+
+          <p>
+            You have been given a real design task: style the
+            <a
+              class="productName loghue"
+              href="https://loghue.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Log<span>Hue</span>
+            </a>
+            dashboard using the HTML that has already been prepared for you.
+          </p>
+
+          <p>
+            Your job is to turn the existing structure into a complete, polished
+            dashboard interface. You are not being asked to change what the page
+            contains. You are being asked to decide how it should look and how
+            the different parts of the interface should work together visually.
+          </p>
+
+          <div class="img-container">
+            <img
+              src="images/loghue-dashbaord-screenshot.png"
+              alt="LogHue dashboard design"
+              class="screenshot"
+            />
+            <p class="example-note">
+              <a
+                class="productName loghue"
+                href="https://loghue.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Log<span>Hue</span>
+              </a>
+              dashboard design.
+            </p>
+
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Requirements</h3>
+
+          <ul>
+            <li>The page must use a dark theme.</li>
+            <li>
+              The sidebar should remain visible while the main content is being
+              viewed.
+            </li>
+            <li>
+              The main content should have clear spacing and visual hierarchy.
+            </li>
+            <li>The design should work on both desktop and smaller screens.</li>
+            <li>
+              The different sections should feel like parts of the same
+              interface.
+            </li>
+          </ul>
+
+          <p>
+            The final design may not look exactly like the original sketch. That
+            is intentional. A draft is used to communicate an idea, not
+            necessarily to define every detail of the final product.
+          </p>
+
+          <p>
+            As a designer, you need to know when a design should be adapted,
+            improved, or changed as you build it. The sketch is your starting
+            point, but you should always consider the principles of good design
+            and make decisions that improve the final result.
+          </p>
+
+          <p>
+            However, if you are explicitly asked to recreate a design exactly as
+            it is, then your job is to reproduce it accurately. Even then, never
+            forget the principles of design behind what you are creating.
+          </p>
+        </section>
+
+        <section id="understanding-the-html">
+          <h2>Understanding the HTML</h2>
+
+          <p>
+            Before you start writing CSS, take a moment to understand the HTML
+            you have been given. You are not starting with an empty file. The
+            structure of the
+            <a
+              class="productName loghue"
+              href="https://loghue.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Log<span>Hue</span>
+            </a>
+            dashboard has already been built for you, and your job is to turn
+            that structure into the design from the brief.
+          </p>
+
+          <p>
+            You do not need to understand every line of this document yet. Focus
+            on identifying the major parts of the page and understanding how
+            they are related to one another.
+          </p>
+
+          <h3>The main structure</h3>
+
+          <pre><code>
+&lt;main class="main"&gt;
+
+
+  &lt;aside class="sidebar"&gt;
+    &lt;!-- Sidebar --&gt;
+  &lt;/aside&gt;
+
+
+  &lt;article class="mainContent"&gt;
+    &lt;!-- Dashboard content --&gt;
+  &lt;/article&gt;
+
+
+&lt;/main&gt;
+  </code></pre>
+
+          <p class="example-note">
+            The <code>&lt;main&gt;</code> contains the main layout of the
+            dashboard. The <code>&lt;aside&gt;</code> represents the sidebar,
+            while the <code>&lt;article&gt;</code> contains the main dashboard
+            content.
+          </p>
+
+          <h3>Inside the dashboard</h3>
+
+          <p>
+            The main content is divided into smaller parts. There is a header
+            containing the menu and notification button, followed by the
+            dashboard section containing the greeting, statistics, search bar,
+            and action buttons.
+          </p>
+
+          <pre><code>
+&lt;article class="mainContent"&gt;
+
+
+  &lt;div class="contentHeader"&gt;
+    &lt;!-- Header --&gt;
+  &lt;/div&gt;
+
+
+  &lt;section class="dashboard-section"&gt;
+    &lt;h1&gt;Welcome back, Abdulroqib&lt;/h1&gt;
+
+
+    &lt;div class="dashboardStats"&gt;&lt;/div&gt;
+
+
+    &lt;div class="searchBarContainer"&gt;
+      &lt;!-- Search and buttons --&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+
+&lt;/article&gt;
+  </code></pre>
+
+          <p>
+            Notice how the HTML already describes what each part of the
+            interface is. CSS will determine how those parts are positioned,
+            sized, spaced, and presented to the user.
+          </p>
+
+          <h3>The complete starter HTML</h3>
+
+          <p>
+            The two snippets above only showed the shape of the page. Below is
+            the complete starter HTML for the LogHue dashboard, exactly as it
+            will be given to you. Use the button to copy it, rather than typing
+            it out by hand.
+          </p>
+
+          <button type="button" id="copyHtmlBtn" class="copy-btn">
+            Copy HTML
+          </button>
+
+          <pre
+            class="starter-html-block"
+          ><code id="starterHtmlCode">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8" /&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+  &lt;title&gt;Dashboard | LogHue&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;main class="main"&gt;
+
+    &lt;aside class="sidebar" id="sidebarContainer"&gt;
+
+      &lt;nav class="sidebarNav" aria-label="Main navigation"&gt;
+
+        &lt;a href="#" class="active"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M3 10.5 12 3l9 7.5"&gt;&lt;/path&gt;
+              &lt;path d="M5 9.5V21h14V9.5"&gt;&lt;/path&gt;
+              &lt;path d="M9 21v-7h6v7"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          Dashboard
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M5 3h10l4 4v14H5z"&gt;&lt;/path&gt;
+              &lt;path d="M15 3v5h4"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          Notes
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M6 4h12v16H6z"&gt;&lt;/path&gt;
+              &lt;path d="M9 8h6M9 12h6M9 16h4"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          Tasks
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"&gt;
+              &lt;rect x="4" y="4" width="16" height="16" rx="3"&gt;&lt;/rect&gt;
+              &lt;path d="M8 8h8v8H8zM10 10h4v4h-4z"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          ScanHue
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M12 3l1.5 2.2 2.6.3.9 2.4 2.2 1.4-.8 2.5.8 2.5-2.2 1.4-.9 2.4-2.6.3L12 21l-1.5-2.2-2.6-.3-.9-2.4-2.2-1.4.8-2.5-.8-2.5 2.2-1.4.9-2.4 2.6-.3z"&gt;&lt;/path&gt;
+              &lt;circle cx="12" cy="12" r="3"&gt;&lt;/circle&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          Settings
+        &lt;/a&gt;
+
+      &lt;/nav&gt;
+
+      &lt;div class="sidebarHeading"&gt;Workspaces&lt;/div&gt;
+
+      &lt;nav class="sidebarNav" aria-label="Workspace navigation"&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M3 7h18v13H3z"&gt;&lt;/path&gt;
+              &lt;path d="M3 7l2-3h6l2 3"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          My Workspaces
+        &lt;/a&gt;
+
+        &lt;a href="#"&gt;
+          &lt;span class="navIcon"&gt;
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;circle cx="12" cy="12" r="9"&gt;&lt;/circle&gt;
+              &lt;path d="M12 7v6l4 2"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+          Archive
+        &lt;/a&gt;
+
+      &lt;/nav&gt;
+
+      &lt;button class="sidebarAction"&gt;
+        &lt;span&gt;+&lt;/span&gt;
+        Create Workspace
+      &lt;/button&gt;
+
+      &lt;div class="profile"&gt;
+
+        &lt;div class="avatar"&gt;&lt;/div&gt;
+
+        &lt;div class="profileInfo"&gt;
+          &lt;span class="profileName"&gt;Abdulroqib Oladipo&lt;/span&gt;
+          &lt;span class="profilePlan"&gt;Pro Plan&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;button class="signOut" aria-label="Sign out"&gt;
+          ⇥
+        &lt;/button&gt;
+
+      &lt;/div&gt;
+
+    &lt;/aside&gt;
+
+
+    &lt;article class="mainContent" id="dashboardContent"&gt;
+
+      &lt;div class="contentHeader"&gt;
+
+        &lt;button
+          class="menuBtn"
+          id="toggleSidebar"
+          aria-label="Toggle Sidebar"
+        &gt;
+          ☰
+        &lt;/button&gt;
+
+        &lt;div class="headerRight"&gt;
+
+          &lt;button
+            class="notificationBtn"
+            id="notificationToggleBtn"
+            title="Notifications"
+            aria-label="Notifications"
+          &gt;
+
+            &lt;span id="notifBadge" class="badge"&gt;0&lt;/span&gt;
+
+            &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+              &lt;path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"&gt;&lt;/path&gt;
+              &lt;path d="M10 21h4"&gt;&lt;/path&gt;
+            &lt;/svg&gt;
+
+          &lt;/button&gt;
+
+        &lt;/div&gt;
+
+      &lt;/div&gt;
+
+
+      &lt;div id="modalContainer"&gt;&lt;/div&gt;
+      &lt;div id="actionsMessage"&gt;&lt;/div&gt;
+      &lt;div id="infoDisplay"&gt;&lt;/div&gt;
+
+
+      &lt;div id="notificationsContainer" hidden&gt;
+
+        &lt;h2&gt;Notifications&lt;/h2&gt;
+
+        &lt;ul id="notificationsList"&gt;
+          &lt;p class="placeholderText"&gt;Nothing here yet.&lt;/p&gt;
+        &lt;/ul&gt;
+
+      &lt;/div&gt;
+
+
+      &lt;section class="dashboard-section"&gt;
+
+        &lt;div class="sectionHeader dashboardHeader"&gt;
+
+          &lt;h1 id="dashboardGreeting"&gt;
+            Welcome back, Abdulroqib
+          &lt;/h1&gt;
+
+        &lt;/div&gt;
+
+
+        &lt;div class="dashboardStats" id="dashboardStats"&gt;
+
+          &lt;div class="statCard"&gt;
+            &lt;strong&gt;3&lt;/strong&gt;
+            &lt;span&gt;open tasks&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class="statCard"&gt;
+            &lt;strong&gt;33&lt;/strong&gt;
+            &lt;span&gt;notes&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class="statCard"&gt;
+            &lt;strong&gt;5&lt;/strong&gt;
+            &lt;span&gt;workspaces&lt;/span&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+
+
+        &lt;div class="searchBarContainer"&gt;
+
+          &lt;div class="searchInputWrapper"&gt;
+
+            &lt;span class="searchIcon"&gt;
+
+              &lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"&gt;
+                &lt;circle cx="11" cy="11" r="7"&gt;&lt;/circle&gt;
+                &lt;path d="m16.5 16.5 4 4"&gt;&lt;/path&gt;
+              &lt;/svg&gt;
+
+            &lt;/span&gt;
+
+            &lt;textarea
+              name="mainSearchInput"
+              id="mainSearchInput"
+              class="inputField mainSearchInput"
+              rows="1"
+              placeholder="Search tasks..."
+            &gt;&lt;/textarea&gt;
+
+          &lt;/div&gt;
+
+
+          &lt;div class="quickActionsContainer"&gt;
+
+            &lt;button
+              class="actionBtn createWorkspaceOpen"
+              aria-label="New Workspace"
+            &gt;
+              + New Workspace
+            &lt;/button&gt;
+
+            &lt;button
+              type="button"
+              class="actionBtn createNoteBtn"
+              aria-label="Create Note"
+            &gt;
+              + Create Note
+            &lt;/button&gt;
+
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+
+
+        &lt;div
+          id="MainSearchResults"
+          class="mainSearchResultContainer"
+        &gt;&lt;/div&gt;
+
+      &lt;/section&gt;
+
+    &lt;/article&gt;
+
+  &lt;/main&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+          <h3>Key structural elements</h3>
+
+          <p>
+            Before moving on, get familiar with the class names below. You will
+            be targeting each of them with CSS throughout this project.
+          </p>
+
+          <ul>
+            <li>
+              <code>.main</code> wraps the entire dashboard. It holds the
+              sidebar and the main content side by side.
+            </li>
+            <li>
+              <code>.sidebar</code> is the left navigation panel, containing the
+              main links, the workspace links, and the profile section.
+            </li>
+            <li>
+              <code>.sidebarNav</code> groups a set of sidebar links together.
+              The sidebar uses two of these, one for the main navigation and one
+              for workspaces.
+            </li>
+            <li>
+              <code>.mainContent</code> holds everything to the right of the
+              sidebar, including the header and the dashboard section.
+            </li>
+            <li>
+              <code>.contentHeader</code> is the top bar of the main content. It
+              contains the sidebar toggle button and the notification button.
+            </li>
+            <li>
+              <code>.dashboard-section</code> wraps the greeting, the
+              statistics, and the search area.
+            </li>
+            <li>
+              <code>.dashboardStats</code> holds the three statistic cards
+              showing open tasks, notes, and workspaces.
+            </li>
+            <li>
+              <code>.searchBarContainer</code> wraps the search input and the
+              action buttons beneath it.
+            </li>
+            <li>
+              <code>.quickActionsContainer</code> holds the two action buttons,
+              New Workspace and Create Note.
+            </li>
+          </ul>
+
+          <h3>Set up your project</h3>
+
+          <ol>
+            <li>Click the Copy HTML button above.</li>
+            <li>
+              Create a new file on your computer named <code>index.html</code>.
+            </li>
+            <li>Paste the copied HTML into that file and save it.</li>
+            <li>Open <code>index.html</code> in your browser.</li>
+          </ol>
+
+          <p>
+            When you open the file, the page will look mostly unstyled. The
+            headings, buttons, and text will appear, but stacked plainly with no
+            layout, colour, or spacing. This is expected. The HTML only
+            describes what the page contains. You have not written any CSS yet,
+            so the browser is rendering everything with its own default styles.
+          </p>
+
+          <h3>Before you continue</h3>
+
+          <p>
+            Look through the complete HTML yourself. Try to identify the
+            sidebar, header, notification button, greeting, statistics, search
+            area, and action buttons. You will be styling these elements
+            throughout the project.
+          </p>
+        </section>
+
+        <section id="your-first-css">
+          <h2>Your First CSS</h2>
+
+          <p>
+            You have the HTML, and you know what the finished dashboard should
+            look like. Now it is time to start turning that structure into the
+            design.
+          </p>
+
+          <p>
+            Start by creating a <code>&lt;style&gt;</code> element inside the
+            <code>&lt;head&gt;</code> of your HTML document. This is where you
+            will write the CSS for this project.
+          </p>
+
+          <pre><code>
+&lt;style&gt;
+
+
+  /* Your CSS goes here */
+
+
+&lt;/style&gt;
+  </code></pre>
+
+          <h3>Start with the page</h3>
+
+          <p>
+            Look at the finished design. The entire page has a black background,
+            light text, and no default browser spacing around the page.
+          </p>
+
+          <p>
+            Before styling the sidebar or dashboard, handle these basic
+            properties first.
+          </p>
+
+          <pre><code>
+html,
+body {
+  margin: 0;
+  background: #000;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+  </code></pre>
+
+          <p class="example-note">
+            The <code>body</code> is the starting point for the visible page.
+            Removing its default margin allows the interface to reach the edges
+            of the browser window.
+          </p>
+
+          <h3>What did you just write?</h3>
+
+          <p>
+            CSS rules follow a simple pattern: select something, then describe
+            how it should look.
+          </p>
+
+          <pre><code>
+body {
+  background: #000;
+  color: #f5f5f5;
+}
+  </code></pre>
+
+          <p>
+            <code>body</code> is the <strong>selector</strong>. It tells the
+            browser which HTML element the rule should affect.
+          </p>
+
+          <p>
+            <code>background</code> and <code>color</code> are
+            <strong>properties</strong>. Their values tell the browser what
+            those properties should be.
+          </p>
+
+          <p>
+            The braces <code>{ }</code> contain the declarations that make up
+            the rule.
+          </p>
+
+          <h3>Now look at the result</h3>
+
+          <p>
+            At this point, the dashboard will not look finished. That is
+            expected. You have only established the foundation of the page.
+          </p>
+
+          <p>
+            The sidebar is still in the wrong position, the dashboard content
+            has not been arranged, and the buttons and search bar have not been
+            styled. Each of those is a separate problem that you will solve as
+            you continue.
+          </p>
+
+          <h4>Why?</h4>
+
+          <p>
+            Do not try to write all the CSS at once. Start with the broad
+            structure of the page, then work your way toward individual
+            components. This makes it easier to understand what each rule is
+            doing and why it is needed.
+          </p>
+
+          <h3>Checkpoint: Step 1, Page Foundation</h3>
+
+          <p>
+            Before moving on, compare your page to the screenshot below. At this
+            stage the layout is still unstyled, but the background, text colour,
+            and font should already match.
+          </p>
+
+          <!-- Reusable checkpoint pattern: copy this block for each future step, updating the image src, alt text, and caption -->
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-01.png"
+                alt="LogHue dashboard with a black background, light text, and the base sans-serif font applied, before any layout styling"
+                class="screenshot checkpoint-img"
+                onerror="
+                  this.hidden = true;
+                  this.nextElementSibling.hidden = false;
+                "
+              />
+            </div>
+            <p class="checkpoint-caption">
+              Step 1, Page Foundation: dark background, light text, and base
+              font applied. Layout is not yet arranged.
+            </p>
+            <p class="checkpoint-caption">
+              Note: You might see the home icon first. Dont worry, it didnt show
+              here becuase it was commented out for better screenshot coverage.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+        </section>
+
+        <section id="the-cascade">
+          <h2>The Cascade</h2>
+
+          <p>
+            So far, we have given our page a basic foundation. But CSS becomes
+            more interesting when more than one rule can affect the same
+            element.
+          </p>
+
+          <p>
+            The word <strong>cascade</strong> describes how the browser decides
+            which CSS rule should win when multiple rules apply to the same
+            element.
+          </p>
+
+          <h3>When Rules Conflict</h3>
+
+          <p>
+            Imagine we want all text on the page to be light, but we also want
+            the dashboard heading to have a different color.
+          </p>
+
+          <pre><code>
+body {
+  color: #f5f5f5;
+}
+
+.dashboard-section h1 {
+  color: #007fc3;
+}
+  </code></pre>
+
+          <p>
+            Both rules set the <code>color</code> property, but they target
+            different levels of the page. The more specific selector
+            <code>.dashboard-section h1</code> can override the general
+            <code>body</code> rule for that heading.
+          </p>
+
+          <h3>Specificity Matters</h3>
+
+          <p>
+            CSS does not simply use the last rule it sees. The browser considers
+            several things when deciding which declaration should be applied,
+            including the selector's specificity.
+          </p>
+
+          <p>For example, compare these two rules:</p>
+
+          <pre><code>
+h1 {
+  color: white;
+}
+
+.dashboard-section h1 {
+  color: #007fc3;
+}
+  </code></pre>
+
+          <p>
+            The first selector targets every <code>&lt;h1&gt;</code>. The second
+            selector targets an <code>&lt;h1&gt;</code> inside
+            <code>.dashboard-section</code>, making it more specific.
+          </p>
+
+          <p>This means the dashboard heading receives the second color.</p>
+
+          <h3>Try It Yourself</h3>
+
+          <p>
+            Add these rules to your stylesheet and look at the dashboard
+            heading.
+          </p>
+
+          <pre><code>
+h1 {
+  color: red;
+}
+
+.dashboard-section h1 {
+  color: #007fc3;
+}
+  </code></pre>
+
+          <p>Now remove the second rule. What happens?</p>
+
+          <p>
+            Then change the selectors and see which rule wins. The goal is not
+            to memorize a list of rules. Instead, learn to recognize when CSS
+            rules compete with each other and understand why the browser chooses
+            one.
+          </p>
+
+          <h3>Checkpoint: Understanding the Cascade</h3>
+
+          <p>
+            At this point, your page should still look the same as the previous
+            checkpoint. The important change is understanding how CSS decides
+            which styles should be applied when rules overlap.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-01.png"
+                alt="LogHue dashboard showing the page foundation while learning how CSS rules interact"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+
+            <p class="checkpoint-caption">
+              Cascade checkpoint: the page does not need a new visual change
+              here. You are learning how CSS decides which rule takes effect.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h4>Review Questions</h4>
+
+          <ol>
+            <li>What does the cascade determine?</li>
+            <li>What happens when two CSS rules set the same property?</li>
+            <li>
+              Why is <code>.dashboard-section h1</code> more specific than
+              <code>h1</code>?
+            </li>
+            <li>What happens when you remove the more specific rule?</li>
+            <li>
+              Why is understanding the cascade important as a stylesheet becomes
+              larger?
+            </li>
+          </ol>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 03. BUILDING THE PAGE -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="building-the-page">
+        <section id="page-layout">
+          <h2>Page Layout</h2>
+
+          <p>
+            Our page has a problem. The HTML contains a sidebar and a main
+            content area, but CSS has not told the browser where they should go.
+          </p>
+
+          <p>
+            Right now, the sidebar and the main content appear one after
+            another. We want the sidebar on the left and the dashboard content
+            beside it.
+          </p>
+
+          <h3>Creating the Two-Column Layout</h3>
+
+          <p>
+            The <code>.main</code> element contains both the sidebar and the
+            main content, so it is the element we need to control.
+          </p>
+
+          <p>
+            CSS Grid is useful here because we can divide the page into columns:
+            one for the sidebar and one for everything else.
+          </p>
+
+          <pre><code>
+.main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+  </code></pre>
+
+          <h4><code>display: grid</code></h4>
+
+          <p>
+            <code>display: grid</code> tells the browser that the children of
+            <code>.main</code> should be arranged using the CSS Grid layout
+            system.
+          </p>
+
+          <h4><code>grid-template-columns</code></h4>
+
+          <p>This property defines how wide each column should be.</p>
+
+          <pre><code>
+grid-template-columns: 260px 1fr;
+  </code></pre>
+
+          <p>
+            The first column is <code>260px</code> wide, which gives our sidebar
+            a fixed width.
+          </p>
+
+          <p>
+            The second column uses <code>1fr</code>. The <code>fr</code> unit
+            means a fraction of the available space, so the main content takes
+            the remaining width.
+          </p>
+
+          <h4><code>min-height: 100vh</code></h4>
+
+          <p>
+            <code>100vh</code> represents the height of the browser's viewport.
+            Setting the minimum height to <code>100vh</code> makes the layout
+            fill at least the entire screen.
+          </p>
+
+          <h3>Checkpoint: Step 2, Page Layout</h3>
+
+          <p>
+            Your sidebar and main content should now appear beside each other.
+            The sidebar has a fixed width, while the main content fills the
+            remaining space.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-02.png"
+                alt="LogHue dashboard with the sidebar and main content arranged as two columns"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+
+            <p class="checkpoint-caption">
+              Step 2, Page Layout: the sidebar and main content now sit beside
+              each other.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Experiment</h3>
+
+          <p>
+            Change <code>260px</code> to another value. What happens when you
+            make the sidebar wider or narrower?
+          </p>
+
+          <p>
+            You can also temporarily replace <code>1fr</code> with another value
+            and observe how the available space changes.
+          </p>
+
+          <h4>Review Questions</h4>
+
+          <ol>
+            <li>What does <code>display: grid</code> do?</li>
+            <li>What does <code>260px</code> control?</li>
+            <li>What does <code>1fr</code> mean?</li>
+            <li>Why are we applying the grid to <code>.main</code>?</li>
+            <li>What does <code>100vh</code> represent?</li>
+          </ol>
+        </section>
+
+        <section id="the-sidebar">
+          <h2>The Sidebar</h2>
+
+          <p>
+            The page is now divided into two columns, but the sidebar still
+            needs to be styled. Look at the design again. The navigation should
+            feel like part of the interface rather than a collection of default
+            links.
+          </p>
+
+          <p>
+            Before changing individual links and buttons, we first need to give
+            the sidebar its visual foundation: a background, a border, and some
+            space around its contents.
+          </p>
+
+          <h3>Giving the Sidebar a Background</h3>
+
+          <p>
+            The sidebar uses the class <code>.sidebar</code>, so we can target
+            it directly.
+          </p>
+
+          <pre><code>
+.sidebar {
+  background: #111;
+  border-right: 1px solid #2a2a2a;
+}
+  </code></pre>
+
+          <p>
+            The <code>background</code> creates the darker surface that
+            separates the sidebar from the rest of the dashboard.
+          </p>
+
+          <p>
+            The <code>border-right</code> adds a subtle line between the
+            navigation and the main content.
+          </p>
+
+          <h3>Adding Space Inside</h3>
+
+          <p>
+            The sidebar contains several groups of content. Without any internal
+            spacing, everything would sit directly against its edges.
+          </p>
+
+          <pre><code>
+.sidebar {
+  background: #111;
+  border-right: 1px solid #2a2a2a;
+  padding: 20px 8px;
+}
+  </code></pre>
+
+          <p>
+            <code>padding</code> creates space between an element's content and
+            its edges. Here, it gives the navigation some breathing room.
+          </p>
+
+          <h3>Styling the Navigation Links</h3>
+
+          <p>
+            Our HTML already gives each navigation item a useful structure: an
+            <code>&lt;a&gt;</code> element containing an icon and its label. We
+            can use CSS to turn those links into full-width navigation items.
+          </p>
+
+          <h3>Styling the Navigation Items</h3>
+
+          <p>Start by selecting the links inside the sidebar.</p>
+
+          <pre><code>
+.sidebar a {
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  color: #f5f7fa;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+  </code></pre>
+
+          <h4>Remove the Default Appearance</h4>
+
+          <p>
+            The browser provides default styling for many elements. We don't
+            want the navigation items to look like default links, so we remove
+            the underline and make the background transparent.
+          </p>
+
+          <pre><code>
+background: none;
+border: none;
+text-decoration: none;
+  </code></pre>
+
+          <h4>Make Each Item Fill the Sidebar</h4>
+
+          <pre><code>
+width: 100%;
+  </code></pre>
+
+          <p>
+            This makes each navigation item use the available width of the
+            sidebar. This is important because the user should be able to click
+            the navigation area, not just the text.
+          </p>
+
+          <h4>Add Space and Shape</h4>
+
+          <pre><code>
+padding: 8px;
+border-radius: 8px;
+  </code></pre>
+
+          <p>
+            <code>padding</code> gives the content room around it, while
+            <code>border-radius</code> rounds the corners of the navigation
+            item.
+          </p>
+
+          <h4>Arrange the Icon and Text</h4>
+
+          <p>
+            Each navigation item contains an icon and a text label. Flexbox lets
+            us place them beside each other and align them properly.
+          </p>
+
+          <pre><code>
+display: flex;
+align-items: center;
+gap: 4px;
+  </code></pre>
+
+          <p>
+            <code>display: flex</code> places the icon and text in a row.
+            <code>align-items: center</code> keeps them vertically aligned,
+            while <code>gap</code> creates space between them.
+          </p>
+
+          <h3>The Active Navigation Item</h3>
+
+          <p>
+            The current page needs to be distinguishable from the other
+            navigation items. The Dashboard link already has the
+            <code>active</code> class in the HTML.
+          </p>
+
+          <pre><code>
+.sidebar a.active {
+  color: #fff;
+  background: #222;
+}
+  </code></pre>
+
+          <p>
+            Because the selector targets both the sidebar and the
+            <code>active</code> class, this style only affects the currently
+            active navigation item.
+          </p>
+
+          <h3>Controlling the Navigation Area</h3>
+
+          <p>
+            The sidebar contains more than one group of navigation items. The
+            <code>.sidebarNav</code> element controls each navigation area.
+          </p>
+
+          <pre><code>
+.sidebarNav {
+  flex: 1;
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 10px;
+  margin-bottom: auto;
+  overflow-x: hidden;
+}
+  </code></pre>
+
+          <p>
+            The navigation can therefore grow with its contents while still
+            being able to scroll when there is not enough vertical space.
+          </p>
+
+          <h3>Checkpoint: Step 3, The Sidebar</h3>
+
+          <p>
+            Compare your result with the screenshot below. The sidebar should
+            now have a dark surface, properly spaced navigation items, aligned
+            icons, and a visible active Dashboard item.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-03.png"
+                alt="LogHue dashboard with the sidebar navigation styled and the Dashboard item active"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+
+            <p class="checkpoint-caption">
+              Step 3, The Sidebar: navigation items are now styled, aligned, and
+              spaced inside the sidebar.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Experiment</h3>
+
+          <p>
+            Change the <code>gap</code> value. What happens when the icons move
+            farther away from their labels?
+          </p>
+
+          <p>
+            Then change the <code>padding</code> and <code>border-radius</code>.
+            Try to make the navigation items feel more compact or more spacious.
+          </p>
+
+          <h4>Review Questions</h4>
+
+          <ol>
+            <li>
+              Why do we use <code>width: 100%</code> on the navigation items?
+            </li>
+            <li>What does <code>display: flex</code> do here?</li>
+            <li>What is the purpose of <code>gap</code>?</li>
+            <li>
+              Why does the Dashboard item have the <code>active</code> class?
+            </li>
+            <li>
+              What does <code>overflow: auto</code> allow the navigation area to
+              do?
+            </li>
+          </ol>
+        </section>
+
+        <section id="main-content">
+          <h2>Main Content</h2>
+
+          <p>
+            The sidebar now has its own structure and styling. Next, we need to
+            style the main content area of the dashboard.
+          </p>
+
+          <p>
+            The HTML already gives us everything we need: a header, a dashboard
+            greeting, statistics, a search area, and action buttons. We will
+            style these parts one at a time.
+          </p>
+
+          <h3>Styling the Main Content Area</h3>
+
+          <p>
+            The <code>.mainContent</code> element contains everything to the
+            right of the sidebar. First, give it a subtle separating border,
+            some internal spacing, and scrolling behaviour.
+          </p>
+
+          <pre><code>
+.mainContent {
+  border-left: 1px solid #333;
+  padding: 0 8px 8px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+  </code></pre>
+
+          <p>
+            The <code>border-left</code> creates a subtle visual separation
+            between the sidebar and the main content.
+          </p>
+
+          <p>
+            The <code>padding</code> adds space inside the main content so that
+            its children do not sit directly against its edges.
+          </p>
+
+          <p>
+            <code>overflow-y: auto</code> allows the content area to scroll
+            vertically when necessary, while
+            <code>scroll-behavior: smooth</code> makes that scrolling smoother.
+          </p>
+
+          <h3>Creating the Content Header</h3>
+
+          <p>
+            At the top of the main content is <code>.contentHeader</code>. It
+            contains the sidebar menu button and the notification button.
+          </p>
+
+          <pre><code>
+.contentHeader {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 16px;
+  padding: 4px 12px;
+  overflow-x: auto;
+}
+  </code></pre>
+
+          <p>
+            <code>display: flex</code> places the header's children in a row.
+            <code>justify-content: space-between</code> pushes them to opposite
+            sides of the header.
+          </p>
+
+          <p><code>align-items: center</code> keeps them vertically aligned.</p>
+
+          <p>
+            <code>position: sticky</code> allows the header to remain at the top
+            when the content is scrolled. <code>top: 0</code> defines that
+            position.
+          </p>
+
+          <p>
+            The <code>z-index</code> gives the header a stacking level so it can
+            stay above other content when necessary.
+          </p>
+
+          <h3>Styling the Header Controls</h3>
+
+          <pre><code>
+.menuBtn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#notificationToggleBtn {
+  position: relative;
+}
+  </code></pre>
+
+          <p>
+            The <code>.menuBtn</code> removes the browser's default button
+            background and border. The <code>cursor</code> property makes it
+            clear that the element is interactive.
+          </p>
+
+          <p>
+            <code>.headerRight</code> uses Flexbox to position its contents and
+            <code>gap</code> adds space between them.
+          </p>
+
+          <p>
+            The notification button uses <code>position: relative</code> so that
+            elements positioned inside it can use the button as their reference.
+          </p>
+
+          <h3>Styling the Dashboard Section</h3>
+
+          <p>
+            The <code>.dashboard-section</code> contains the main dashboard
+            content. We want its children to flow vertically and remain
+            centered.
+          </p>
+
+          <pre><code>
+.dashboard-section {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 1s ease, opacity 0.5s ease;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 10px auto;
+}
+  </code></pre>
+
+          <p>
+            <code>display: flex</code> creates a flexible layout for the
+            section. <code>flex-direction: column</code> makes its children flow
+            from top to bottom.
+          </p>
+
+          <p>
+            <code>align-items: center</code> centers the children horizontally.
+          </p>
+
+          <h3>Styling the Dashboard Heading</h3>
+
+          <pre><code>
+.sectionHeader {
+  margin-bottom: var(--space-md);
+}
+
+.dashboardHeader h1 {
+  font-size: 1.875rem;
+}
+  </code></pre>
+
+          <p>
+            The <code>margin-bottom</code> creates space between the heading and
+            the statistics below it.
+          </p>
+
+          <p>
+            The <code>font-size</code> makes the dashboard greeting larger so it
+            has more visual importance.
+          </p>
+
+          <h3>Arranging the Statistics</h3>
+
+          <p>
+            The three statistic cards should sit together while still being able
+            to wrap when the available space becomes smaller.
+          </p>
+
+          <pre><code>
+.dashboardStats {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+  </code></pre>
+
+          <p>
+            <code>display: flex</code> places the cards in a flexible row.
+            <code>gap</code> creates space between them, while
+            <code>justify-content: center</code> centers the group.
+          </p>
+
+          <p>
+            <code>flex-wrap: wrap</code> allows the cards to move onto another
+            line when there is not enough horizontal space.
+          </p>
+
+          <p>
+            The <code>max-width</code> prevents the statistics from stretching
+            across the entire screen on large displays.
+          </p>
+
+          <p>Now style each individual <code>.statCard</code>:</p>
+
+          <pre><code>
+.statCard {
+  background: #111;
+  border: 1px solid #2c2f36;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+  </code></pre>
+
+          <p>
+            This gives each card its own dark surface, border, rounded corners,
+            and internal spacing. Flexbox keeps the number and its label
+            aligned.
+          </p>
+
+          <h3>Building the Search Area</h3>
+
+          <p>
+            The search area contains the search input followed by the
+            quick-action buttons.
+          </p>
+
+          <pre><code>
+.searchBarContainer {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 16px;
+  position: relative;
+}
+  </code></pre>
+
+          <p>
+            <code>flex-direction: column</code> places the search field above
+            the action buttons. The <code>gap</code> creates space between them.
+          </p>
+
+          <h3>Positioning the Search Icon</h3>
+
+          <pre><code>
+.searchInputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 24px auto 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 18px;
+}
+  </code></pre>
+
+          <p>
+            The wrapper uses <code>position: relative</code> so the search icon
+            can be positioned relative to it.
+          </p>
+
+          <p>
+            <code>position: absolute</code> removes the icon from the normal
+            layout, allowing it to sit inside the search field area.
+          </p>
+
+          <h3>Styling the Search Input</h3>
+
+          <pre><code>
+.mainSearchInput {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  outline: none;
+  border: 1px solid #2c2f36;
+  font-size: 1rem;
+  transition: 0.3s;
+  resize: none;
+  border-radius: 50px;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  max-width: none;
+  padding: 16px;
+  padding-right: 0;
+  padding-left: 40px;
+}
+  </code></pre>
+
+          <p>
+            The dark background and border make the search field visible against
+            the page background.
+          </p>
+
+          <p>
+            The large <code>border-radius</code> creates the rounded search-bar
+            shape, while the left padding leaves room for the search icon.
+          </p>
+
+          <h3>Adding the Quick Actions</h3>
+
+          <pre><code>
+.quickActionsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.actionBtn {
+  background: #222;
+  border: 1px solid #333;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.756rem;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.quickActionsContainer .actionBtn {
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  </code></pre>
+
+          <p>
+            The quick actions are centered with Flexbox and separated with
+            <code>gap</code>.
+          </p>
+
+          <p>
+            <code>.actionBtn</code> is a reusable button style. The more
+            specific <code>.quickActionsContainer .actionBtn</code> selector
+            changes the dashboard action buttons to a fixed width of
+            <code>170px</code>.
+          </p>
+
+          <h3>Checkpoint: Step 4, Main Content</h3>
+
+          <p>
+            Your main content should now contain a structured header, centered
+            dashboard greeting, statistic cards, search field, and quick-action
+            buttons.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-04.png"
+                alt="LogHue dashboard with the main content styled"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+
+            <p class="checkpoint-caption">
+              Step 4, Main Content: the dashboard now has its main content
+              structure, statistics, search area, and action buttons.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Experiment</h3>
+
+          <p>
+            Change the <code>max-width</code> of the statistics and search
+            areas. Observe how their size changes while the rest of the
+            dashboard remains centered.
+          </p>
+
+          <p>
+            Then change the <code>gap</code> values in the Flexbox containers.
+            See how the spacing between the dashboard elements changes.
+          </p>
+
+          <h4>Review Questions</h4>
+
+          <ol>
+            <li>
+              What does <code>display: flex</code> do in the dashboard section?
+            </li>
+            <li>
+              Why does <code>.dashboard-section</code> use
+              <code>flex-direction: column</code>?
+            </li>
+            <li>
+              What does <code>flex-wrap: wrap</code> allow the statistic cards
+              to do?
+            </li>
+            <li>
+              Why is <code>.searchInputWrapper</code> positioned relatively?
+            </li>
+            <li>
+              Why does the search icon use <code>position: absolute</code>?
+            </li>
+            <li>
+              Why does <code>.quickActionsContainer .actionBtn</code> use a more
+              specific selector?
+            </li>
+          </ol>
+        </section>
+
+        <section id="containers">
+          <h2>Containers</h2>
+
+          <p>
+            The dashboard is made up of several containers. Containers help
+            control how much space content can use and keep the page from
+            becoming difficult to read on larger screens.
+          </p>
+
+          <p>
+            We already have containers in our HTML. Instead of creating a new
+            <code>.container</code> class, we can style the containers that are
+            already part of the dashboard.
+          </p>
+
+          <h3>Controlling the Dashboard Width</h3>
+
+          <p>Start with the main dashboard section:</p>
+
+          <pre><code>
+.dashboard-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 4px;
+}
+  </code></pre>
+
+          <p>
+            <code>width: 100%</code> allows the section to use the available
+            space. However, on a very large screen, using all of that space
+            could make the content unnecessarily wide.
+          </p>
+
+          <p>
+            <code>max-width: 1200px</code> sets a limit. The section can become
+            smaller when there is less available space, but it will not grow
+            beyond <code>1200px</code>.
+          </p>
+
+          <p>
+            <code>margin: 10px auto</code> adds vertical spacing and centers the
+            container horizontally when its width is limited.
+          </p>
+
+          <h3>Limiting Nested Containers</h3>
+
+          <p>
+            Containers can also be nested inside other containers. This lets us
+            give different parts of the dashboard different width limits.
+          </p>
+
+          <pre><code>
+.dashboardStats {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchBarContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.searchInputWrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 24px auto 0;
+}
+  </code></pre>
+
+          <p>
+            Notice that each container can have its own <code>max-width</code>.
+            The statistics and search input are narrower than the overall
+            dashboard.
+          </p>
+
+          <p>
+            This creates a visual hierarchy: the dashboard can occupy a large
+            area, while important content such as statistics and search remains
+            at a comfortable reading width.
+          </p>
+
+          <h3>Understanding <code>width</code> and <code>max-width</code></h3>
+
+          <p>These two properties work together:</p>
+
+          <ul>
+            <li>
+              <code>width: 100%</code> says the container can use the available
+              width.
+            </li>
+            <li>
+              <code>max-width</code> says how wide it is allowed to become.
+            </li>
+          </ul>
+
+          <p>For example:</p>
+
+          <pre><code>
+.searchInputWrapper {
+  width: 100%;
+  max-width: 800px;
+}
+  </code></pre>
+
+          <p>
+            On a small screen, the wrapper can shrink to fit the available
+            space. On a large screen, it stops growing once it reaches
+            <code>800px</code>.
+          </p>
+
+          <h3>Checkpoint: Step 5, Containers</h3>
+
+          <p>
+            Your dashboard should now have controlled content widths instead of
+            allowing every section to stretch indefinitely across the screen.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-05.png"
+                alt="LogHue dashboard with controlled content containers"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+
+            <p class="checkpoint-caption">
+              Step 5, Containers: the dashboard uses width limits to keep its
+              content organized and readable.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Experiment</h3>
+
+          <p>
+            Change <code>max-width: 800px</code> on
+            <code>.dashboardStats</code> to <code>500px</code>. Observe how the
+            statistics area changes.
+          </p>
+
+          <p>
+            Then remove <code>max-width</code> completely. Compare the result on
+            a large screen.
+          </p>
+
+          <p>
+            Finally, change <code>max-width: 1200px</code> on
+            <code>.dashboard-section</code> to a smaller value and observe how
+            all of the dashboard content is affected.
+          </p>
+
+          <h4>Review Questions</h4>
+
+          <ol>
+            <li>
+              What is the difference between <code>width</code> and
+              <code>max-width</code>?
+            </li>
+            <li>
+              Why use <code>width: 100%</code> together with
+              <code>max-width</code>?
+            </li>
+            <li>
+              What does <code>margin: 0 auto</code> do when a container has a
+              limited width?
+            </li>
+            <li>
+              Why might the search input need a smaller
+              <code>max-width</code> than the dashboard section?
+            </li>
+            <li>
+              What happens when you remove the <code>max-width</code> from a
+              container?
+            </li>
+          </ol>
+        </section>
+
+        <section id="spacing">
+          <h2>Spacing</h2>
+
+          <p>
+            Your page now has a layout and containers, but the elements still
+            need room to breathe. Spacing controls the distance between elements
+            and determines whether a page feels cramped or comfortable.
+          </p>
+
+          <h3>Padding vs. Margin</h3>
+
+          <p>
+            CSS gives you two main ways to create space:
+            <code>padding</code> and <code>margin</code>.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Padding</strong> creates space inside an element, between
+              its content and its border.
+            </li>
+            <li>
+              <strong>Margin</strong> creates space outside an element,
+              separating it from other elements.
+            </li>
+          </ul>
+
+          <h3>Adding Space Inside Elements</h3>
+
+          <p>Start by giving the dashboard cards some internal space:</p>
+
+          <pre><code>.statCard {
+  padding: 8px 16px;
+}</code></pre>
+
+          <p>
+            The first value controls the top and bottom padding, while the
+            second controls the left and right padding.
+          </p>
+
+          <h3>Separating Elements</h3>
+
+          <p>
+            Use <code>margin</code> when you need to separate one element from
+            another:
+          </p>
+
+          <pre><code>.dashboard-section {
+  margin: 10px auto;
+}
+
+.searchInputWrapper {
+  margin: 24px auto 0;
+}</code></pre>
+
+          <p>
+            You can also control individual sides when an element needs more
+            precise spacing:
+          </p>
+
+          <pre><code>.searchInputWrapper {
+  margin-top: 24px;
+}</code></pre>
+
+          <h3>Using Gap</h3>
+
+          <p>
+            When elements are arranged with Flexbox or Grid, <code>gap</code> is
+            often the simplest way to control the space between them.
+          </p>
+
+          <pre><code>.dashboardStats {
+  display: flex;
+  gap: 8px;
+}
+
+.quickActionsContainer {
+  display: flex;
+  gap: 16px;
+}</code></pre>
+
+          <p>
+            This keeps the spacing between items consistent without adding
+            margins to each individual element.
+          </p>
+
+          <h3>Build the Spacing</h3>
+
+          <p>
+            Now adjust the spacing throughout the dashboard. Give the content
+            room around its edges, add comfortable spacing between the
+            statistics cards, and separate the search area from the other
+            content.
+          </p>
+
+          <p>
+            Do not try to make everything evenly spaced. Different elements can
+            need different amounts of space depending on their role.
+          </p>
+
+          <h3>Checkpoint: Step 6, Spacing</h3>
+
+          <p>
+            Your dashboard should now have comfortable spacing between its
+            sections, controls, and content. Compare your result with the
+            checkpoint below.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-06.png"
+                alt="Dashboard after completing Step 6, Spacing"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+            <p class="checkpoint-caption">
+              Step 6, Spacing: The dashboard now has consistent and comfortable
+              spacing between its elements.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 04. TYPOGRAPHY -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="typography">
+        <section id="fonts-and-text">
+          <h2>Fonts</h2>
+
+          <p>
+            Text is one of the most important parts of a web page. CSS allows
+            you to control which font is used, how large it appears, and how it
+            is displayed.
+          </p>
+
+          <p>You have already used a font in the dashboard:</p>
+
+          <pre><code>body {
+  font-family: Arial, Helvetica, sans-serif;
+}</code></pre>
+
+          <p>
+            The <code>font-family</code> property tells the browser which font
+            to use. The browser tries the fonts from left to right and uses the
+            first available one.
+          </p>
+
+          <h3>Font Size</h3>
+
+          <p>Use <code>font-size</code> to control how large text appears.</p>
+
+          <pre><code>.dashboardHeader h1 {
+  font-size: 1.875rem;
+}
+
+.statCard {
+  font-size: 0.85rem;
+}</code></pre>
+
+          <h3>Font Weight</h3>
+
+          <p><code>font-weight</code> controls how thick the text appears.</p>
+
+          <pre><code>.dashboardHeader h1 {
+  font-weight: 700;
+}
+
+.menuBtn {
+  font-weight: 600;
+}</code></pre>
+
+          <p>
+            Common values include <code>400</code> for normal text,
+            <code>500</code> for medium text, <code>600</code> for semi-bold,
+            and <code>700</code> for bold.
+          </p>
+
+          <h3>Changing the Font</h3>
+
+          <p>
+            You can use another font by changing the
+            <code>font-family</code> value.
+          </p>
+
+          <pre><code>body {
+  font-family: Georgia, serif;
+}</code></pre>
+
+          <p>
+            You can also use a custom web font by loading it with
+            <code>@font-face</code> or importing it from a font provider.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            For a refresher on how the dashboard's font was introduced, return
+            to
+            <a href="#your-first-css">Your First CSS</a>.
+          </p>
+        </section>
+
+        <section id="headings">
+          <h2>Headings</h2>
+
+          <p>
+            Headings help organize your content and make it easier to
+            understand. HTML provides six heading levels, from
+            <code>h1</code> to <code>h6</code>.
+          </p>
+
+          <p>
+            CSS lets you control how each heading looks without changing its
+            meaning.
+          </p>
+
+          <h3>Styling a Heading</h3>
+
+          <p>
+            You can target a specific heading and change its size, weight,
+            spacing, or other visual properties.
+          </p>
+
+          <pre><code>h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}</code></pre>
+
+          <p>
+            You can also target a heading based on the component it belongs to.
+            This is useful when different parts of your page need different
+            heading styles.
+          </p>
+
+          <pre><code>.dashboardHeader h1 {
+  font-size: 1.875rem;
+}</code></pre>
+
+          <h3>Choose the Right Heading</h3>
+
+          <p>
+            Use headings according to the structure of your content, not simply
+            because you want text to look bigger or smaller. CSS should control
+            the appearance while HTML controls the document structure.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            You already styled the dashboard's main heading earlier in
+            <a href="#main-content">Main Content</a>.
+          </p>
+        </section>
+
+        <section id="line-height">
+          <h2>Line Height</h2>
+
+          <p>
+            The <code>line-height</code> property controls the amount of
+            vertical space between lines of text. Increasing it can make
+            paragraphs easier to read, while a smaller value can make text feel
+            more compact.
+          </p>
+
+          <h3>Setting Line Height</h3>
+
+          <p>
+            You can use a number, length, or percentage. A unitless number is
+            often useful because it scales with the element's font size.
+          </p>
+
+          <pre><code>p {
+  line-height: 1.6;
+}</code></pre>
+
+          <p>
+            For example, a value of <code>1.6</code> means the line height is
+            1.6 times the element's font size.
+          </p>
+
+          <h3>Different Elements, Different Spacing</h3>
+
+          <p>
+            Headings usually need tighter line spacing, while paragraphs can
+            benefit from more space between lines.
+          </p>
+
+          <pre><code>h1 {
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The heading used in the dashboard was styled earlier in
+            <a href="#main-content">Main Content</a>.
+          </p>
+        </section>
+
+        <section id="text-hierarchy">
+          <h2>Text Hierarchy</h2>
+
+          <p>
+            Not all text on a page should look equally important. Text hierarchy
+            helps users quickly understand what is important, what supports it,
+            and what is secondary information.
+          </p>
+
+          <p>
+            You can create hierarchy by changing properties such as
+            <code>font-size</code>, <code>font-weight</code>, and
+            <code>line-height</code>.
+          </p>
+
+          <h3>Creating Hierarchy</h3>
+
+          <p>
+            A large, bold heading can draw attention to the main idea, while
+            smaller and lighter text can provide supporting information.
+          </p>
+
+          <pre><code>.dashboardHeader h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.statCard {
+  font-size: 0.85rem;
+  color: #d1d5db;
+}</code></pre>
+
+          <h3>Keep It Consistent</h3>
+
+          <p>
+            Similar types of content should generally use similar styles. This
+            makes the interface easier to scan and prevents every piece of text
+            from competing for attention.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard heading was styled earlier in
+            <a href="#main-content">Main Content</a>, while the text inside the
+            statistic cards was styled in the same section.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 05. LAYOUT SYSTEMS -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="layout-systems">
+        <section id="display">
+          <h2>Display</h2>
+
+          <p>
+            The <code>display</code> property controls how an element behaves in
+            the layout. It is one of the most important CSS properties for
+            arranging elements on a page.
+          </p>
+
+          <h3>Block Elements</h3>
+
+          <p>
+            A block element starts on a new line and normally takes up the
+            available width.
+          </p>
+
+          <pre><code>.dashboard-section {
+  display: block;
+}</code></pre>
+
+          <h3>Inline Elements</h3>
+
+          <p>
+            An inline element stays within the same line as surrounding content.
+          </p>
+
+          <pre><code>span {
+  display: inline;
+}</code></pre>
+
+          <h3>Flex</h3>
+
+          <p>
+            Setting <code>display: flex</code> turns an element into a flex
+            container. Its children can then be arranged and aligned using
+            Flexbox properties.
+          </p>
+
+          <pre><code>.quickActionsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}</code></pre>
+
+          <h3>Grid</h3>
+
+          <p>
+            Setting <code>display: grid</code> creates a grid layout. Grid is
+            useful when you want to organize content into columns and rows.
+          </p>
+
+          <pre><code>.main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}</code></pre>
+
+          <h3>Choosing a Display Type</h3>
+
+          <p>
+            Use the display type that matches the layout you are trying to
+            create. Block and inline are useful for normal document flow, while
+            Flexbox and Grid give you more control over arranging elements.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's main layout already uses Grid. You can see how it
+            was introduced in <a href="#page-layout">Page Layout</a>.
+          </p>
+        </section>
+
+        <section id="flexbox">
+          <h2>Flexbox</h2>
+
+          <p>
+            Flexbox is a CSS layout system designed to arrange elements in a row
+            or column. It makes it easier to control the direction, alignment,
+            spacing, and size of elements inside a container.
+          </p>
+
+          <h3>Creating a Flex Container</h3>
+
+          <p>
+            Start by setting <code>display: flex</code> on the parent element.
+          </p>
+
+          <pre><code>.quickActionsContainer {
+  display: flex;
+}</code></pre>
+
+          <h3>Direction</h3>
+
+          <p>
+            By default, Flexbox places items in a row. You can change this with
+            <code>flex-direction</code>.
+          </p>
+
+          <pre><code>.container {
+  display: flex;
+  flex-direction: column;
+}</code></pre>
+
+          <h3>Aligning Items</h3>
+
+          <p>
+            <code>justify-content</code> controls how items are distributed
+            along the main axis, while <code>align-items</code> controls their
+            alignment across the other axis.
+          </p>
+
+          <pre><code>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+
+          <h3>Spacing Between Items</h3>
+
+          <p>
+            Use <code>gap</code> to create consistent space between flex items.
+          </p>
+
+          <pre><code>.container {
+  display: flex;
+  gap: 16px;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            Flexbox is already used throughout the dashboard. For example,
+            <code>.quickActionsContainer</code> uses Flexbox to arrange the
+            action buttons, while <code>.headerRight</code> uses it to align the
+            controls in the header.
+          </p>
+
+          <pre><code>.quickActionsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}</code></pre>
+
+          <p>
+            You can also see Flexbox being used in the sidebar links in
+            <a href="#the-sidebar">The Sidebar</a>.
+          </p>
+        </section>
+
+        <section id="grid">
+          <h2>Grid</h2>
+
+          <p>
+            CSS Grid is a layout system designed for arranging elements in rows
+            and columns. It is especially useful when you need control over the
+            overall structure of a page.
+          </p>
+
+          <h3>Creating a Grid</h3>
+
+          <p>
+            Start by setting <code>display: grid</code> on the parent element.
+          </p>
+
+          <pre><code>.container {
+  display: grid;
+}</code></pre>
+
+          <h3>Creating Columns</h3>
+
+          <p>
+            Use <code>grid-template-columns</code> to define the columns in your
+            grid.
+          </p>
+
+          <pre><code>.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}</code></pre>
+
+          <p>
+            The <code>1fr</code> unit means that the column takes a share of the
+            available space.
+          </p>
+
+          <h3>Creating Rows</h3>
+
+          <p>
+            You can also define the size of rows with
+            <code>grid-template-rows</code>.
+          </p>
+
+          <pre><code>.container {
+  display: grid;
+  grid-template-rows: 80px 1fr;
+}</code></pre>
+
+          <h3>Spacing</h3>
+
+          <p>Use <code>gap</code> to create space between grid items.</p>
+
+          <pre><code>.container {
+  display: grid;
+  gap: 16px;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard uses Grid for its main page structure. The
+            <code>.main</code> element creates a 260px sidebar column and gives
+            the remaining space to the main content.
+          </p>
+
+          <pre><code>.main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}</code></pre>
+
+          <p>
+            You can see where this layout was introduced in
+            <a href="#page-layout">Page Layout</a>.
+          </p>
+        </section>
+
+        <section id="positioning">
+          <h2>Positioning</h2>
+
+          <p>
+            The <code>position</code> property controls how an element is
+            positioned in relation to the page or another element.
+          </p>
+
+          <h3>Relative Positioning</h3>
+
+          <p>
+            <code>position: relative</code> keeps an element in the normal
+            document flow while allowing you to move it using properties such as
+            <code>top</code>, <code>right</code>, <code>bottom</code>, and
+            <code>left</code>.
+          </p>
+
+          <pre><code>.element {
+  position: relative;
+  top: 10px;
+}</code></pre>
+
+          <h3>Absolute Positioning</h3>
+
+          <p>
+            <code>position: absolute</code> removes an element from the normal
+            flow and positions it relative to its nearest positioned ancestor.
+          </p>
+
+          <pre><code>.container {
+  position: relative;
+}
+
+.element {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</code></pre>
+
+          <h3>Fixed Positioning</h3>
+
+          <p>
+            <code>position: fixed</code> positions an element relative to the
+            viewport. It stays in place when the page is scrolled.
+          </p>
+
+          <pre><code>.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+}</code></pre>
+
+          <h3>Sticky Positioning</h3>
+
+          <p>
+            <code>position: sticky</code> behaves like a normally positioned
+            element until it reaches a specified position while scrolling.
+          </p>
+
+          <pre><code>.contentHeader {
+  position: sticky;
+  top: 0;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard already uses positioning for its header and search
+            icon. You can see these examples in
+            <a href="#main-content">Main Content</a>.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 06. DESIGNING COMPONENTS -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="designing-components">
+        <section id="cards">
+          <h2>Cards</h2>
+
+          <p>
+            Cards are commonly used to group related information into separate
+            visual containers. They can make dashboards easier to scan by giving
+            each piece of information its own space.
+          </p>
+
+          <p>
+            The dashboard already uses cards for its statistics. Each statistic
+            is placed inside an element with the <code>statCard</code> class.
+          </p>
+
+          <h3>Creating a Card</h3>
+
+          <p>
+            A simple card can be created by giving it a background, border,
+            padding, and rounded corners.
+          </p>
+
+          <pre><code>.statCard {
+  background: #111;
+  border: 1px solid #2c2f36;
+  border-radius: 8px;
+  padding: 8px 16px;
+}</code></pre>
+
+          <h3>Adding Spacing</h3>
+
+          <p>
+            Cards often contain multiple elements, so use spacing to keep their
+            content readable and organized.
+          </p>
+
+          <pre><code>.card {
+  padding: 16px;
+  gap: 8px;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's statistics cards were styled earlier in
+            <a href="#main-content">Main Content</a>.
+          </p>
+
+          <pre><code>.statCard {
+  background: #111;
+  border: 1px solid #2c2f36;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}</code></pre>
+        </section>
+
+        <section id="buttons">
+          <h2>Buttons</h2>
+
+          <p>
+            Buttons allow users to perform actions. CSS can control their
+            appearance, size, spacing, borders, colors, and interaction states.
+          </p>
+
+          <h3>Styling a Button</h3>
+
+          <p>
+            A basic button can be styled with a background, border, padding,
+            text color, and rounded corners.
+          </p>
+
+          <pre><code>.actionBtn {
+  background: #222;
+  border: 1px solid #333;
+  padding: 8px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}</code></pre>
+
+          <h3>Aligning Button Content</h3>
+
+          <p>
+            Flexbox can be used to control the position of icons and text inside
+            a button.
+          </p>
+
+          <pre><code>.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}</code></pre>
+
+          <h3>Button States</h3>
+
+          <p>
+            You can change a button's appearance when the user interacts with
+            it. For example, <code>:hover</code> applies styles when the pointer
+            is over the button.
+          </p>
+
+          <pre><code>.actionBtn:hover {
+  background: #fff;
+  color: #000;
+}</code></pre>
+
+          <p>
+            The <code>:active</code> pseudo-class can be used while the button
+            is being pressed.
+          </p>
+
+          <pre><code>button:active {
+  transform: scale(0.95);
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's buttons were styled earlier in
+            <a href="#main-content">Main Content</a>.
+          </p>
+
+          <pre><code>.actionBtn {
+  background: #222;
+  border: 1px solid #333;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.756rem;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}</code></pre>
+        </section>
+
+        <section id="inputs">
+          <h2>Inputs</h2>
+
+          <p>
+            Inputs allow users to enter information. CSS can control their size,
+            spacing, borders, colors, and appearance when they are focused.
+          </p>
+
+          <h3>Styling an Input</h3>
+
+          <p>
+            You can use properties such as <code>background-color</code>,
+            <code>color</code>, <code>border</code>, <code>padding</code>, and
+            <code>border-radius</code> to style an input.
+          </p>
+
+          <pre><code>.mainSearchInput {
+  background-color: #1c1c1c;
+  color: #fff;
+  border: 1px solid #2c2f36;
+  border-radius: 50px;
+  padding: 16px;
+}</code></pre>
+
+          <h3>Controlling the Size</h3>
+
+          <p>
+            Width and height can be used to control how much space the input
+            takes.
+          </p>
+
+          <pre><code>.mainSearchInput {
+  width: 100%;
+  height: 20px;
+}</code></pre>
+
+          <h3>Removing the Default Outline</h3>
+
+          <p>
+            Browsers usually add an outline when an input receives focus. You
+            can remove it with <code>outline: none</code> and create your own
+            focus style instead.
+          </p>
+
+          <pre><code>.mainSearchInput {
+  outline: none;
+}</code></pre>
+
+          <h3>Positioning Content Inside an Input</h3>
+
+          <p>
+            When an input has an icon beside it, the input can have extra left
+            padding so the text does not overlap the icon.
+          </p>
+
+          <pre><code>.mainSearchInput {
+  padding-left: 40px;
+}
+
+.searchInputWrapper {
+  position: relative;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's search input was styled earlier in
+            <a href="#main-content">Main Content</a>.
+          </p>
+
+          <pre><code>.mainSearchInput {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  outline: none;
+  border: 1px solid #2c2f36;
+  font-size: 1rem;
+  transition: 0.3s;
+  resize: none;
+  border-radius: 50px;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  max-width: none;
+  padding: 16px;
+  padding-right: 0;
+  padding-left: 40px;
+}</code></pre>
+        </section>
+
+        <section id="navigation">
+          <h2>Navigation</h2>
+
+          <p>
+            Navigation helps users move between different parts of a website or
+            application. CSS can make navigation links easier to identify,
+            organize, and interact with.
+          </p>
+
+          <h3>Styling Navigation Links</h3>
+
+          <p>
+            You can style navigation links like any other element. Change their
+            color, spacing, background, and other properties to match the
+            design.
+          </p>
+
+          <pre><code>.sidebar a {
+  color: #f5f7fa;
+  padding: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+}</code></pre>
+
+          <h3>Active Links</h3>
+
+          <p>
+            Navigation often needs to show which page or section the user is
+            currently viewing. A class such as <code>active</code> can be used
+            for this.
+          </p>
+
+          <pre><code>.sidebar a.active {
+  color: #afccff;
+  background: #222;
+}</code></pre>
+
+          <h3>Organizing Navigation</h3>
+
+          <p>
+            Navigation links can be arranged with Flexbox. This allows you to
+            control their alignment and the space between icons and text.
+          </p>
+
+          <pre><code>.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's navigation was styled earlier in
+            <a href="#the-sidebar">The Sidebar</a>.
+          </p>
+        </section>
+
+        <section id="states">
+          <h2>States</h2>
+
+          <p>
+            Interactive elements can look different depending on what the user
+            is doing with them. These different appearances are called states.
+          </p>
+
+          <p>
+            CSS pseudo-classes allow you to style an element when it is being
+            hovered, focused, pressed, or otherwise interacted with.
+          </p>
+
+          <h3>Hover</h3>
+
+          <p>
+            The <code>:hover</code> pseudo-class applies styles when the user's
+            pointer is over an element.
+          </p>
+
+          <pre><code>.actionBtn:hover {
+  background: #fff;
+  color: #000;
+}</code></pre>
+
+          <h3>Focus</h3>
+
+          <p>
+            The <code>:focus</code> pseudo-class applies styles when an element
+            has keyboard or input focus.
+          </p>
+
+          <pre><code>.mainSearchInput:focus {
+  border-color: #555;
+}</code></pre>
+
+          <h3>Active</h3>
+
+          <p>
+            The <code>:active</code> pseudo-class applies while an element is
+            being pressed.
+          </p>
+
+          <pre><code>button:active {
+  transform: scale(0.95);
+}</code></pre>
+
+          <h3>Disabled</h3>
+
+          <p>
+            You can also style elements that have been disabled using the
+            <code>:disabled</code> pseudo-class.
+          </p>
+
+          <pre><code>button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard already uses interactive states for its action
+            buttons. The hover and active styles were introduced in
+            <a href="#buttons">Buttons</a>.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-07.png"
+                alt="Dashboard showing interactive button states"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+            <p class="checkpoint-caption">
+              Step 7, States: Interactive elements respond visually to user
+              actions.
+            </p>
+            <p class="checkpoint-caption">
+              This image was AI generated and might not be accurate.
+            </p>
+            <p class="img-credit">Credit: AI generated illustration</p>
+          </div>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 07. RESPONSIVE DESIGN -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="responsive-design">
+        <section id="responsive-thinking">
+          <h2>Responsive Thinking</h2>
+
+          <p>
+            A web page can be viewed on many different screen sizes. A layout
+            that looks good on a large desktop screen may not work well on a
+            phone. Responsive design means creating layouts that adapt to the
+            available space.
+          </p>
+
+          <h3>Think About the Available Space</h3>
+
+          <p>
+            Before writing responsive CSS, look at how your elements behave when
+            the available space becomes smaller. Ask yourself what should
+            shrink, what should wrap, and what may need to move to another
+            position.
+          </p>
+
+          <h3>Flexible vs. Fixed Sizes</h3>
+
+          <p>
+            Fixed sizes can be useful when an element needs a specific size, but
+            relying on them everywhere can make a layout difficult to use on
+            smaller screens.
+          </p>
+
+          <pre><code>.sidebar {
+  width: 260px;
+}
+
+.mainContent {
+  width: 100%;
+}</code></pre>
+
+          <p>
+            Flexible units such as percentages, <code>fr</code>, and
+            <code>max-width</code> allow elements to make better use of the
+            available space.
+          </p>
+
+          <pre><code>.searchInputWrapper {
+  width: 100%;
+  max-width: 800px;
+}</code></pre>
+
+          <h3>Let Content Adapt</h3>
+
+          <p>
+            Flexbox and Grid can help content adapt naturally as the available
+            space changes.
+          </p>
+
+          <pre><code>.dashboardStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}</code></pre>
+
+          <p>
+            Here, <code>flex-wrap</code> allows the cards to move onto another
+            line when there is no longer enough horizontal space.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard already uses flexible sizing and wrapping in
+            <a href="#containers">Containers</a> and
+            <a href="#flexbox">Flexbox</a>.
+          </p>
+        </section>
+
+        <section id="media-queries">
+          <h2>Media Queries</h2>
+
+          <p>
+            Media queries allow you to apply different CSS rules depending on
+            the characteristics of the device or viewport. They are commonly
+            used to adapt a layout for smaller screens.
+          </p>
+
+          <h3>Changing the Layout on Mobile</h3>
+
+          <p>
+            Our dashboard uses a two-column Grid layout on larger screens. On a
+            smaller screen, the sidebar takes up too much space, so we can
+            change the Grid to a single column and hide the sidebar.
+          </p>
+
+          <pre><code>@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}</code></pre>
+
+          <p>
+            The <code>@media</code> rule tells the browser to apply these styles
+            only when the viewport is 768 pixels wide or smaller.
+          </p>
+
+          <h3>What Happens to the Sidebar?</h3>
+
+          <p>
+            The sidebar is hidden on mobile because there is not enough
+            horizontal space for both the sidebar and the main content.
+          </p>
+
+          <p>
+            However, hiding the sidebar also hides its navigation links. Making
+            the navigation accessible through a mobile menu would require
+            JavaScript to open and close the sidebar.
+          </p>
+
+          <p>
+            JavaScript is not covered in this CSS documentation, so we will only
+            handle the responsive layout with CSS.
+          </p>
+
+          <h3>Checkpoint: Mobile Layout</h3>
+
+          <p>
+            Resize the page to a mobile-sized viewport and compare your result
+            with the checkpoint below. The sidebar should be hidden and the main
+            content should use the available width.
+          </p>
+
+          <div class="screenshot-checkpoint">
+            <div class="checkpoint-image-wrap">
+              <img
+                src="recources/screenshots/step-08.png"
+                alt="Dashboard adapted to a mobile layout with the sidebar hidden"
+                class="screenshot checkpoint-img"
+              />
+            </div>
+            <p class="checkpoint-caption">
+              Mobile Layout: The sidebar is hidden and the main content expands
+              to use the available screen width.
+            </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
+          </div>
+
+          <h3>Reference</h3>
+
+          <p>
+            The original two-column Grid layout was created in
+            <a href="#page-layout">Page Layout</a>.
+          </p>
+        </section>
+
+        <section id="mobile-layouts">
+          <h2>Mobile Layouts</h2>
+
+          <p>
+            A responsive layout should not only fit on a smaller screen. Its
+            elements should also remain readable and usable when the available
+            space changes.
+          </p>
+
+          <h3>Changing the Grid</h3>
+
+          <p>
+            On larger screens, the dashboard uses two Grid columns: one for the
+            sidebar and one for the main content. On mobile, the layout changes
+            to a single column.
+          </p>
+
+          <pre><code>@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}</code></pre>
+
+          <h3>Making Content Fit</h3>
+
+          <p>
+            Elements that have a fixed width on larger screens may need to
+            become flexible on smaller screens. Using <code>width: 100%</code>,
+            <code>max-width</code>, wrapping, and flexible Grid or Flexbox
+            layouts can help content fit the available space.
+          </p>
+
+          <pre><code>.searchInputWrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.dashboardStats {
+  display: flex;
+  flex-wrap: wrap;
+}</code></pre>
+
+          <h3>Mobile Navigation</h3>
+
+          <p>
+            In our example, the sidebar is hidden on mobile. A real application
+            would normally provide another way to access those navigation links,
+            such as a mobile menu.
+          </p>
+
+          <p>
+            Creating an interactive mobile menu requires JavaScript to open and
+            close the navigation. JavaScript is outside the scope of this CSS
+            documentation, so we will only handle the layout change with CSS.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The mobile Grid change was introduced in
+            <a href="#media-queries">Media Queries</a>.
+          </p>
+        </section>
+
+        <section id="responsive-components">
+          <h2>Responsive Components</h2>
+
+          <p>
+            Responsive design is not only about changing the overall page
+            layout. Individual components also need to remain usable when the
+            available space changes.
+          </p>
+
+          <h3>Components Should Adapt</h3>
+
+          <p>
+            A component should be able to use the space available to it instead
+            of assuming that the screen will always have the same width.
+          </p>
+
+          <pre><code>.searchInputWrapper {
+  width: 100%;
+  max-width: 800px;
+}</code></pre>
+
+          <p>
+            This allows the search area to shrink when the screen becomes
+            smaller while preventing it from becoming unnecessarily wide on
+            larger screens.
+          </p>
+
+          <h3>Let Items Wrap</h3>
+
+          <p>
+            Components containing multiple items can also adapt by allowing
+            those items to move onto another line when there is not enough
+            space.
+          </p>
+
+          <pre><code>.dashboardStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}</code></pre>
+
+          <h3>Combining Responsive Techniques</h3>
+
+          <p>
+            Responsive components often use several CSS techniques together. In
+            this dashboard, flexible widths and wrapping are used alongside the
+            media query that changes the main Grid layout on smaller screens.
+          </p>
+
+          <p>
+            The media query controls the major layout change, while the
+            components themselves use flexible sizing and wrapping to adapt
+            within that layout.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The main responsive layout is covered in
+            <a href="#media-queries">Media Queries</a>, and the behavior of the
+            dashboard on smaller screens is explained in
+            <a href="#mobile-layouts">Mobile Layouts</a>.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 08. MAKING IT FEEL GOOD -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="making-it-feel-good">
+        <section id="colors">
+          <h2>Colors</h2>
+
+          <p>
+            Color affects how a website feels and helps users understand what is
+            important. A good color system should be consistent rather than
+            using a different color for every element.
+          </p>
+
+          <h3>Scybud's Dark Foundation</h3>
+
+          <p>
+            Pure black is a signature of Scybud-developed interfaces. Using
+            <code>#000</code> as the main background creates a strong, minimal
+            foundation that keeps the interface focused on the content and gives
+            Scybud products a recognizable visual identity.
+          </p>
+
+          <pre><code>html,
+body {
+  background: #000;
+  color: #f5f5f5;
+}</code></pre>
+
+          <p>
+            From there, slightly lighter shades can be used to separate elements
+            without breaking the dark visual system.
+          </p>
+
+          <pre><code>.sidebar {
+  background: #111;
+}
+
+.statCard {
+  background: #111;
+}
+
+.actionBtn {
+  background: #222;
+}</code></pre>
+
+          <h3>Text Colors</h3>
+
+          <p>
+            Text does not always need to be pure white. Using softer shades for
+            secondary content creates a visual hierarchy while keeping the
+            interface readable.
+          </p>
+
+          <pre><code>body {
+  color: #f5f5f5;
+}
+
+.statCard {
+  color: #d1d5db;
+}</code></pre>
+
+          <h3>Accent Colors</h3>
+
+          <p>
+            Accent colors can be used to draw attention to important states or
+            elements without overwhelming the interface.
+          </p>
+
+          <pre><code>.sidebar a.active {
+  color: #afccff;
+  background: #222;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            The main dark color foundation was introduced in
+            <a href="#your-first-css">Your First CSS</a>. The sidebar and
+            component colors were then introduced throughout
+            <a href="#the-sidebar">The Sidebar</a> and
+            <a href="#main-content">Main Content</a>.
+          </p>
+        </section>
+
+        <section id="borders">
+          <h2>Borders</h2>
+
+          <p>
+            Borders can separate elements, define their boundaries, and add
+            structure to an interface. They can also be used subtly so that
+            elements are separated without feeling visually heavy.
+          </p>
+
+          <h3>Adding a Border</h3>
+
+          <p>
+            The <code>border</code> property lets you define the width, style,
+            and color of a border.
+          </p>
+
+          <pre><code>.statCard {
+  border: 1px solid #2c2f36;
+}</code></pre>
+
+          <h3>Rounded Borders</h3>
+
+          <p>
+            Use <code>border-radius</code> to round the corners of an element.
+          </p>
+
+          <pre><code>.statCard {
+  border-radius: 8px;
+}</code></pre>
+
+          <h3>Using Subtle Borders</h3>
+
+          <p>
+            In a dark interface, a bright border can become distracting. Using a
+            darker shade creates separation while keeping the interface calm.
+          </p>
+
+          <pre><code>.sidebar {
+  border-right: 1px solid #2a2a2a;
+}
+
+.mainContent {
+  border-left: 1px solid #333;
+}</code></pre>
+
+          <h3>Reference</h3>
+
+          <p>
+            Borders were introduced earlier when building the
+            <a href="#the-sidebar">Sidebar</a> and
+            <a href="#main-content">Main Content</a>.
+          </p>
+        </section>
+
+        <section id="shadows">
+          <h2>Shadows</h2>
+
+          <p>
+            The <code>box-shadow</code> property can create depth by making an
+            element appear to sit above or below other elements. Shadows are
+            commonly used around cards, buttons, menus, and other components.
+          </p>
+
+          <h3>Creating a Shadow</h3>
+
+          <p>
+            A basic shadow can be created by defining its horizontal offset,
+            vertical offset, blur, and color.
+          </p>
+
+          <pre><code>.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}</code></pre>
+
+          <h3>Shadows on Dark Backgrounds</h3>
+
+          <p>
+            Shadows do not always make an element appear more separated. On a
+            pure black background, a typical dark shadow has very little visible
+            effect because there is already almost no darker color to display.
+          </p>
+
+          <p>
+            A lighter or gray shadow can create a visible glow-like effect, but
+            that changes the visual character of the component. For this reason,
+            shadows were intentionally not used in the dashboard. The dashboard
+            instead relies on backgrounds, borders, and spacing to separate its
+            elements.
+          </p>
+
+          <h3>Shadows in ScyLearn</h3>
+
+          <p>
+            Shadows are still useful when the design calls for them. For
+            example, shadows are used on the ScyLearn website's home page to
+            create depth and visual separation.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            Compare the use of shadows on the
+            <a href="#colors">Colors</a> and
+            <a href="#borders">Borders</a> sections with the dashboard. The
+            dashboard uses borders and different background shades instead of
+            shadows to create separation.
+          </p>
+        </section>
+
+        <section id="transitions">
+          <h2>Transitions</h2>
+
+          <p>
+            Transitions make changes between CSS states happen smoothly instead
+            of changing instantly. They are especially useful for interactive
+            elements such as buttons and navigation links.
+          </p>
+
+          <h3>Adding a Transition</h3>
+
+          <p>
+            The <code>transition</code> property tells the browser which changes
+            should happen gradually and how long they should take.
+          </p>
+
+          <pre><code>.actionBtn {
+  transition: 0.2s;
+}</code></pre>
+
+          <p>
+            Now, when another state changes a property such as the background or
+            text color, the change happens over 0.2 seconds.
+          </p>
+
+          <h3>Combining Transitions with States</h3>
+
+          <p>
+            Transitions are commonly used together with pseudo-classes such as
+            <code>:hover</code>.
+          </p>
+
+          <pre><code>.actionBtn {
+  background: #222;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.actionBtn:hover {
+  background: #fff;
+  color: #000;
+}</code></pre>
+
+          <p>
+            Without the transition, the colors would change immediately when the
+            pointer moves over the button.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard already uses transitions on its buttons and other
+            interactive elements. You can see these examples in
+            <a href="#buttons">Buttons</a> and <a href="#states">States</a>.
+          </p>
+
+          <pre><code>.actionBtn {
+  transition: 0.2s;
+}
+
+button:active {
+  transform: scale(0.95);
+}</code></pre>
+        </section>
+
+        <section id="hover-and-focus">
+          <h2>Hover and Focus</h2>
+
+          <p>
+            Hover and focus deserve a closer look on their own, even though
+            <code>:hover</code> and <code>:focus</code> were already introduced
+            in <a href="#states">States</a>. Together they tell two different
+            kinds of users what is interactive: a mouse user sees hover, a
+            keyboard user sees focus.
+          </p>
+
+          <h3>Hover Is for Pointer Users Only</h3>
+
+          <p>
+            <code>:hover</code> only fires for someone using a mouse or
+            trackpad. Someone navigating with a keyboard, a screen reader, or a
+            touchscreen never triggers it. If a hover style is the only way an
+            interactive element communicates its state, keyboard and touch
+            users miss that information entirely.
+          </p>
+
+          <h3>Focus Is for Keyboard Users</h3>
+
+          <p>
+            <code>:focus</code> fires when an element receives keyboard focus,
+            usually by tabbing to it. Every interactive element should have a
+            visible focus style, not just a hover style.
+          </p>
+
+          <pre><code>.actionBtn:hover,
+.actionBtn:focus-visible {
+  background: #fff;
+  color: #000;
+}</code></pre>
+
+          <p>
+            <code>:focus-visible</code> applies a focus style only when the
+            browser thinks it is relevant, such as during keyboard navigation,
+            rather than every time an element is clicked.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's hover and active button styles were introduced in
+            <a href="#buttons">Buttons</a>, and the full set of interactive
+            states is covered in <a href="#states">States</a>.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 09. CSS ARCHITECTURE -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="css-architecture">
+        <section id="selectors">
+          <h2>Selectors</h2>
+
+          <p>
+            A selector is how a CSS rule chooses which elements to style.
+            Everything you have written so far, from <code>body</code> to
+            <code>.sidebar a.active</code>, is a selector.
+          </p>
+
+          <h3>Type Selectors</h3>
+
+          <p>A type selector targets every element of a given tag.</p>
+
+          <pre><code>h1 {
+  font-weight: 700;
+}</code></pre>
+
+          <h3>Class Selectors</h3>
+
+          <p>
+            A class selector, written with a leading dot, targets any element
+            carrying that class. Most of the dashboard's styling uses class
+            selectors.
+          </p>
+
+          <pre><code>.statCard {
+  background: #111;
+}</code></pre>
+
+          <h3>ID Selectors</h3>
+
+          <p>
+            An ID selector, written with a leading <code>#</code>, targets a
+            single element with that ID.
+          </p>
+
+          <pre><code>#notificationToggleBtn {
+  position: relative;
+}</code></pre>
+
+          <h3>Combining Selectors</h3>
+
+          <p>
+            Selectors can be combined to target an element based on where it
+            sits in the document. A descendant selector, written as two
+            selectors separated by a space, targets an element nested inside
+            another.
+          </p>
+
+          <pre><code>.sidebar a {
+  color: #f5f7fa;
+}</code></pre>
+
+          <p>
+            This only targets <code>&lt;a&gt;</code> elements inside
+            <code>.sidebar</code>, not every link on the page.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            You have already used type, class, and descendant selectors
+            throughout this documentation, including in
+            <a href="#the-sidebar">The Sidebar</a>.
+          </p>
+        </section>
+
+        <section id="specificity">
+          <h2>Specificity</h2>
+
+          <p>
+            When more than one rule targets the same element, specificity is
+            part of how the browser decides which one wins. It was first
+            introduced in <a href="#the-cascade">The Cascade</a>; this section
+            looks at it more closely.
+          </p>
+
+          <h3>Roughly, From Weakest to Strongest</h3>
+
+          <ul>
+            <li>Type selectors, such as <code>h1</code> or <code>a</code>.</li>
+            <li>
+              Class selectors, such as <code>.statCard</code>, and attribute or
+              pseudo-class selectors.
+            </li>
+            <li>ID selectors, such as <code>#notificationToggleBtn</code>.</li>
+          </ul>
+
+          <p>
+            A selector built from more of these, or from stronger ones, beats a
+            selector built from fewer or weaker ones, regardless of the order
+            the rules appear in the stylesheet.
+          </p>
+
+          <pre><code>.sidebar a {
+  color: #f5f7fa;
+}
+
+.sidebar a.active {
+  color: #fff;
+}</code></pre>
+
+          <p>
+            <code>.sidebar a.active</code> combines two classes with a type
+            selector, so it is more specific than <code>.sidebar a</code> and
+            wins for the active link even if it were written first.
+          </p>
+
+          <h3>Keep Specificity Low When You Can</h3>
+
+          <p>
+            Selectors that are more specific than they need to be make a
+            stylesheet harder to override later. Reaching for an ID selector or
+            stacking several classes together should usually be a deliberate
+            choice, not a default habit.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The cascading behaviour behind specificity was introduced in
+            <a href="#the-cascade">The Cascade</a>.
+          </p>
+        </section>
+
+        <section id="variables">
+          <h2>Variables</h2>
+
+          <p>
+            CSS variables allow you to store values that can be reused
+            throughout your stylesheet. They are useful when the same colors,
+            spacing values, or other properties are used in multiple places.
+          </p>
+
+          <h3>Creating a Variable</h3>
+
+          <p>
+            CSS variables are usually defined inside <code>:root</code> so they
+            can be accessed throughout the page.
+          </p>
+
+          <pre><code>:root {
+  --background: #000;
+  --surface: #111;
+  --border: #2c2f36;
+}</code></pre>
+
+          <h3>Using a Variable</h3>
+
+          <p>Use the <code>var()</code> function to use a variable.</p>
+
+          <pre><code>body {
+  background: var(--background);
+}
+
+.statCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+}</code></pre>
+
+          <h3>Why Use Variables?</h3>
+
+          <p>
+            Variables make it easier to keep a design consistent and change
+            values later. Instead of finding every occurrence of a color and
+            changing it individually, you can change the variable once.
+          </p>
+
+          <pre><code>:root {
+  --surface: #111;
+}</code></pre>
+
+          <p>
+            Every element using <code>var(--surface)</code> will then use the
+            updated value.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard uses repeated values for its dark backgrounds,
+            borders, spacing, and text colors. These are good candidates for CSS
+            variables when developing a larger project.
+          </p>
+
+          <p>
+            For the spacing values already used in the project, see
+            <a href="#spacing">Spacing</a>.
+          </p>
+
+          <h3>Variables in Scybud UI</h3>
+
+          <p>
+            Scybud UI uses CSS variables to define shared design values such as
+            colors, spacing, typography, and other interface properties. This
+            makes it possible for Scybud-developed products to share a similar
+            visual language without every project having to define the same
+            values from scratch.
+          </p>
+
+          <pre><code>:root {
+  --color-background: #000;
+  --color-surface: #111;
+  --color-border: #2c2f36;
+}</code></pre>
+
+          <p>
+            When Scybud-developed interfaces use the same variables and design
+            values, different products can have their own layouts and components
+            while still feeling like they belong to the same ecosystem. This
+            makes development faster and keeps the design consistent projects.
+          </p>
+
+          <p>
+            This is one of the ideas behind
+            <a href="https://ui.scybud.com">Scybud UI</a>: creating reusable
+            design foundations that can be shared across Scybud projects.
+          </p>
+        </section>
+
+        <section id="reusable-styles">
+          <h2>Reusable Styles</h2>
+          <p>
+            As your CSS grows, you will often find yourself styling the same
+            type of element more than once. Instead of writing the same CSS
+            repeatedly, you can create reusable styles and apply them wherever
+            they are needed.
+          </p>
+          <h3>Why Reuse Styles?</h3>
+          <p>
+            Reusable styles make your CSS easier to maintain and help keep your
+            interface consistent. If several elements should look the same, they
+            can share the same class instead of each having its own separate
+            rules.
+          </p>
+          <p>
+            For example, the dashboard uses the <code>.actionBtn</code> class
+            for buttons that share the same basic appearance:
+          </p>
+          <pre><code>
+ .actionBtn {
+    background: #222;
+    border: 1px solid #333; 
+    width: 100%; 
+    padding: 8px; 
+    font-size: 0.756rem; 
+    border-radius: 8px; 
+    color: #fff; 
+    cursor: pointer; 
+    transition: 0.2s; 
+    display: flex; 
+    align-items: center; 
+    gap: 4px; 
+    font-weight: 600; 
+  }
+</code></pre>
+          <p>
+            Any button with the <code>actionBtn</code> class can use these
+            styles:
+          </p>
+          <pre><code>
+&lt;button class="actionBtn"&gt;Create Workspace&lt;/button&gt; 
+&lt;button class="actionBtn"&gt;Add Task&lt;/button&gt;
+</code></pre>
+          <p>
+            Both buttons can share the same foundation while still having their
+            own content or additional classes when needed.
+          </p>
+          <h3>Combining Reusable Styles</h3>
+          <p>
+            A reusable class does not mean every element must look exactly the
+            same. You can combine a shared class with a more specific class to
+            change only what is different.
+          </p>
+          <pre><code>
+      &lt;button class="actionBtn notificationBtn"&gt; Notifications &lt;/button&gt;
+          </code></pre>
+          <p>
+            The <code>actionBtn</code> class provides the shared button styling,
+            while <code>notificationBtn</code> can add styles specific to the
+            notification button.
+          </p>
+          <p>
+            You can also use a more specific selector when several elements
+            share a class but need a different layout in one particular area.
+            The dashboard uses this approach for its quick actions:
+          </p>
+          <pre><code>.quickActionsContainer .actionBtn { 
+              width: 170px; 
+              display: flex; 
+              justify-content: center; 
+              align-items: center; 
+            }</code></pre>
+          <p>
+            The buttons keep the reusable <code>.actionBtn</code> foundation
+            while the quick-action container changes how those buttons behave in
+            that section.
+          </p>
+          <h3>Reusable Styles Across Scybud</h3>
+          <p>
+            Reusable styles become even more useful when building multiple
+            products. Shared classes, variables, and design values can create a
+            consistent foundation across Scybud-developed interfaces while
+            allowing each product to have its own components and layout.
+          </p>
+          <p>
+            Again,
+            <a href="https://ui.scybud.com">Scybud UI</a> reuses this idea:
+            reusable design foundations can be shared instead of recreated for
+            every project.
+          </p>
+        </section>
+
+        <section id="organizing-css">
+          <h2>Organizing CSS</h2>
+          <p>
+            As a project grows, having reusable styles is useful, but you also
+            need a clear way to organize those styles. Well-organized CSS makes
+            it easier to find, understand, and update the rules you have already
+            written.
+          </p>
+          <h3>Group Related Styles</h3>
+          <p>
+            Keep styles that belong to the same part of the interface together.
+            For example, sidebar styles can be kept together instead of being
+            scattered throughout the stylesheet.
+          </p>
+          <pre><code>.sidebar { 
+   background: #111; 
+   border-right: 1px solid #2a2a2a; 
+   padding: 20px 8px; 
+   } 
+
+.sidebar a {
+   background: none; 
+   border: none; 
+   width: 100%; 
+   padding: 8px; 
+   border-radius: 8px; 
+  } 
+.sidebar a.active { 
+  color: #afccff; 
+  background: #222; 
+}</code></pre>
+          <p>
+            This makes it easier to understand how the sidebar itself, its
+            links, and its active state are connected.
+          </p>
+          <h3>Keep a Clear Order</h3>
+          <p>
+            A stylesheet can become difficult to work with when rules are placed
+            randomly. A useful approach is to move through the interface in a
+            logical order: start with the page foundation, then layout,
+            components, states, and responsive rules.
+          </p>
+          <p>
+            For example, the dashboard CSS can move from the main page layout to
+            the sidebar, main content, dashboard sections, cards, search, and
+            buttons. Related rules stay close together so you can find them
+            quickly when making changes.
+          </p>
+          <h3>Organizing Larger Projects</h3>
+          <p>
+            As a project becomes larger, you can separate your CSS into
+            different files based on their purpose. For example:
+          </p>
+          <pre><code>css/ 
+  base.css 
+  layout.css 
+  components.css 
+  responsive.css</code></pre>
+          <p>
+            The exact structure can change depending on the project. The
+            important part is that you can quickly identify where a particular
+            style belongs.
+          </p>
+          <p>
+            Good CSS organization is not about following one perfect structure.
+            It is about making your stylesheet predictable, reusable, and easy
+            to maintain as the project grows.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 10. REAL PROJECT -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="real-project">
+        <section id="choose-your-project">
+          <h2>Choose Your Project</h2>
+
+          <p>
+            Every lesson so far has taught you one piece of CSS at a time. The
+            Real Project is where those pieces come together. You will pick one
+            page from a real Scybud product and rebuild it yourself, using only
+            HTML and CSS.
+          </p>
+
+          <p>
+            This is not a copy exercise. You are not being asked to match the
+            original page pixel for pixel. You are being asked to look at a real
+            interface, understand what it needs to do, and make your own
+            layout, spacing, and styling decisions to get there. Two students
+            working from the same brief should end up with two different pages.
+          </p>
+
+          <p>You will build one page, not the whole product.</p>
+
+          <p>Pick one of the three pages below to work from.</p>
+
+          <div class="real-project-catalog" role="list">
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/canvart-collections-placeholder.png"
+                  alt="Screenshot placeholder of the CanvArt Collections page showing artwork grouped into collection cards"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: CanvArt, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">CanvArt</p>
+                <h3 class="project-card-page">Collections</h3>
+                <p class="project-card-description">
+                  Browse artwork organized into collections, with image cards, a
+                  heading structure, and navigation that holds up on a phone.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Foundational</p>
+                <a class="project-card-link" href="#project-canvart-collections"
+                  >View project brief</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/zefeed-tech-history-placeholder.png"
+                  alt="Screenshot placeholder of the ZeFeed Tech History page showing a sidebar, a featured history entry, and supporting entries"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">ZeFeed</p>
+                <h3 class="project-card-page">Tech History</h3>
+                <p class="project-card-description">
+                  Rebuild a page that surfaces one featured history entry
+                  alongside a browsable sidebar of others, with a clear reading
+                  hierarchy.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Intermediate</p>
+                <a class="project-card-link" href="#project-zefeed-tech-history"
+                  >View project brief</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/zefeed-explore-tech-placeholder.png"
+                  alt="Screenshot placeholder of the ZeFeed Explore Tech page showing a grid of article cards with images and metadata"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">ZeFeed</p>
+                <h3 class="project-card-page">Explore Tech</h3>
+                <p class="project-card-description">
+                  Design a scannable grid of tech articles, each with an image,
+                  a title, a description, and metadata like source and date.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Intermediate</p>
+                <a class="project-card-link" href="#project-zefeed-explore-tech"
+                  >View project brief</a
+                >
+              </div>
+            </article>
+          </div>
+
+          <h3>Before you start building</h3>
+          <p>
+            Open the real product and spend a few minutes with the actual page
+            you picked. Scroll it, resize your browser window, notice what
+            stays put and what moves. You are not studying it to copy it. You
+            are studying it to understand what the page is for and what it
+            needs to communicate. Your version can look completely different
+            and still succeed at the same job.
+          </p>
+        </section>
+
+        <section id="project-briefs">
+          <h2>Project Briefs</h2>
+
+          <div class="project-brief" id="project-canvart-collections">
+            <h3>CanvArt, Collections</h3>
+            <p>
+              CanvArt is a dark mode art sharing platform. The Collections page
+              groups artwork into named collections that a visitor can browse.
+              Your job is to design a page that presents these collections
+              clearly and invites someone to look closer.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A page that displays a set of collections, each represented by
+              artwork. It should include some form of navigation, a heading
+              structure that makes the page easy to scan, and a layout that
+              adapts from a wide screen down to a phone.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                The page must include a navigation element, even if it only
+                links to a couple of other pages.
+              </li>
+              <li>Collections must be presented as image based cards.</li>
+              <li>
+                The card layout must be responsive: it should reflow sensibly
+                at a smaller viewport width, not just shrink.
+              </li>
+              <li>
+                Each card needs at least one heading and enough supporting text
+                to explain what the collection is.
+              </li>
+              <li>
+                At least one button or link must have a distinct hover and
+                focus state.
+              </li>
+              <li>
+                Spacing between cards, between sections, and around text should
+                feel deliberate, not accidental.
+              </li>
+              <li>
+                The page should read comfortably on both a small and a large
+                screen without horizontal scrolling.
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-brief" id="project-zefeed-tech-history">
+            <h3>ZeFeed, Tech History</h3>
+            <p>
+              ZeFeed's Tech History page surfaces facts and moments from the
+              history of technology. One entry is featured, and others are
+              browsable alongside it. Your job is to design a page that makes
+              one piece of content feel primary while keeping the rest easy to
+              reach.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A page with a sidebar or secondary navigation area for browsing
+              entries, a large featured entry that reads as the main content,
+              and additional secondary content nearby. The featured entry
+              should look and feel more important than the rest, through your
+              layout and typography choices, not just a label that says so.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                The page must contain a sidebar or comparable secondary
+                navigation area, separate from the main content.
+              </li>
+              <li>
+                One entry must be presented as a large, featured card that is
+                clearly the visual focus of the page.
+              </li>
+              <li>
+                The page must use a heading hierarchy that reflects the actual
+                structure of the content.
+              </li>
+              <li>
+                Navigation controls, tabs, or list items in the sidebar need a
+                visible state for the one that's currently active or hovered.
+              </li>
+              <li>
+                The layout must adapt for smaller screens. A sidebar sitting
+                beside content on desktop should not stay side by side on a
+                phone if it hurts readability.
+              </li>
+              <li>Text content should have a clear reading order and comfortable line lengths.</li>
+            </ul>
+          </div>
+
+          <div class="project-brief" id="project-zefeed-explore-tech">
+            <h3>ZeFeed, Explore Tech</h3>
+            <p>
+              ZeFeed's Explore Tech page is a feed of tech articles someone can
+              browse before deciding what to read in full. Your job is to
+              design a grid of articles that is easy to scan and pleasant to
+              browse.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A responsive grid of article cards. Each card should include an
+              image, a title, a short description, and metadata such as a
+              source or a date. The grid should hold up whether there are three
+              articles on screen or thirty.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                Articles must be presented in a responsive grid, with the
+                number of columns adjusting to the available width.
+              </li>
+              <li>
+                Every card needs an image, a title, a short description, and at
+                least one piece of metadata.
+              </li>
+              <li>
+                Metadata should be visually distinct from the title and
+                description, not just smaller text in the same style.
+              </li>
+              <li>
+                Cards need to stay readable and well spaced at both narrow and
+                wide viewport widths.
+              </li>
+              <li>
+                Card titles or images should have a hover or focus state, since
+                these are meant to be clickable in a real product.
+              </li>
+              <li>Long titles or descriptions should not break the card's layout.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="make-it-your-own">
+          <h2>Make It Your Own</h2>
+          <p>
+            The requirements describe what the page needs to do. They do not
+            tell you which CSS properties to reach for. Whether you use Grid or
+            Flexbox for the layout, how you handle the breakpoints, what your
+            spacing scale looks like, and what the page actually looks like are
+            your decisions. Two students can meet every requirement above and
+            produce pages that don't resemble each other at all. That's the
+            point.
+          </p>
+        </section>
+
+        <section id="project-checklist">
+          <h2>Final Checklist</h2>
+          <ul>
+            <li>
+              I explored the real page and understand what it's for, not just
+              what it looks like.
+            </li>
+            <li>My page meets every requirement in the brief I chose.</li>
+            <li>
+              My layout adapts cleanly from a wide screen down to a phone
+              width, with no horizontal scrolling or broken content.
+            </li>
+            <li>
+              My headings reflect the actual structure of the page, not just
+              visual size.
+            </li>
+            <li>
+              Interactive elements have states for hover and focus, not just a
+              default look.
+            </li>
+            <li>
+              My spacing is consistent across similar elements, not tweaked
+              case by case.
+            </li>
+            <li>
+              The page still looks and works fine if I resize the browser
+              slowly, not just at one or two fixed widths.
+            </li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 11. CONCLUSION -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="conclusion">
+        <section>
+          <h2>Conclusion</h2>
+
+          <p>
+            You started this documentation with a plain, unstyled HTML file.
+            Since then, you have given it a layout, a color system, typography,
+            spacing, components, and responsive behaviour, and then applied all
+            of that again on a page you chose yourself.
+          </p>
+
+          <h3>What you've learned</h3>
+          <ul>
+            <li>How the cascade and specificity decide which CSS rule applies.</li>
+            <li>
+              How to structure a page with Grid and Flexbox, and when to reach
+              for each.
+            </li>
+            <li>
+              How to build components, cards, buttons, inputs, and navigation,
+              that hold up on their own.
+            </li>
+            <li>
+              How to give interactive elements clear hover, focus, and active
+              states.
+            </li>
+            <li>
+              How to make a layout and its components respond to different
+              screen sizes.
+            </li>
+            <li>
+              How to keep a growing stylesheet organized with variables,
+              reusable classes, and a predictable structure.
+            </li>
+          </ul>
+
+          <h3>Where to go from here</h3>
+          <p>
+            The fastest way to keep improving is the same way you learned CSS
+            in this documentation: find a real interface, and build it. Revisit
+            your Real Project page in a few weeks and see what you would do
+            differently now. Look at interfaces you use every day and ask what
+            layout system, spacing, or states they're relying on.
+          </p>
+          <p>
+            If you want one more challenge before you go, the
+            <a href="#challenge-brief">Design Challenge</a> that follows this
+            section is open ended and does not come with a reference design.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 12. FINAL CHALLENGE -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="challenge">
+        <section id="challenge-brief">
+          <h2>Design Challenge</h2>
+
+          <p>[Introduce the challenge.]</p>
+
+          <div class="placeholder">[CHALLENGE SCREENSHOT / REFERENCE]</div>
+
+          <h3>Design Instructions</h3>
+
+          <ul>
+            <li>[Requirement]</li>
+            <li>[Requirement]</li>
+            <li>[Requirement]</li>
+          </ul>
+        </section>
+
+        <section id="challenge-html">
+          <h2>Starter HTML</h2>
+
+          <pre><code>
+<!-- Starter HTML -->
+      </code></pre>
+        </section>
+
+        <section id="inspiration">
+          <h2>Get Inspired</h2>
+
+          <p>[Explain the gallery/inspiration philosophy.]</p>
+
+          <div class="placeholder">[DESIGN GALLERY]</div>
+        </section>
+
+        <section id="submit-your-work">
+          <h2>Submit Your Work</h2>
+
+          <p>[Submission instructions.]</p>
+
+          <h3>Include</h3>
+
+          <ul>
+            <li>Name</li>
+            <li>Email</li>
+            <li>Repository URL</li>
+            <li>Live demo URL</li>
+            <li>What you changed</li>
+          </ul>
+
+          <p>
+            [Explain that selected designs may potentially be considered for use
+            in Scybud products.]
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer>&copy; Scybud</footer>
+
+    <!-- Copy HTML button behaviour for the "Understanding the HTML" section -->
+    <script>
+      (function () {
+        var copyBtn = document.getElementById("copyHtmlBtn");
+        var codeBlock = document.getElementById("starterHtmlCode");
+        if (!copyBtn || !codeBlock) return;
+
+        function resetLabel() {
+          copyBtn.textContent = "Copy HTML";
+        }
+
+        function fallbackCopy(text, onSuccess, onFail) {
+          var textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "absolute";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+
+          try {
+            var successful = document.execCommand("copy");
+            if (successful) {
+              onSuccess();
+            } else {
+              onFail();
+            }
+          } catch (err) {
+            onFail();
+          }
+
+          document.body.removeChild(textarea);
+        }
+
+        copyBtn.addEventListener("click", function () {
+          var htmlText = codeBlock.textContent;
+
+          function showCopied() {
+            copyBtn.textContent = "Copied!";
+            setTimeout(resetLabel, 1500);
+          }
+
+          function showFailed() {
+            copyBtn.textContent = "Copy failed";
+            setTimeout(resetLabel, 1500);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(htmlText)
+              .then(showCopied, function () {
+                fallbackCopy(htmlText, showCopied, showFailed);
+              });
+          } else {
+            fallbackCopy(htmlText, showCopied, showFailed);
+          }
+        });
+      })();
+    </script>
+
+    <script type="module" src="/js/sidebar.js"></script>
+    <script type="module" src="/js/main.js"></script>
+  </body>
 </html>
