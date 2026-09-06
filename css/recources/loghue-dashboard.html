@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | LogHue</title>
+
+  <style>
+html,
+body {
+  margin: 0;
+  background: #000;
+  color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: #111;
+  border-right: 1px solid #2a2a2a;
+    padding: 20px 8px;
+
+}
+
+.sidebar a {
+    background: none;
+  border: none;
+  width: 100%;
+  padding: 8px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  color: #f5f7fa;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  color: #afccff;
+  background: #222;
+}
+
+.sidebarNav {
+    flex: 1;
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+    margin-bottom: auto;
+    overflow-x: hidden;
+}
+.sidebarNav span.navIcon {
+        width: auto;
+        display: block;
+    }
+
+ .mainContent {
+  border-left: 1px solid #333;
+  padding: 0 8px 8px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.contentHeader {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-bottom: 16px;
+  padding: 4px 12px;
+  overflow-x: auto;
+}
+
+.menuBtn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#notificationToggleBtn {
+  position: relative;
+}
+
+.dashboard-section {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 1s ease, opacity 0.5s ease;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 10px auto;
+}
+
+.sectionHeader {
+  margin-bottom: var(--space-md);
+}
+
+.dashboardHeader h1 {
+  font-size: 1.875rem;
+}
+
+.dashboardStats {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.statCard {
+  background: #111;
+  border: 1px solid #2c2f36;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #d1d5db;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.searchBarContainer {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  margin: 0 16px;
+  position: relative;
+}
+
+.searchInputWrapper {
+    overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 24px auto 0;
+    border-radius: 50px;
+
+}
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 18px;
+}
+.mainSearchInput {
+  background-color: #1c1c1c;
+  color: #ffffff;
+  outline: none;
+  border: 1px solid #2c2f36;
+  font-size: 1rem;
+  transition: 0.3s;
+  resize: none;
+  border-radius: 50px;
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  max-width: none;
+  padding: 16px;
+  padding-right: 0;
+  padding-left: 40px;
+}
+
+.quickActionsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.actionBtn {
+     background: #222;
+  border: 1px solid #333;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.756rem;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+}
+.actionBtn:hover {
+    background: #fff;
+    color: #000;
+}
+.quickActionsContainer .actionBtn {
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.quickActionsContainer .actionBtn:hover {
+color: #fff;
+background: #111;
+}
+button {
+    transform: scale(0.95);
+}
+
+@media (max-width: 800px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
+  </style>
+</head>
+
+<body>
+
+  <main class="main">
+    
+    <aside class="sidebar" id="sidebarContainer">
+
+      <nav class="sidebarNav" aria-label="Main navigation">
+
+        <a href="#" class="active">
+          <span class="navIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M3 10L12 3L21 10V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M9 21V14H15V21" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+          </span>
+          Dashboard
+        </a>
+
+        <a href="#">
+          <span class="navIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M4 4H16L20 8V20H4V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M16 4V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+          </span>
+          Notes
+        </a>
+
+        <a href="#">
+          <span class="navIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <!-- outer log sheet -->
+          <path d="M5 4H19V20H5V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          <!-- log lines -->
+          <path d="M8 8H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M8 12H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M8 16H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+          </span>
+          Tasks
+        </a>
+
+        <a href="#">
+          <span class="navIcon">
+           <svg width="18" height="18" viewBox="0 0 64 64" fill="none">
+          <!-- Outer frame (blue) -->
+          <rect x="8" y="8" width="48" height="48" rx="10" stroke="#3B82F6" stroke-width="2"></rect>
+
+          <!-- Corner brackets -->
+          <path d="M18 24 V18 H24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M46 24 V18 H40" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M18 40 V46 H24" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M46 40 V46 H40" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"></path>
+
+          <!-- Document -->
+          <path d="M26 22 H36 L42 28 V42 H26 Z" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path>
+          <path d="M36 22 V28 H42" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"></path>
+
+          <!-- Text lines -->
+          <line x1="28" y1="32" x2="40" y2="32" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="28" y1="36" x2="38" y2="36" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
+          <line x1="28" y1="40" x2="36" y2="40" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></line>
+
+          <!-- Scan beam -->
+          <rect x="24" y="30" width="24" height="4" rx="2" fill="#3B82F6" opacity="0.35"></rect>
+
+          <!-- Yellow accent -->
+          <circle cx="38" cy="26" r="2" fill="#FACC15"></circle>
+        </svg>
+          </span>
+          ScanHue
+        </a>
+
+        <a href="#">
+          <span class="navIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z" stroke="currentColor" stroke-width="2"></path>
+          <path d="M19.4 15A1.65 1.65 0 0 0 20 14V10A1.65 1.65 0 0 0 19.4 9L17.5 7.5L18 5.5L16 4L14 5L12 4L10 5L8 4L6 5.5L6.5 7.5L4.6 9A1.65 1.65 0 0 0 4 10V14A1.65 1.65 0 0 0 4.6 15L6.5 16.5L6 18.5L8 20L10 19L12 20L14 19L16 20L18 18.5L17.5 16.5L19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+          </span>
+          Settings
+        </a>
+
+      </nav>
+
+      <div class="sidebarHeading">Workspaces</div>
+
+      <nav class="sidebarNav" aria-label="Workspace navigation">
+
+        <a href="#">
+          <span class="navIcon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M3 7H21V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M3 7L5 3H11L13 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+          </span>
+          My Workspaces
+        </a>
+
+        <a href="#">
+          <span class="navIcon">
+           <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"></circle>
+          <path d="M12 7V12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+          </span>
+          Archive
+        </a>
+
+      </nav>
+
+      <button class="actionBtn">
+        <span>+</span>
+        Create Workspace
+      </button>
+
+      <div class="profile">
+
+        <div class="avatar"></div>
+
+        <div class="profileInfo">
+          <span class="profileName">Abdulroqib Oladipo</span>
+          <span class="profilePlan">Pro Plan</span>
+        </div>
+
+        <button class="signOut" aria-label="Sign out">
+          ⇥
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <article class="mainContent" id="dashboardContent">
+
+      <div class="contentHeader">
+
+        <button
+          class="menuBtn"
+          id="toggleSidebar"
+          aria-label="Toggle Sidebar"
+        >
+          ☰
+        </button>
+
+        <div class="headerRight">
+
+          <button
+            class="notificationBtn actionBtn"
+            id="notificationToggleBtn"
+            title="Notifications"
+            aria-label="Notifications"
+          >
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c1.1 0 2-.9 2-2H10c0 1.1.9 2 2 2z"></path>
+                <path d="M18 16v-5a6 6 0 10-12 0v5l-1.5 2h15L18 16z"></path>
+              </svg>
+
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div id="modalContainer"></div>
+      <div id="actionsMessage"></div>
+      <div id="infoDisplay"></div>
+
+
+      <div id="notificationsContainer" hidden>
+
+        <h2>Notifications</h2>
+
+        <ul id="notificationsList">
+          <p class="placeholderText">Nothing here yet.</p>
+        </ul>
+
+      </div>
+
+
+      <section class="dashboard-section">
+
+        <div class="sectionHeader dashboardHeader">
+
+          <h1 id="dashboardGreeting">
+            Welcome back, Abdulroqib
+          </h1>
+
+        </div>
+
+
+        <div class="dashboardStats" id="dashboardStats">
+
+          <div class="statCard">
+            <strong>3</strong>
+            <span>open tasks</span>
+          </div>
+
+          <div class="statCard">
+            <strong>33</strong>
+            <span>notes</span>
+          </div>
+
+          <div class="statCard">
+            <strong>5</strong>
+            <span>workspaces</span>
+          </div>
+
+        </div>
+
+
+        <div class="searchBarContainer">
+
+          <div class="searchInputWrapper">
+
+           <svg class="searchIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"></circle>
+      <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+
+            <textarea
+              name="mainSearchInput"
+              id="mainSearchInput"
+              class="inputField mainSearchInput"
+              rows="1"
+              placeholder="Search tasks..."
+            ></textarea>
+
+          </div>
+
+
+          <div class="quickActionsContainer">
+
+            <button
+              class="actionBtn createWorkspaceOpen"
+              aria-label="New Workspace"
+            >
+              + New Workspace
+            </button>
+
+            <button
+              type="button"
+              class="actionBtn createNoteBtn"
+              aria-label="Create Note"
+            >
+              + Create Note
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="MainSearchResults"
+          class="mainSearchResultContainer"
+        ></div>
+
+      </section>
+
+    </article>
+
+  </main>
+
+</body>
+</html>
