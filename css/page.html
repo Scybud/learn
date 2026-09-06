@@ -306,16 +306,26 @@
         <summary>Real Project</summary>
         <ul>
           <li>
-            <a class="nav-link" href="#build-the-full-interface"
-              >Build the Full Interface</a
+            <a class="nav-link" href="#choose-your-project"
+              >Choose Your Project</a
             >
           </li>
           <li>
-            <a class="nav-link" href="#refine-the-design">Refine the Design</a>
+            <a class="nav-link" href="#project-briefs">Project Briefs</a>
           </li>
           <li>
-            <a class="nav-link" href="#review-the-result">Review the Result</a>
+            <a class="nav-link" href="#make-it-your-own">Make It Your Own</a>
           </li>
+          <li>
+            <a class="nav-link" href="#project-checklist">Final Checklist</a>
+          </li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Conclusion</summary>
+        <ul>
+          <li><a class="nav-link" href="#conclusion">Conclusion</a></li>
         </ul>
       </details>
 
@@ -1276,6 +1286,7 @@ body {
               Note: You might see the home icon first. Dont worry, it didnt show
               here becuase it was commented out for better screenshot coverage.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
         </section>
 
@@ -1393,6 +1404,7 @@ h1 {
               Cascade checkpoint: the page does not need a new visual change
               here. You are learning how CSS decides which rule takes effect.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h4>Review Questions</h4>
@@ -1508,6 +1520,7 @@ grid-template-columns: 260px 1fr;
               Step 2, Page Layout: the sidebar and main content now sit beside
               each other.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h3>Experiment</h3>
@@ -1746,6 +1759,7 @@ gap: 4px;
               Step 3, The Sidebar: navigation items are now styled, aligned, and
               spaced inside the sidebar.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h3>Experiment</h3>
@@ -2167,6 +2181,7 @@ gap: 4px;
               Step 4, Main Content: the dashboard now has its main content
               structure, statistics, search area, and action buttons.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h3>Experiment</h3>
@@ -2342,6 +2357,7 @@ gap: 4px;
               Step 5, Containers: the dashboard uses width limits to keep its
               content organized and readable.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h3>Experiment</h3>
@@ -2509,6 +2525,7 @@ gap: 4px;
               Step 6, Spacing: The dashboard now has consistent and comfortable
               spacing between its elements.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
         </section>
       </article>
@@ -3433,6 +3450,7 @@ p {
             <p class="checkpoint-caption">
               This image was AI generated and might not be accurate.
             </p>
+            <p class="img-credit">Credit: AI generated illustration</p>
           </div>
         </section>
       </article>
@@ -3585,6 +3603,7 @@ p {
               Mobile Layout: The sidebar is hidden and the main content expands
               to use the available screen width.
             </p>
+            <p class="img-credit">Credit: Abdulroqib Oladipo</p>
           </div>
 
           <h3>Reference</h3>
@@ -3987,6 +4006,56 @@ button:active {
   transform: scale(0.95);
 }</code></pre>
         </section>
+
+        <section id="hover-and-focus">
+          <h2>Hover and Focus</h2>
+
+          <p>
+            Hover and focus deserve a closer look on their own, even though
+            <code>:hover</code> and <code>:focus</code> were already introduced
+            in <a href="#states">States</a>. Together they tell two different
+            kinds of users what is interactive: a mouse user sees hover, a
+            keyboard user sees focus.
+          </p>
+
+          <h3>Hover Is for Pointer Users Only</h3>
+
+          <p>
+            <code>:hover</code> only fires for someone using a mouse or
+            trackpad. Someone navigating with a keyboard, a screen reader, or a
+            touchscreen never triggers it. If a hover style is the only way an
+            interactive element communicates its state, keyboard and touch
+            users miss that information entirely.
+          </p>
+
+          <h3>Focus Is for Keyboard Users</h3>
+
+          <p>
+            <code>:focus</code> fires when an element receives keyboard focus,
+            usually by tabbing to it. Every interactive element should have a
+            visible focus style, not just a hover style.
+          </p>
+
+          <pre><code>.actionBtn:hover,
+.actionBtn:focus-visible {
+  background: #fff;
+  color: #000;
+}</code></pre>
+
+          <p>
+            <code>:focus-visible</code> applies a focus style only when the
+            browser thinks it is relevant, such as during keyboard navigation,
+            rather than every time an element is clicked.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The dashboard's hover and active button styles were introduced in
+            <a href="#buttons">Buttons</a>, and the full set of interactive
+            states is covered in <a href="#states">States</a>.
+          </p>
+        </section>
       </article>
 
       <!-- ================================================= -->
@@ -3994,6 +4063,131 @@ button:active {
       <!-- ================================================= -->
 
       <article class="main-section" id="css-architecture">
+        <section id="selectors">
+          <h2>Selectors</h2>
+
+          <p>
+            A selector is how a CSS rule chooses which elements to style.
+            Everything you have written so far, from <code>body</code> to
+            <code>.sidebar a.active</code>, is a selector.
+          </p>
+
+          <h3>Type Selectors</h3>
+
+          <p>A type selector targets every element of a given tag.</p>
+
+          <pre><code>h1 {
+  font-weight: 700;
+}</code></pre>
+
+          <h3>Class Selectors</h3>
+
+          <p>
+            A class selector, written with a leading dot, targets any element
+            carrying that class. Most of the dashboard's styling uses class
+            selectors.
+          </p>
+
+          <pre><code>.statCard {
+  background: #111;
+}</code></pre>
+
+          <h3>ID Selectors</h3>
+
+          <p>
+            An ID selector, written with a leading <code>#</code>, targets a
+            single element with that ID.
+          </p>
+
+          <pre><code>#notificationToggleBtn {
+  position: relative;
+}</code></pre>
+
+          <h3>Combining Selectors</h3>
+
+          <p>
+            Selectors can be combined to target an element based on where it
+            sits in the document. A descendant selector, written as two
+            selectors separated by a space, targets an element nested inside
+            another.
+          </p>
+
+          <pre><code>.sidebar a {
+  color: #f5f7fa;
+}</code></pre>
+
+          <p>
+            This only targets <code>&lt;a&gt;</code> elements inside
+            <code>.sidebar</code>, not every link on the page.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            You have already used type, class, and descendant selectors
+            throughout this documentation, including in
+            <a href="#the-sidebar">The Sidebar</a>.
+          </p>
+        </section>
+
+        <section id="specificity">
+          <h2>Specificity</h2>
+
+          <p>
+            When more than one rule targets the same element, specificity is
+            part of how the browser decides which one wins. It was first
+            introduced in <a href="#the-cascade">The Cascade</a>; this section
+            looks at it more closely.
+          </p>
+
+          <h3>Roughly, From Weakest to Strongest</h3>
+
+          <ul>
+            <li>Type selectors, such as <code>h1</code> or <code>a</code>.</li>
+            <li>
+              Class selectors, such as <code>.statCard</code>, and attribute or
+              pseudo-class selectors.
+            </li>
+            <li>ID selectors, such as <code>#notificationToggleBtn</code>.</li>
+          </ul>
+
+          <p>
+            A selector built from more of these, or from stronger ones, beats a
+            selector built from fewer or weaker ones, regardless of the order
+            the rules appear in the stylesheet.
+          </p>
+
+          <pre><code>.sidebar a {
+  color: #f5f7fa;
+}
+
+.sidebar a.active {
+  color: #fff;
+}</code></pre>
+
+          <p>
+            <code>.sidebar a.active</code> combines two classes with a type
+            selector, so it is more specific than <code>.sidebar a</code> and
+            wins for the active link even if it were written first.
+          </p>
+
+          <h3>Keep Specificity Low When You Can</h3>
+
+          <p>
+            Selectors that are more specific than they need to be make a
+            stylesheet harder to override later. Reaching for an ID selector or
+            stacking several classes together should usually be a deliberate
+            choice, not a default habit.
+          </p>
+
+          <h3>Reference</h3>
+
+          <p>
+            The cascading behaviour behind specificity was introduced in
+            <a href="#the-cascade">The Cascade</a>.
+          </p>
+        </section>
+
         <section id="variables">
           <h2>Variables</h2>
 
@@ -4090,6 +4284,7 @@ button:active {
         </section>
 
         <section id="reusable-styles">
+          <h2>Reusable Styles</h2>
           <p>
             As your CSS grows, you will often find yourself styling the same
             type of element more than once. Instead of writing the same CSS
@@ -4257,29 +4452,354 @@ button:active {
       <!-- ================================================= -->
 
       <article class="main-section" id="real-project">
-        <section id="build-the-full-interface">
-          <h2>Build the Full Interface</h2>
+        <section id="choose-your-project">
+          <h2>Choose Your Project</h2>
 
-          <p>[Project introduction.]</p>
+          <p>
+            Every lesson so far has taught you one piece of CSS at a time. The
+            Real Project is where those pieces come together. You will pick one
+            page from a real Scybud product and rebuild it yourself, using only
+            HTML and CSS.
+          </p>
 
-          <div class="placeholder">[PROJECT PREVIEW]</div>
+          <p>
+            This is not a copy exercise. You are not being asked to match the
+            original page pixel for pixel. You are being asked to look at a real
+            interface, understand what it needs to do, and make your own
+            layout, spacing, and styling decisions to get there. Two students
+            working from the same brief should end up with two different pages.
+          </p>
 
-          <h3>Starter Files</h3>
+          <p>You will build one page, not the whole product.</p>
 
-          <p>[Link to HTML / repository / starter files.]</p>
+          <p>Pick one of the three pages below to work from.</p>
 
-          <h3>Instructions</h3>
+          <div class="real-project-catalog" role="list">
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/canvart-collections-placeholder.png"
+                  alt="Screenshot placeholder of the CanvArt Collections page showing artwork grouped into collection cards"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: CanvArt, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">CanvArt</p>
+                <h3 class="project-card-page">Collections</h3>
+                <p class="project-card-description">
+                  Browse artwork organized into collections, with image cards, a
+                  heading structure, and navigation that holds up on a phone.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Foundational</p>
+                <a class="project-card-link" href="#project-canvart-collections"
+                  >View project brief</a
+                >
+              </div>
+            </article>
 
-          <ol>
-            <li>[Instruction]</li>
-            <li>[Instruction]</li>
-            <li>[Instruction]</li>
-          </ol>
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/zefeed-tech-history-placeholder.png"
+                  alt="Screenshot placeholder of the ZeFeed Tech History page showing a sidebar, a featured history entry, and supporting entries"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">ZeFeed</p>
+                <h3 class="project-card-page">Tech History</h3>
+                <p class="project-card-description">
+                  Rebuild a page that surfaces one featured history entry
+                  alongside a browsable sidebar of others, with a clear reading
+                  hierarchy.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Intermediate</p>
+                <a class="project-card-link" href="#project-zefeed-tech-history"
+                  >View project brief</a
+                >
+              </div>
+            </article>
+
+            <article class="project-card" role="listitem">
+              <div class="project-card-media">
+                <img
+                  src="/assets/real-project/zefeed-explore-tech-placeholder.png"
+                  alt="Screenshot placeholder of the ZeFeed Explore Tech page showing a grid of article cards with images and metadata"
+                  loading="lazy"
+                />
+                <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
+              </div>
+              <div class="project-card-body">
+                <p class="project-card-product">ZeFeed</p>
+                <h3 class="project-card-page">Explore Tech</h3>
+                <p class="project-card-description">
+                  Design a scannable grid of tech articles, each with an image,
+                  a title, a description, and metadata like source and date.
+                </p>
+                <p class="project-card-difficulty">Difficulty: Intermediate</p>
+                <a class="project-card-link" href="#project-zefeed-explore-tech"
+                  >View project brief</a
+                >
+              </div>
+            </article>
+          </div>
+
+          <h3>Before you start building</h3>
+          <p>
+            Open the real product and spend a few minutes with the actual page
+            you picked. Scroll it, resize your browser window, notice what
+            stays put and what moves. You are not studying it to copy it. You
+            are studying it to understand what the page is for and what it
+            needs to communicate. Your version can look completely different
+            and still succeed at the same job.
+          </p>
+        </section>
+
+        <section id="project-briefs">
+          <h2>Project Briefs</h2>
+
+          <div class="project-brief" id="project-canvart-collections">
+            <h3>CanvArt, Collections</h3>
+            <p>
+              CanvArt is a dark mode art sharing platform. The Collections page
+              groups artwork into named collections that a visitor can browse.
+              Your job is to design a page that presents these collections
+              clearly and invites someone to look closer.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A page that displays a set of collections, each represented by
+              artwork. It should include some form of navigation, a heading
+              structure that makes the page easy to scan, and a layout that
+              adapts from a wide screen down to a phone.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                The page must include a navigation element, even if it only
+                links to a couple of other pages.
+              </li>
+              <li>Collections must be presented as image based cards.</li>
+              <li>
+                The card layout must be responsive: it should reflow sensibly
+                at a smaller viewport width, not just shrink.
+              </li>
+              <li>
+                Each card needs at least one heading and enough supporting text
+                to explain what the collection is.
+              </li>
+              <li>
+                At least one button or link must have a distinct hover and
+                focus state.
+              </li>
+              <li>
+                Spacing between cards, between sections, and around text should
+                feel deliberate, not accidental.
+              </li>
+              <li>
+                The page should read comfortably on both a small and a large
+                screen without horizontal scrolling.
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-brief" id="project-zefeed-tech-history">
+            <h3>ZeFeed, Tech History</h3>
+            <p>
+              ZeFeed's Tech History page surfaces facts and moments from the
+              history of technology. One entry is featured, and others are
+              browsable alongside it. Your job is to design a page that makes
+              one piece of content feel primary while keeping the rest easy to
+              reach.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A page with a sidebar or secondary navigation area for browsing
+              entries, a large featured entry that reads as the main content,
+              and additional secondary content nearby. The featured entry
+              should look and feel more important than the rest, through your
+              layout and typography choices, not just a label that says so.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                The page must contain a sidebar or comparable secondary
+                navigation area, separate from the main content.
+              </li>
+              <li>
+                One entry must be presented as a large, featured card that is
+                clearly the visual focus of the page.
+              </li>
+              <li>
+                The page must use a heading hierarchy that reflects the actual
+                structure of the content.
+              </li>
+              <li>
+                Navigation controls, tabs, or list items in the sidebar need a
+                visible state for the one that's currently active or hovered.
+              </li>
+              <li>
+                The layout must adapt for smaller screens. A sidebar sitting
+                beside content on desktop should not stay side by side on a
+                phone if it hurts readability.
+              </li>
+              <li>Text content should have a clear reading order and comfortable line lengths.</li>
+            </ul>
+          </div>
+
+          <div class="project-brief" id="project-zefeed-explore-tech">
+            <h3>ZeFeed, Explore Tech</h3>
+            <p>
+              ZeFeed's Explore Tech page is a feed of tech articles someone can
+              browse before deciding what to read in full. Your job is to
+              design a grid of articles that is easy to scan and pleasant to
+              browse.
+            </p>
+
+            <h4>What you're building</h4>
+            <p>
+              A responsive grid of article cards. Each card should include an
+              image, a title, a short description, and metadata such as a
+              source or a date. The grid should hold up whether there are three
+              articles on screen or thirty.
+            </p>
+
+            <h4>Requirements</h4>
+            <ul>
+              <li>
+                Articles must be presented in a responsive grid, with the
+                number of columns adjusting to the available width.
+              </li>
+              <li>
+                Every card needs an image, a title, a short description, and at
+                least one piece of metadata.
+              </li>
+              <li>
+                Metadata should be visually distinct from the title and
+                description, not just smaller text in the same style.
+              </li>
+              <li>
+                Cards need to stay readable and well spaced at both narrow and
+                wide viewport widths.
+              </li>
+              <li>
+                Card titles or images should have a hover or focus state, since
+                these are meant to be clickable in a real product.
+              </li>
+              <li>Long titles or descriptions should not break the card's layout.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="make-it-your-own">
+          <h2>Make It Your Own</h2>
+          <p>
+            The requirements describe what the page needs to do. They do not
+            tell you which CSS properties to reach for. Whether you use Grid or
+            Flexbox for the layout, how you handle the breakpoints, what your
+            spacing scale looks like, and what the page actually looks like are
+            your decisions. Two students can meet every requirement above and
+            produce pages that don't resemble each other at all. That's the
+            point.
+          </p>
+        </section>
+
+        <section id="project-checklist">
+          <h2>Final Checklist</h2>
+          <ul>
+            <li>
+              I explored the real page and understand what it's for, not just
+              what it looks like.
+            </li>
+            <li>My page meets every requirement in the brief I chose.</li>
+            <li>
+              My layout adapts cleanly from a wide screen down to a phone
+              width, with no horizontal scrolling or broken content.
+            </li>
+            <li>
+              My headings reflect the actual structure of the page, not just
+              visual size.
+            </li>
+            <li>
+              Interactive elements have states for hover and focus, not just a
+              default look.
+            </li>
+            <li>
+              My spacing is consistent across similar elements, not tweaked
+              case by case.
+            </li>
+            <li>
+              The page still looks and works fine if I resize the browser
+              slowly, not just at one or two fixed widths.
+            </li>
+          </ul>
         </section>
       </article>
 
       <!-- ================================================= -->
-      <!-- 11. FINAL CHALLENGE -->
+      <!-- 11. CONCLUSION -->
+      <!-- ================================================= -->
+
+      <article class="main-section" id="conclusion">
+        <section>
+          <h2>Conclusion</h2>
+
+          <p>
+            You started this documentation with a plain, unstyled HTML file.
+            Since then, you have given it a layout, a color system, typography,
+            spacing, components, and responsive behaviour, and then applied all
+            of that again on a page you chose yourself.
+          </p>
+
+          <h3>What you've learned</h3>
+          <ul>
+            <li>How the cascade and specificity decide which CSS rule applies.</li>
+            <li>
+              How to structure a page with Grid and Flexbox, and when to reach
+              for each.
+            </li>
+            <li>
+              How to build components, cards, buttons, inputs, and navigation,
+              that hold up on their own.
+            </li>
+            <li>
+              How to give interactive elements clear hover, focus, and active
+              states.
+            </li>
+            <li>
+              How to make a layout and its components respond to different
+              screen sizes.
+            </li>
+            <li>
+              How to keep a growing stylesheet organized with variables,
+              reusable classes, and a predictable structure.
+            </li>
+          </ul>
+
+          <h3>Where to go from here</h3>
+          <p>
+            The fastest way to keep improving is the same way you learned CSS
+            in this documentation: find a real interface, and build it. Revisit
+            your Real Project page in a few weeks and see what you would do
+            differently now. Look at interfaces you use every day and ask what
+            layout system, spacing, or states they're relying on.
+          </p>
+          <p>
+            If you want one more challenge before you go, the
+            <a href="#challenge-brief">Design Challenge</a> that follows this
+            section is open ended and does not come with a reference design.
+          </p>
+        </section>
+      </article>
+
+      <!-- ================================================= -->
+      <!-- 12. FINAL CHALLENGE -->
       <!-- ================================================= -->
 
       <article class="main-section" id="challenge">
@@ -4299,7 +4819,7 @@ button:active {
           </ul>
         </section>
 
-        <section id="starter-html">
+        <section id="challenge-html">
           <h2>Starter HTML</h2>
 
           <pre><code>
