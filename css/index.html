@@ -85,186 +85,12 @@
       href="https://scybud.github.io/scybud-ui/css/animations.css"
     />
 
-    <!-- Your documentation styles -->
+    <!--  documentation styles -->
     <link rel="stylesheet" href="/assets/css/base.css" />
     <link rel="stylesheet" href="/assets/css/docs.css" />
     <link rel="stylesheet" href="/assets/css/css-doc.css" />
 
-    <!-- Scoped styles for the Copy HTML button and screenshot checkpoints used in this course -->
-    <style>
-
-      .copy-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4em;
-        margin: 0.75em 0;
-        padding: 0.55em 1.1em;
-        background: #1a1a1a;
-        color: #f5f5f5;
-        border: 1px solid #333;
-        border-radius: 8px;
-        font-size: 0.95rem;
-        font-family: inherit;
-        cursor: pointer;
-        transition:
-          background 0.15s ease,
-          border-color 0.15s ease;
-      }
- 
-      .copy-btn:hover {
-        background: #262626;
-        border-color: #444;
-      }
- 
-      .copy-btn:active {
-        background: #2f2f2f;
-      }
- 
-      .screenshot-checkpoint {
-        margin: 1.5em 0;
-        padding: 1em;
-        border: 1px dashed #333;
-        border-radius: 10px;
-        background: #0a0a0a;
-      }
- 
-      .checkpoint-image-wrap {
-        display: block;
-      }
- 
-      .checkpoint-img {
-        width: 100%;
-        border-radius: 8px;
-        display: block;
-      }
- 
-      .checkpoint-placeholder {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5em;
-        min-height: 180px;
-        border: 1px dashed #444;
-        border-radius: 8px;
-        background: #111;
-        color: #999;
-        text-align: center;
-        padding: 1.5em;
-      }
- 
-      .checkpoint-placeholder-icon {
-        font-size: 2rem;
-      }
- 
-      .checkpoint-placeholder-text {
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
- 
-      .checkpoint-caption {
-        margin-top: 0.75em;
-        font-size: 0.9rem;
-        color: #aaa;
-      }
- 
-      /* Styles for the Real Project catalog cards */
-      .real-project-catalog {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-        margin: 1.5em 0;
-      }
- 
-      .project-card {
-        display: flex;
-        flex-direction: column;
-        background: #111;
-        border: 1px solid #2c2f36;
-        border-radius: 8px;
-        overflow: hidden;
-        transition: border-color 0.2s ease;
-      }
-      
-      .project-card:hover,
-      .project-card:focus-within {
-        border-color: #444;
-      }
-      
-      .project-card-media {
-        position: relative;
-        border-bottom: 1px solid #2c2f36;
-        background: #0a0a0a;
-      }
- 
-      .project-card-media img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-      }
- 
-      .project-card-media .img-credit {
-        margin: 0;
-        padding: 6px 12px;
-        font-size: 0.75rem;
-        color: #777;
-      }
- 
-      .project-card-body {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        flex: 1;
-        padding: 16px;
-      }
- 
-      .project-card-product {
-        margin: 0;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #9ca3af;
-      }
- 
-      .project-card-page {
-        margin: 0;
-        font-size: 1.125rem;
-        font-weight: 700;
-        color: #fff;
-      }
- 
-      .project-card-description {
-        margin: 0;
-        font-size: 0.9rem;
-        line-height: 1.5;
-        color: #d1d5db;
-      }
- 
-      .project-card-difficulty {
-        margin: 4px 0 0;
-        align-self: flex-start;
-        padding: 2px 10px;
-        font-size: 0.75rem;
-        color: #afccff;
-        background: #1c1c1c;
-        border: 1px solid #2c2f36;
-        border-radius: 999px;
-      }
- 
-      .project-card-link {
-        margin-top: auto;
-        padding-top: 12px;
-        color: #afccff;
-        font-weight: 600;
-        font-size: 0.875rem;
-        text-decoration: none;
-      }
- 
-      .project-card-link:hover,
-      .project-card-link:focus-visible {
-        text-decoration: underline;
-      }
-    </style>
+  
   </head>
 
   <body id="top">
@@ -432,7 +258,7 @@
         <ul>
           <li><a class="nav-link" href="#challenge-brief">Design Brief</a></li>
           <li><a class="nav-link" href="#challenge-html">Starter HTML</a></li>
-          <li><a class="nav-link" href="#inspiration">Inspiration</a></li>
+         <!-- <li><a class="nav-link" href="#inspiration">Inspiration</a></li>-->
           <li>
             <a class="nav-link" href="#submit-your-work">Submit Your Work</a>
           </li>
@@ -440,7 +266,7 @@
       </details>
     </nav>
 
-    <a href="/about.html" class="about" title="About">ⓘ</a>
+    <a href="#top" class="scroll-to-top-btn" title="Scroll to top">↑</a>
 
     <!-- Main content -->
     <main id="main-doc" class="adjust">
@@ -1367,7 +1193,7 @@ body {
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-01.png"
+                src="resources/screenshots/step-01.png"
                 alt="LogHue dashboard with a black background, light text, and the base sans-serif font applied, before any layout styling"
                 class="screenshot checkpoint-img"
                 onerror="
@@ -1492,7 +1318,7 @@ h1 {
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-01.png"
+                src="resources/screenshots/step-01.png"
                 alt="LogHue dashboard showing the page foundation while learning how CSS rules interact"
                 class="screenshot checkpoint-img"
               />
@@ -1608,7 +1434,7 @@ grid-template-columns: 260px 1fr;
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-02.png"
+                src="resources/screenshots/step-02.png"
                 alt="LogHue dashboard with the sidebar and main content arranged as two columns"
                 class="screenshot checkpoint-img"
               />
@@ -1847,7 +1673,7 @@ gap: 4px;
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-03.png"
+                src="resources/screenshots/step-03.png"
                 alt="LogHue dashboard with the sidebar navigation styled and the Dashboard item active"
                 class="screenshot checkpoint-img"
               />
@@ -2269,7 +2095,7 @@ gap: 4px;
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-04.png"
+                src="resources/screenshots/step-04.png"
                 alt="LogHue dashboard with the main content styled"
                 class="screenshot checkpoint-img"
               />
@@ -2445,7 +2271,7 @@ gap: 4px;
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-05.png"
+                src="resources/screenshots/step-05.png"
                 alt="LogHue dashboard with controlled content containers"
                 class="screenshot checkpoint-img"
               />
@@ -2614,7 +2440,7 @@ gap: 4px;
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-06.png"
+                src="resources/screenshots/step-06.png"
                 alt="Dashboard after completing Step 6, Spacing"
                 class="screenshot checkpoint-img"
               />
@@ -3536,7 +3362,7 @@ p {
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-07.png"
+                src="resources/screenshots/step-07.png"
                 alt="Dashboard showing interactive button states"
                 class="screenshot checkpoint-img"
               />
@@ -3692,7 +3518,7 @@ p {
           <div class="screenshot-checkpoint">
             <div class="checkpoint-image-wrap">
               <img
-                src="recources/screenshots/step-08.png"
+                src="resources/screenshots/step-08.png"
                 alt="Dashboard adapted to a mobile layout with the sidebar hidden"
                 class="screenshot checkpoint-img"
               />
@@ -4576,22 +4402,25 @@ button:active {
             <article class="project-card" role="listitem">
               <div class="project-card-media">
                 <img
-                  src="/assets/real-project/canvart-collections-placeholder.png"
+                  src="resources/screenshots/canvart-collection-page.png"
                   alt="Screenshot placeholder of the CanvArt Collections page showing artwork grouped into collection cards"
                   loading="lazy"
                 />
                 <p class="img-credit">Screenshot: CanvArt, Abdulroqib Oladipo</p>
               </div>
               <div class="project-card-body">
-                <p class="project-card-product">CanvArt</p>
+                <p class="project-card-product canvart">Canv<span>Art</span></p>
                 <h3 class="project-card-page">Collections</h3>
                 <p class="project-card-description">
-                  Browse artwork organized into collections, with image cards, a
+                  Browse artwork collections, with image cards, a
                   heading structure, and navigation that holds up on a phone.
                 </p>
-                <p class="project-card-difficulty">Difficulty: Foundational</p>
+                <p class="project-card-difficulty">Difficulty: Intermediate</p>
                 <a class="project-card-link" href="#project-canvart-collections"
                   >View project brief</a
+                >
+                <a class="project-card-link" href="https://canvart.scybud.com/collections" target="_blank"
+                  >Open live page</a
                 >
               </div>
             </article>
@@ -4599,23 +4428,26 @@ button:active {
             <article class="project-card" role="listitem">
               <div class="project-card-media">
                 <img
-                  src="/assets/real-project/zefeed-tech-history-placeholder.png"
+                  src="resources/screenshots/zefeed-tech-history-page.png"
                   alt="Screenshot placeholder of the ZeFeed Tech History page showing a sidebar, a featured history entry, and supporting entries"
                   loading="lazy"
                 />
                 <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
               </div>
               <div class="project-card-body">
-                <p class="project-card-product">ZeFeed</p>
+                <p class="project-card-product zefeed">Ze<span>Feed</span></p>
                 <h3 class="project-card-page">Tech History</h3>
                 <p class="project-card-description">
                   Rebuild a page that surfaces one featured history entry
-                  alongside a browsable sidebar of others, with a clear reading
+                  alongside a promotional products card, with a clear reading
                   hierarchy.
                 </p>
                 <p class="project-card-difficulty">Difficulty: Intermediate</p>
                 <a class="project-card-link" href="#project-zefeed-tech-history"
                   >View project brief</a
+                >
+                <a class="project-card-link" href="https://zefeed.scybud.com/history" target="_blank"
+                  >Open live page</a
                 >
               </div>
             </article>
@@ -4623,14 +4455,14 @@ button:active {
             <article class="project-card" role="listitem">
               <div class="project-card-media">
                 <img
-                  src="/assets/real-project/zefeed-explore-tech-placeholder.png"
+                  src="resources/screenshots/zefeed-explore-page.png"
                   alt="Screenshot placeholder of the ZeFeed Explore Tech page showing a grid of article cards with images and metadata"
                   loading="lazy"
                 />
                 <p class="img-credit">Screenshot: ZeFeed, Abdulroqib Oladipo</p>
               </div>
               <div class="project-card-body">
-                <p class="project-card-product">ZeFeed</p>
+                <p class="project-card-product zefeed">Ze<span>Feed</span></p>
                 <h3 class="project-card-page">Explore Tech</h3>
                 <p class="project-card-description">
                   Design a scannable grid of tech articles, each with an image,
@@ -4639,6 +4471,9 @@ button:active {
                 <p class="project-card-difficulty">Difficulty: Intermediate</p>
                 <a class="project-card-link" href="#project-zefeed-explore-tech"
                   >View project brief</a
+                >
+                <a class="project-card-link" href="https://zefeed.scybud.com/explore" target="_blank"
+                  >Open live page</a
                 >
               </div>
             </article>
@@ -4659,9 +4494,9 @@ button:active {
           <h2>Project Briefs</h2>
 
           <div class="project-brief" id="project-canvart-collections">
-            <h3>CanvArt, Collections</h3>
+            <h3><a href="https://canvart.scybud.com" target="_blank" rel="noopener" class="productName canvart">Canv<span>Art</span>, Collections</h3>
             <p>
-              CanvArt is a dark mode art sharing platform. The Collections page
+              <a href="https://canvart.scybud.com" target="_blank" rel="noopener" class="productName canvart">Canv<span>Art</span></a> is a dark mode art sharing platform. The Collections page
               groups artwork into named collections that a visitor can browse.
               Your job is to design a page that presents these collections
               clearly and invites someone to look closer.
@@ -4706,19 +4541,18 @@ button:active {
           </div>
 
           <div class="project-brief" id="project-zefeed-tech-history">
-            <h3>ZeFeed, Tech History</h3>
+            <h3><a href="https://zefeed.scybud.com" target="_blank" rel="noopener" class="productName zefeed">Ze<span>Feed</span></a>, Tech History</h3>
             <p>
-              ZeFeed's Tech History page surfaces facts and moments from the
+              <a href="https://zefeed.scybud.com" target="_blank" rel="noopener" class="productName zefeed">Ze<span>Feed</span></a>'s Tech History page surfaces facts and moments from the
               history of technology. One entry is featured, and others are
-              browsable alongside it. Your job is to design a page that makes
+              browsable by clicking the next or previous buttons plus, it contains a promotional panel that showcase some products. Your job is to design a page that makes
               one piece of content feel primary while keeping the rest easy to
               reach.
             </p>
 
             <h4>What you're building</h4>
             <p>
-              A page with a sidebar or secondary navigation area for browsing
-              entries, a large featured entry that reads as the main content,
+              A page with a sidebar area for browsing, a large featured entry that reads as the main content,
               and additional secondary content nearby. The featured entry
               should look and feel more important than the rest, through your
               layout and typography choices, not just a label that says so.
@@ -4739,10 +4573,6 @@ button:active {
                 structure of the content.
               </li>
               <li>
-                Navigation controls, tabs, or list items in the sidebar need a
-                visible state for the one that's currently active or hovered.
-              </li>
-              <li>
                 The layout must adapt for smaller screens. A sidebar sitting
                 beside content on desktop should not stay side by side on a
                 phone if it hurts readability.
@@ -4752,9 +4582,9 @@ button:active {
           </div>
 
           <div class="project-brief" id="project-zefeed-explore-tech">
-            <h3>ZeFeed, Explore Tech</h3>
+            <h3><a href="https://zefeed.scybud.com" target="_blank" rel="noopener" class="productName zefeed">Ze<span>Feed</span></a>, Explore Tech</h3>
             <p>
-              ZeFeed's Explore Tech page is a feed of tech articles someone can
+              <a href="https://zefeed.scybud.com" target="_blank" rel="noopener" class="productName zefeed">Ze<span>Feed</span></a>'s Explore Tech page is a feed of tech articles someone can
               browse before deciding what to read in full. Your job is to
               design a grid of articles that is easy to scan and pleasant to
               browse.
@@ -4795,18 +4625,29 @@ button:active {
           </div>
         </section>
 
-        <section id="make-it-your-own">
-          <h2>Make It Your Own</h2>
-          <p>
-            The requirements describe what the page needs to do. They do not
-            tell you which CSS properties to reach for. Whether you use Grid or
-            Flexbox for the layout, how you handle the breakpoints, what your
-            spacing scale looks like, and what the page actually looks like are
-            your decisions. Two students can meet every requirement above and
-            produce pages that don't resemble each other at all. That's the
-            point.
-          </p>
-        </section>
+<section id="make-it-your-own">
+  <h2>Make It Your Own</h2>
+
+  <p>
+    The requirements describe what the page needs to do. They do not tell you
+    which CSS properties to use. Whether you choose Grid or Flexbox for the
+    layout, how you handle breakpoints, what your spacing scale looks like,
+    or how the page ultimately looks are all your decisions. Two students can
+    meet every requirement above and produce pages that look completely
+    different. That's the point.
+  </p>
+
+  <p>
+    Not every property or concept you'll need was covered in this lesson.
+    Some things you'll have to discover on your own and that's part of being
+    a developer. When you get stuck or need to learn how something works,
+    you have a tool to help you. <a href="https://search.scybud.com" class="productName scysearch" target="_blank" rel="noopener noreferrer">Scy<span>Search</span></a>
+    is a developer-focused search engine that brings together development
+    resources and a selection of verified, indexed domains to help you find
+    the information you need.
+  </p>
+</section>
+
 
         <section id="project-checklist">
           <h2>Final Checklist</h2>
@@ -4902,57 +4743,196 @@ button:active {
 
       <article class="main-section" id="challenge">
         <section id="challenge-brief">
-          <h2>Design Challenge</h2>
+    <h2>Design Challenge</h2>
 
-          <p>[Introduce the challenge.]</p>
+    <p>
+      You have been asked to build the dashboard for a productivity app.
+      The page should help users quickly see what they need to work on,
+      review their progress, and navigate between different parts of the
+      application.
+    </p>
 
-          <div class="placeholder">[CHALLENGE SCREENSHOT / REFERENCE]</div>
+<div class="img-container">
+              <img
+                src="resources/screenshots/challenge.png"
+                alt="LogHue dashboard design draft"
+                class="screenshot"
+              />
 
-          <h3>Design Instructions</h3>
+              <p class="example-note">
+                Visual reference to guide you
+              </p>
 
-          <ul>
-            <li>[Requirement]</li>
-            <li>[Requirement]</li>
-            <li>[Requirement]</li>
-          </ul>
-        </section>
+              <p class="img-credit">AI Generated</p>
+            </div>
 
-        <section id="challenge-html">
-          <h2>Starter HTML</h2>
+    <h3>Design Instructions</h3>
 
-          <pre><code>
-<!-- Starter HTML -->
-      </code></pre>
-        </section>
+    <ul>
+      <li>
+        Create a dark-themed dashboard with a sidebar for navigation and a
+        main content area for the user's tasks.
+      </li>
+      <li>
+        The main area should include a page heading, a short description,
+        task statistics, and a list of upcoming tasks.
+      </li>
+      <li>
+        Tasks should clearly communicate their title, status, priority, and
+        due date.
+      </li>
+      <li>
+        Use different visual treatments to distinguish completed, pending,
+        and overdue tasks.
+      </li>
+      <li>
+        The sidebar should remain easy to navigate and clearly indicate the
+        currently selected section.
+      </li>
+      <li>
+        The layout must adapt to smaller screens without making the content
+        difficult to use or read.
+      </li>
+      <li>
+        Maintain a consistent visual system for spacing, typography, borders,
+        buttons, and interactive elements throughout the page.
+      </li>
+    </ul>
+  </section>
 
-        <section id="inspiration">
-          <h2>Get Inspired</h2>
+  <section id="challenge-html">
+    <h2>Starter HTML</h2>
 
+    <pre><code>
+&lt;main class="dashboard"&gt;
+
+  &lt;aside class="sidebar"&gt;
+    &lt;div class="logo"&gt;Taskly&lt;/div&gt;
+
+    &lt;nav&gt;
+      &lt;a href="#" class="active"&gt;Tasks&lt;/a&gt;
+      &lt;a href="#"&gt;Calendar&lt;/a&gt;
+      &lt;a href="#"&gt;Projects&lt;/a&gt;
+      &lt;a href="#"&gt;Settings&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;section class="content"&gt;
+    &lt;header class="page-header"&gt;
+      &lt;div&gt;
+        &lt;h1&gt;My Tasks&lt;/h1&gt;
+        &lt;p&gt;Keep track of what needs to get done.&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;button&gt;+ New Task&lt;/button&gt;
+    &lt;/header&gt;
+
+    &lt;section class="stats"&gt;
+      &lt;div class="stat-card"&gt;
+        &lt;span&gt;Total Tasks&lt;/span&gt;
+        &lt;strong&gt;24&lt;/strong&gt;
+      &lt;/div&gt;
+
+      &lt;div class="stat-card"&gt;
+        &lt;span&gt;Completed&lt;/span&gt;
+        &lt;strong&gt;16&lt;/strong&gt;
+      &lt;/div&gt;
+
+      &lt;div class="stat-card"&gt;
+        &lt;span&gt;In Progress&lt;/span&gt;
+        &lt;strong&gt;5&lt;/strong&gt;
+      &lt;/div&gt;
+
+      &lt;div class="stat-card"&gt;
+        &lt;span&gt;Overdue&lt;/span&gt;
+        &lt;strong&gt;3&lt;/strong&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section class="tasks"&gt;
+      &lt;div class="section-header"&gt;
+        &lt;h2&gt;Upcoming Tasks&lt;/h2&gt;
+        &lt;button&gt;View all&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;article class="task"&gt;
+        &lt;div&gt;
+          &lt;h3&gt;Finish landing page&lt;/h3&gt;
+          &lt;p&gt;Due today · High priority&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;span class="status"&gt;In Progress&lt;/span&gt;
+      &lt;/article&gt;
+
+      &lt;article class="task"&gt;
+        &lt;div&gt;
+          &lt;h3&gt;Review project requirements&lt;/h3&gt;
+          &lt;p&gt;Due tomorrow · Medium priority&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;span class="status"&gt;Pending&lt;/span&gt;
+      &lt;/article&gt;
+
+      &lt;article class="task completed"&gt;
+        &lt;div&gt;
+          &lt;h3&gt;Set up development environment&lt;/h3&gt;
+          &lt;p&gt;Completed yesterday&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;span class="status"&gt;Completed&lt;/span&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/section&gt;
+
+&lt;/main&gt;
+    </code></pre>
+  </section>
+
+<!--
+  <section id="inspiration">
+    <h2>Get Inspired</h2>
+    
           <p>[Explain the gallery/inspiration philosophy.]</p>
 
           <div class="placeholder">[DESIGN GALLERY]</div>
         </section>
+        -->
 
         <section id="submit-your-work">
-          <h2>Submit Your Work</h2>
+  <h2>Submit Your Work</h2>
 
-          <p>[Submission instructions.]</p>
+  <p>
+    Once you've finished the challenge, you're welcome to share your work
+    with us. You don't need to create a perfect or production-ready website.
+    We want to see how you interpreted the requirements and the design
+    decisions you made along the way.
+  </p>
 
-          <h3>Include</h3>
+  <h3>Include</h3>
 
-          <ul>
-            <li>Name</li>
-            <li>Email</li>
-            <li>Repository URL</li>
-            <li>Live demo URL</li>
-            <li>What you changed</li>
-          </ul>
+  <ul>
+    <li>Your name</li>
+    <li>Your email address</li>
+    <li>A link to your repository</li>
+    <li>
+      A link to your live demo, if you have one
+    </li>
+    <li>
+      A short explanation of what you changed and any design decisions
+      you'd like to highlight
+    </li>
+  </ul>
 
-          <p>
-            [Explain that selected designs may potentially be considered for use
-            in Scybud products.]
-          </p>
-        </section>
+  <p>
+    A live demo is optional. If you don't have one, submitting your
+    repository is completely fine. You can also send your submission or
+    any questions about the challenge to
+    <a href="mailto:student@scybud.com">student@scybud.com</a>.
+  </p>
+
+  <p>
+    By submitting your work, you understand that Scybud may consider selected designs or ideas for potential use in future Scybud products or educational materials. <b>You retain ownership of your work.</b>
+  </p>
+  <p>If your design is ever used in a Scybud product, Scybud will provide permanent credit to you as the original contributor. Even if the design is later replaced or removed, your contribution will remain recorded in Scybud's contributor history.</p>
+</section>
+
       </article>
     </main>
 

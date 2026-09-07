@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taskly Dashboard</title>
+  
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000000;
+  --surface: #151515;
+  --surface-hover: #353535;
+  --border: #313131;
+
+  --text: #f1f3f5;
+  --muted: #858c96;
+  --subtle: #606771;
+
+  --accent: #5b8cff;
+
+  --danger: #e27474;
+  --warning: #d6a657;
+  --success: #69b98b;
+
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* ================================
+   Layout
+================================ */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+
+/* ================================
+   Sidebar
+================================ */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 24px 14px;
+  background: #111419;
+  border-right: 1px solid var(--border);
+}
+
+.logo {
+  padding: 0 12px;
+  margin-bottom: 38px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-label {
+  margin: 18px 12px 7px;
+  color: var(--subtle);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.main-nav a span {
+  width: 18px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.main-nav a:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.main-nav a.active {
+  background: #1d2229;
+  color: var(--text);
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.avatar {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #242932;
+  color: #dce1e8;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.profile-info {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-info strong {
+  overflow: hidden;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-info span {
+  overflow: hidden;
+  color: var(--subtle);
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ================================
+   Content
+================================ */
+
+.content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 44px 48px 60px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 34px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--subtle);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.page-header h1 {
+  margin: 0 0 7px;
+  font-size: clamp(1.7rem, 3vw, 2.25rem);
+  letter-spacing: -0.04em;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.icon-button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.icon-button:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.primary-button {
+  height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--text);
+  color: #101216;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+
+/* ================================
+   Statistics
+================================ */
+
+.overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.stat-icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 7px;
+  background: #1d2127;
+  color: #aeb4bd;
+  font-size: 0.75rem;
+}
+
+.stat-card > strong {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 1.65rem;
+  letter-spacing: -0.04em;
+}
+
+.stat-change {
+  color: var(--subtle);
+  font-size: 0.72rem;
+}
+
+.stat-change.warning {
+  color: var(--warning);
+}
+
+
+/* ================================
+   Panels
+================================ */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 1fr);
+  gap: 14px;
+}
+
+.panel {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-header h2 {
+  margin: 0 0 5px;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.panel-header p {
+  margin: 0;
+  color: var(--subtle);
+  font-size: 0.75rem;
+}
+
+.text-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.text-button:hover {
+  color: var(--text);
+}
+
+
+/* ================================
+   Tasks
+================================ */
+
+.task {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 13px;
+  padding: 17px 22px;
+  border-bottom: 1px solid var(--border);
+}
+
+.task:last-child {
+  border-bottom: 0;
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #4a5059;
+  border-radius: 50%;
+}
+
+.task-check.checked {
+  display: grid;
+  place-items: center;
+  border-color: var(--success);
+  background: var(--success);
+  color: #0f1511;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.task-content {
+  min-width: 0;
+}
+
+.task-content h3 {
+  margin: 0 0 5px;
+  overflow: hidden;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-content p {
+  margin: 0;
+  color: var(--subtle);
+  font-size: 0.7rem;
+}
+
+.priority,
+.task-status {
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 0.64rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.priority {
+  background: #20242a;
+  color: var(--muted);
+}
+
+.priority.high {
+  color: var(--danger);
+}
+
+.priority.medium {
+  color: var(--warning);
+}
+
+.priority.low {
+  color: var(--success);
+}
+
+.task-status {
+  background: #1d2127;
+  color: var(--muted);
+}
+
+.task-status.progress {
+  color: var(--accent);
+}
+
+.task-status.done {
+  color: var(--success);
+}
+
+.task.completed {
+  opacity: 0.5;
+}
+
+.task.completed h3 {
+  text-decoration: line-through;
+}
+
+
+/* ================================
+   Weekly Progress
+================================ */
+
+.progress-panel {
+  padding-bottom: 22px;
+}
+
+.progress-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 24px 22px 13px;
+}
+
+.progress-summary strong {
+  font-size: 2rem;
+  letter-spacing: -0.05em;
+}
+
+.progress-summary span {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.progress-bar {
+  height: 7px;
+  margin: 0 22px 25px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #24282e;
+}
+
+.progress-bar span {
+  display: block;
+  width: 67%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 0 22px;
+}
+
+.week div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.week span {
+  color: var(--subtle);
+  font-size: 0.65rem;
+}
+
+.week strong {
+  font-size: 0.75rem;
+}
+
+
+/* ================================
+   Projects
+================================ */
+
+.project-list {
+  padding: 5px 22px;
+}
+
+.project {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.project:last-child {
+  border-bottom: 0;
+}
+
+.project-icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 8px;
+  background: #20242a;
+  color: #c3c8d0;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.project-info {
+  min-width: 0;
+}
+
+.project-info h3 {
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.project-info p {
+  margin: 0 0 8px;
+  color: var(--subtle);
+  font-size: 0.68rem;
+}
+
+.project > strong {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.mini-progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #25292f;
+}
+
+.mini-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+
+/* ================================
+   Activity
+================================ */
+
+.activity-list {
+  padding: 5px 22px;
+}
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity:last-child {
+  border-bottom: 0;
+}
+
+.activity-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #20242a;
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.activity-icon.completed-icon {
+  color: var(--success);
+}
+
+.activity p {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.activity p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.activity > div:last-child span {
+  color: var(--subtle);
+  font-size: 0.65rem;
+}
+
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 1100px) {
+  .overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    margin-bottom: 18px;
+  }
+
+  .main-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-label,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .main-nav a {
+    flex-shrink: 0;
+  }
+
+  .content {
+    padding: 32px 24px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 26px 16px 40px;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .primary-button {
+    margin-left: auto;
+  }
+
+  .overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .task {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .priority {
+    display: none;
+  }
+
+  .task-status {
+    grid-column: 2 / -1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .overview {
+    grid-template-columns: 1fr;
+  }
+
+  .page-header h1 {
+    font-size: 1.55rem;
+  }
+
+  .panel-header {
+    padding: 18px;
+  }
+
+  .task {
+    padding: 15px 18px;
+  }
+
+  .project-list,
+  .activity-list {
+    padding-inline: 18px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+  <main class="dashboard">
+
+    <aside class="sidebar">
+      <div class="logo">Taskly</div>
+
+      <nav class="main-nav">
+        <p class="nav-label">Workspace</p>
+
+        <a href="#" class="active">
+          <span>▦</span>
+          Dashboard
+        </a>
+
+        <a href="#">
+          <span>✓</span>
+          Tasks
+        </a>
+
+        <a href="#">
+          <span>□</span>
+          Calendar
+        </a>
+
+        <a href="#">
+          <span>◫</span>
+          Projects
+        </a>
+
+        <p class="nav-label">Personal</p>
+
+        <a href="#">
+          <span>☆</span>
+          Favorites
+        </a>
+
+        <a href="#">
+          <span>⚙</span>
+          Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="profile">
+          <div class="avatar">AR</div>
+
+          <div class="profile-info">
+            <strong>Abdulroqib</strong>
+            <span>Personal workspace</span>
+          </div>
+
+          <span>•••</span>
+        </div>
+      </div>
+    </aside>
+
+
+    <section class="content">
+
+      <header class="page-header">
+        <div>
+          <span class="eyebrow">Monday, September 7</span>
+          <h1>Good afternoon, Abdulroqib</h1>
+          <p>Here's what's happening with your work today.</p>
+        </div>
+
+        <div class="header-actions">
+          <button class="icon-button" aria-label="Search">⌕</button>
+          <button class="icon-button" aria-label="Notifications">♢</button>
+          <button class="primary-button">+ New Task</button>
+        </div>
+      </header>
+
+
+      <section class="overview">
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>Total tasks</span>
+            <span class="stat-icon">□</span>
+          </div>
+
+          <strong>24</strong>
+          <span class="stat-change">+4 this week</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>Completed</span>
+            <span class="stat-icon">✓</span>
+          </div>
+
+          <strong>16</strong>
+          <span class="stat-change">67% completion rate</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>In progress</span>
+            <span class="stat-icon">◷</span>
+          </div>
+
+          <strong>5</strong>
+          <span class="stat-change">2 due today</span>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-top">
+            <span>Overdue</span>
+            <span class="stat-icon">!</span>
+          </div>
+
+          <strong>3</strong>
+          <span class="stat-change warning">Needs attention</span>
+        </div>
+      </section>
+
+
+      <div class="dashboard-grid">
+
+        <section class="panel tasks-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Upcoming tasks</h2>
+              <p>Stay on top of what needs to get done.</p>
+            </div>
+
+            <button class="text-button">View all →</button>
+          </div>
+
+          <div class="task-list">
+
+            <article class="task">
+              <div class="task-check"></div>
+
+              <div class="task-content">
+                <h3>Finish landing page</h3>
+                <p>Today · 5:00 PM</p>
+              </div>
+
+              <span class="priority high">High</span>
+              <span class="task-status progress">In progress</span>
+            </article>
+
+            <article class="task">
+              <div class="task-check"></div>
+
+              <div class="task-content">
+                <h3>Review project requirements</h3>
+                <p>Tomorrow · 10:00 AM</p>
+              </div>
+
+              <span class="priority medium">Medium</span>
+              <span class="task-status pending">Pending</span>
+            </article>
+
+            <article class="task">
+              <div class="task-check"></div>
+
+              <div class="task-content">
+                <h3>Prepare presentation slides</h3>
+                <p>Tomorrow · 2:30 PM</p>
+              </div>
+
+              <span class="priority medium">Medium</span>
+              <span class="task-status pending">Pending</span>
+            </article>
+
+            <article class="task completed">
+              <div class="task-check checked">✓</div>
+
+              <div class="task-content">
+                <h3>Set up development environment</h3>
+                <p>Completed yesterday</p>
+              </div>
+
+              <span class="priority low">Low</span>
+              <span class="task-status done">Completed</span>
+            </article>
+
+          </div>
+        </section>
+
+
+        <section class="panel progress-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Weekly progress</h2>
+              <p>Your productivity this week.</p>
+            </div>
+          </div>
+
+          <div class="progress-summary">
+            <strong>67%</strong>
+            <span>16 of 24 tasks completed</span>
+          </div>
+
+          <div class="progress-bar">
+            <span></span>
+          </div>
+
+          <div class="week">
+            <div>
+              <span>M</span>
+              <strong>4</strong>
+            </div>
+
+            <div>
+              <span>T</span>
+              <strong>6</strong>
+            </div>
+
+            <div>
+              <span>W</span>
+              <strong>3</strong>
+            </div>
+
+            <div>
+              <span>T</span>
+              <strong>5</strong>
+            </div>
+
+            <div>
+              <span>F</span>
+              <strong>2</strong>
+            </div>
+
+            <div>
+              <span>S</span>
+              <strong>1</strong>
+            </div>
+
+            <div>
+              <span>S</span>
+              <strong>0</strong>
+            </div>
+          </div>
+        </section>
+
+
+        <section class="panel projects-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Projects</h2>
+              <p>Track your active work.</p>
+            </div>
+
+            <button class="text-button">View all →</button>
+          </div>
+
+          <div class="project-list">
+
+            <article class="project">
+              <div class="project-icon">W</div>
+
+              <div class="project-info">
+                <h3>Website redesign</h3>
+                <p>8 of 12 tasks completed</p>
+
+                <div class="mini-progress">
+                  <span style="width: 67%"></span>
+                </div>
+              </div>
+
+              <strong>67%</strong>
+            </article>
+
+            <article class="project">
+              <div class="project-icon">M</div>
+
+              <div class="project-info">
+                <h3>Marketing campaign</h3>
+                <p>5 of 10 tasks completed</p>
+
+                <div class="mini-progress">
+                  <span style="width: 50%"></span>
+                </div>
+              </div>
+
+              <strong>50%</strong>
+            </article>
+
+            <article class="project">
+              <div class="project-icon">L</div>
+
+              <div class="project-info">
+                <h3>Learning CSS</h3>
+                <p>12 of 15 tasks completed</p>
+
+                <div class="mini-progress">
+                  <span style="width: 80%"></span>
+                </div>
+              </div>
+
+              <strong>80%</strong>
+            </article>
+
+          </div>
+        </section>
+
+
+        <section class="panel activity-panel">
+          <div class="panel-header">
+            <div>
+              <h2>Recent activity</h2>
+              <p>What you've been working on.</p>
+            </div>
+          </div>
+
+          <div class="activity-list">
+
+            <div class="activity">
+              <div class="activity-icon completed-icon">✓</div>
+
+              <div>
+                <p>
+                  Completed
+                  <strong>Set up development environment</strong>
+                </p>
+                <span>Yesterday at 4:32 PM</span>
+              </div>
+            </div>
+
+            <div class="activity">
+              <div class="activity-icon">+</div>
+
+              <div>
+                <p>
+                  Created
+                  <strong>Prepare presentation slides</strong>
+                </p>
+                <span>Yesterday at 2:18 PM</span>
+              </div>
+            </div>
+
+            <div class="activity">
+              <div class="activity-icon">↻</div>
+
+              <div>
+                <p>
+                  Updated
+                  <strong>Website redesign</strong>
+                </p>
+                <span>Sunday at 11:42 AM</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+    </section>
+  </main>
+</body>
+</html>
