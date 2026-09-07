@@ -29,9 +29,9 @@ if(link.hash === window.location.hash) {
 });
 
 
-const screenshots = document.querySelectorAll(".screenshot");
-if(screenshots) {
-  screenshots.forEach((s) => {
-    magnifyImg(s);
+const imgs = document.querySelectorAll("img");
+if(imgs) {
+  imgs.forEach((img) => {
+    magnifyImg(img);
   })
 }
