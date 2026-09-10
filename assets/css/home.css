@@ -7,6 +7,8 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   margin: var(--space-md);
   background: var(--card-bg);
   border: 1px solid var(--border-primary);
@@ -31,11 +33,15 @@
 .card p {
   font-size: 0.9rem;
   color: var(--text-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .card a {
-  display: inline-block;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  margin-top: auto;
+  font-size: var(--text-md);
   text-decoration: none;
   background: var(--primary);
   color: #000000;
